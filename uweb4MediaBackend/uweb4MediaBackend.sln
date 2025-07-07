@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{65FA8CF4-2D9E-4097-887F-655B58AE417C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{86413D26-FDAF-47C6-9526-AFD67EAF306B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{9D7AD8B5-A82A-43D5-BF13-3DE5ECF88E2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uweb4Media.Application", "Core\uweb4Media.Application\uweb4Media.Application.csproj", "{C16C5BA2-7A43-4123-9871-09DBC529B117}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uweb4Media.Domain", "Core\Uweb4Media.Domain\Uweb4Media.Domain.csproj", "{2EEBFA6A-5E73-4918-B402-D164F38B1EDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uweb4Media.Persistence", "Infrastructure\Uweb4Media.Persistence\Uweb4Media.Persistence.csproj", "{4EB04516-CBD4-45C3-9A09-5341D742CD1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uweb4Media.API", "Presentation\Uweb4Media.API\Uweb4Media.API.csproj", "{8264376C-6549-4E32-9B36-3557FF7CF18A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C16C5BA2-7A43-4123-9871-09DBC529B117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16C5BA2-7A43-4123-9871-09DBC529B117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16C5BA2-7A43-4123-9871-09DBC529B117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16C5BA2-7A43-4123-9871-09DBC529B117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EEBFA6A-5E73-4918-B402-D164F38B1EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EEBFA6A-5E73-4918-B402-D164F38B1EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EEBFA6A-5E73-4918-B402-D164F38B1EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EEBFA6A-5E73-4918-B402-D164F38B1EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB04516-CBD4-45C3-9A09-5341D742CD1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB04516-CBD4-45C3-9A09-5341D742CD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB04516-CBD4-45C3-9A09-5341D742CD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB04516-CBD4-45C3-9A09-5341D742CD1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8264376C-6549-4E32-9B36-3557FF7CF18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8264376C-6549-4E32-9B36-3557FF7CF18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8264376C-6549-4E32-9B36-3557FF7CF18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8264376C-6549-4E32-9B36-3557FF7CF18A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C16C5BA2-7A43-4123-9871-09DBC529B117} = {65FA8CF4-2D9E-4097-887F-655B58AE417C}
+		{2EEBFA6A-5E73-4918-B402-D164F38B1EDF} = {65FA8CF4-2D9E-4097-887F-655B58AE417C}
+		{4EB04516-CBD4-45C3-9A09-5341D742CD1A} = {86413D26-FDAF-47C6-9526-AFD67EAF306B}
+		{8264376C-6549-4E32-9B36-3557FF7CF18A} = {9D7AD8B5-A82A-43D5-BF13-3DE5ECF88E2E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD0CE0E3-EA34-4D2A-893E-BBCAA1045259}
+	EndGlobalSection
+EndGlobal
