@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\uweb4Media.Application\uweb4Media.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Uweb4Media.Domain\Uweb4Media.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

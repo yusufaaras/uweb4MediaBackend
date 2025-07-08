@@ -1,8 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "JwOph6cc4fSQ3esv21UZDJCTMcy7MuxZEppfG/5K9+nH2SL2IyCO4gcJ6r6hJV6caRlh9jL6qBxbghf4Z7oHDA==",
+  "dgSpecHash": "ZfY6yOuAypw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Infrastructure\\Uweb4Media.Persistence\\Uweb4Media.Persistence.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
+  "expectedPackageFiles": [
+    "/Users/yagmuryalcin/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.entityframeworkcore/9.0.6/microsoft.entityframeworkcore.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.6/microsoft.entityframeworkcore.abstractions.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.6/microsoft.entityframeworkcore.analyzers.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.1/microsoft.entityframeworkcore.relational.9.0.1.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.caching.abstractions/9.0.6/microsoft.extensions.caching.abstractions.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.caching.memory/9.0.6/microsoft.extensions.caching.memory.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.1/microsoft.extensions.configuration.abstractions.9.0.1.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.6/microsoft.extensions.dependencyinjection.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.6/microsoft.extensions.dependencyinjection.abstractions.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.logging/9.0.6/microsoft.extensions.logging.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.6/microsoft.extensions.logging.abstractions.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.options/9.0.6/microsoft.extensions.options.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/microsoft.extensions.primitives/9.0.6/microsoft.extensions.primitives.9.0.6.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/npgsql.entityframeworkcore.postgresql/9.0.4/npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
+    "/Users/yagmuryalcin/.nuget/packages/system.diagnostics.diagnosticsource/9.0.6/system.diagnostics.diagnosticsource.9.0.6.nupkg.sha512"
+  ],
   "logs": []
 }
