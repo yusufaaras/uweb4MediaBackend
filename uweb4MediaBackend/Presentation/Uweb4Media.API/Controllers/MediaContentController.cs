@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Uweb4Media.Application.Services;
-using Uweb4Media.Domain.Enums;
+using MediatR;
+using Uweb4Media.Application.Features.MediaContents.Commands;
+using Uweb4Media.Application.Features.MediaContents.Queries;
 
 namespace Uweb4Media.API.Controllers
 {
@@ -8,45 +9,25 @@ namespace Uweb4Media.API.Controllers
     [Route("[controller]")]
     public class MediaContentController : ControllerBase
     {
-        private readonly MediaContentService _mediaService;
+        private readonly IMediator _mediator;
 
-        public MediaContentController(MediaContentService mediaService)
+        public MediaContentController(IMediator mediator)
         {
-            _mediaService = mediaService;
+            _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMedia([FromBody] CreateMediaContentRequest request)
+        public async Task<IActionResult> CreateMedia([FromBody] CreateMediaContentCommand command)
         {
-            await _mediaService.CreateMediaContentAsync(
-                request.Title,
-                request.ThumbnailUrl,
-                request.Sector,
-                request.Channel,
-                request.Type,
-                request.YoutubeVideoId,
-                request.UserId
-            );
-
-            return Ok("Media content created successfully.");
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllMediaContents()
+        public async Task<IActionResult> GetAll()
         {
-            var mediaList = await _mediaService.GetAllMediaContentsAsync();
-            return Ok(mediaList);
+            var result = await _mediator.Send(new GetAllMediaContentsQuery());
+            return Ok(result);
         }
-    }
-
-    public class CreateMediaContentRequest
-    {
-        public string Title { get; set; } = null!;
-        public string ThumbnailUrl { get; set; } = null!;
-        public Sector Sector { get; set; }
-        public Channel Channel { get; set; }
-        public ContentType Type { get; set; }
-        public string? YoutubeVideoId { get; set; }
-        public Guid UserId { get; set; }
     }
 }

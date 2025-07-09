@@ -13,9 +13,14 @@ namespace Uweb4Media.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<User?> GetByUsernameAsync(string username)
+        // public async Task<User?> GetByUsernameAsync(string username)
+        // {
+        //     return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        // }
+
+        public async Task<User?> GetByEmailAsync(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task AddUserAsync(User user)

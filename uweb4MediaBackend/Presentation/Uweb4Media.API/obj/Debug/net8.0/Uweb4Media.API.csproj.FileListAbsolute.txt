@@ -140,3 +140,9 @@
 /Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.pdb
 /Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.genruntimeconfig.cache
 /Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/ref/Uweb4Media.API.dll
+/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/MediatR.dll
+/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/MediatR.Contracts.dll
+/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll

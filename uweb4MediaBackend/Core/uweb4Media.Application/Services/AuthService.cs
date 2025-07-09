@@ -1,5 +1,3 @@
-using BCrypt.Net;
-using Uweb4Media.Application;
 using uweb4Media.Application.Interfaces;
 using Uweb4Media.Domain.Entities;
 
@@ -14,10 +12,18 @@ namespace Uweb4Media.Application.Services
             _userRepository = userRepository;
         }
 
-        public async Task<bool> RegisterAsync(string username, string email, string password)
+        public async Task<User?> RegisterAsync(string username, string email, string password)
         {
-            var existingUser = await _userRepository.GetByUsernameAsync(username);
-            if (existingUser != null) return false;
+            Console.WriteLine($"🔄 RegisterAsync called for: {email}");
+
+            var existingUser = await _userRepository.GetByEmailAsync(email);
+            if (existingUser != null)
+            {
+                Console.WriteLine($"❌ User already exists: {email} (ID: {existingUser.Id})");
+                return null;
+            }
+
+            Console.WriteLine($"✅ Email available, creating user: {email}");
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
@@ -28,13 +34,17 @@ namespace Uweb4Media.Application.Services
                 PasswordHash = hashedPassword
             };
 
+            Console.WriteLine($"💾 Adding user to database: {email}");
             await _userRepository.AddUserAsync(user);
-            return true;
+            Console.WriteLine($"🎉 User successfully created: {email} (ID: {user.Id})");
+
+            return user;
         }
 
-        public async Task<User?> LoginAsync(string username, string password)
+        // ✅ Eksik: LoginAsync metodu olmalı!
+        public async Task<User?> LoginAsync(string email, string password)
         {
-            var user = await _userRepository.GetByUsernameAsync(username);
+            var user = await _userRepository.GetByEmailAsync(email);
             if (user == null) return null;
 
             bool verified = BCrypt.Net.BCrypt.Verify(password, user.PasswordHash);

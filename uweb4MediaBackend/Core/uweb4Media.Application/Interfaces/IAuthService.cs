@@ -4,6 +4,6 @@ namespace uweb4Media.Application.Interfaces;
 
 public interface IAuthService
 {
-    Task<bool> RegisterAsync(string username, string email, string password);
-    Task<User?> LoginAsync(string username, string password);
+    Task<User?> RegisterAsync(string username, string email, string password);
+    Task<User?> LoginAsync(string email, string password);
 }
