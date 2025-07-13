@@ -1,26 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj": {}
+    "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj": {}
   },
   "projects": {
-    "/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj": {
+    "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj",
         "projectName": "Uweb4Media.Domain",
-        "projectPath": "/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
-        "packagesPath": "/Users/yagmuryalcin/.nuget/packages/",
-        "outputPath": "/Users/yagmuryalcin/Repos/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/",
+        "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj",
+        "packagesPath": "C:\\Users\\Yusuf ARAS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/yagmuryalcin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Yusuf ARAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -33,16 +39,17 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -59,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.411/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
