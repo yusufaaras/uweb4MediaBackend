@@ -454,22 +454,22 @@
           "runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1161,7 +1161,10 @@
           "Uweb4Media.Domain": "1.0.0"
         },
         "runtime": {
-          "uweb4Media.Application.dll": {}
+          "uweb4Media.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Uweb4Media.Domain/1.0.0": {
@@ -1169,7 +1172,10 @@
           "Microsoft.EntityFrameworkCore": "9.0.2"
         },
         "runtime": {
-          "Uweb4Media.Domain.dll": {}
+          "Uweb4Media.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Uweb4Media.Persistence/1.0.0": {
@@ -1182,7 +1188,10 @@
           "uweb4Media.Application": "1.0.0"
         },
         "runtime": {
-          "Uweb4Media.Persistence.dll": {}
+          "Uweb4Media.Persistence.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

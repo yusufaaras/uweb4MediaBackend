@@ -1,31 +1,47 @@
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.AssemblyReference.cache
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.AssemblyInfoInputs.cache
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.AssemblyInfo.cs
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.CoreCompileInputs.cache
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.deps.json
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.pdb
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\Uweb4Media.Domain.dll
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\Uweb4Media.Domain.pdb
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.CopyComplete
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\refint\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.pdb
-C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\ref\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.deps.json
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.pdb
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\Uweb4Media.Domain.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\Uweb4Media.Domain.pdb
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.AssemblyReference.cache
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.AssemblyInfoInputs.cache
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.AssemblyInfo.cs
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.CoreCompileInputs.cache
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.sourcelink.json
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.CopyComplete
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\refint\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.pdb
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\ref\uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.AssemblyReference.cache
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.AssemblyInfoInputs.cache
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.AssemblyInfo.cs
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.CoreCompileInputs.cache
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.deps.json
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.pdb
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/Uweb4Media.Domain.dll
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/Uweb4Media.Domain.pdb
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.CopyComplete
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/refint/uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.pdb
+C:/Users/Yusuf ARAS/OneDrive/Masaüstü/mediabackend/uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/ref/uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.deps.json
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.pdb
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/Uweb4Media.Domain.dll
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/Uweb4Media.Domain.pdb
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.AssemblyReference.cache
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.AssemblyInfoInputs.cache
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.AssemblyInfo.cs
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.CoreCompileInputs.cache
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.sourcelink.json
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.CopyComplete
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/refint/uweb4Media.Application.dll
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.pdb
+C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/ref/uweb4Media.Application.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.deps.json
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/uweb4Media.Application.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/Uweb4Media.Domain.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/bin/Debug/net8.0/Uweb4Media.Domain.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.AssemblyReference.cache
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.AssemblyInfoInputs.cache
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.AssemblyInfo.cs
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.csproj.CoreCompileInputs.cache
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.sourcelink.json
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Med.F4A61E92.Up2Date
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/refint/uweb4Media.Application.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/ref/uweb4Media.Application.dll
