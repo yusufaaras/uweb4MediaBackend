@@ -1,0 +1,13 @@
+namespace uweb4Media.Application.Features.CQRS.Handlers.Media;
+
+public class GetMediaContentByIdQueryResult
+{
+    public int Id { get; set; }
+    public int UserId { get; set; } 
+    public string Url { get; set; }
+    public string Title { get; set; }
+    public string Sector { get; set; }
+    public string Channel { get; set; }
+    public string ContentType { get; set; }
+    public string Thumbnail { get; set; } 
+}

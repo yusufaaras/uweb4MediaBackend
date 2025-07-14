@@ -1,5 +1,8 @@
 
 using System.Globalization;
+using uweb4Media.Application.Features.CQRS.Handlers.Comments;
+using uweb4Media.Application.Features.CQRS.Handlers.Like;
+using uweb4Media.Application.Features.CQRS.Handlers.Media;
 using uweb4Media.Application.Features.CQRS.Handlers.User;
 using uweb4Media.Application.Interfaces.AppRoleInterfaces;
 using uweb4Media.Application.Interfaces.AppUserInterfaces;
@@ -44,6 +47,22 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<GetUserByIdQueryHandler>();
             builder.Services.AddScoped<UpdateUserCommandHandler>();
             builder.Services.AddScoped<RemoveUserCommandHandler>();
+            
+            //MediaContent
+            builder.Services.AddScoped<GetMediaContentQueryHandler>();
+            builder.Services.AddScoped<GetMediaContentByIdQueryHandler>();
+            builder.Services.AddScoped<UpdateMediaContentCommandHandler>();
+            builder.Services.AddScoped<RemoveMediaContentCommandHandler>();
+            
+            //Like
+            builder.Services.AddScoped<GetLikeQueryHandler>();
+            builder.Services.AddScoped<GetLikeByIdQueryHandler>(); 
+            builder.Services.AddScoped<RemoveLikeCommandHandler>();
+            
+            //Comment
+            builder.Services.AddScoped<GetCommentQueryHandler>();
+            builder.Services.AddScoped<GetCommentByIdQueryHandler>(); 
+            builder.Services.AddScoped<RemoveCommentCommandHandler>();
 
             builder.Services.AddApplicationService(builder.Configuration);
             builder.Services.AddControllers(); 
