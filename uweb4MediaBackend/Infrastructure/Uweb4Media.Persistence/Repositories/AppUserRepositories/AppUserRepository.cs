@@ -13,8 +13,8 @@ namespace Uweb4Media.Persistence.Repositories.AppUserRepositories
 {
     public class AppUserRepository : IAppUserRepository
     {
-        private readonly WeddingHallContext _context;
-        public AppUserRepository(WeddingHallContext context)
+        private readonly Uweb4MediaContext _context;
+        public AppUserRepository(Uweb4MediaContext context)
         {
             _context = context;
         }

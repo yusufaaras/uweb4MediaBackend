@@ -12,8 +12,8 @@ namespace Uweb4Media.Persistence.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly WeddingHallContext _weddingHallContext;
-        public Repository(WeddingHallContext WeddingHallContext)
+        private readonly Uweb4MediaContext _weddingHallContext;
+        public Repository(Uweb4MediaContext WeddingHallContext)
         {
             _weddingHallContext = WeddingHallContext;
         }

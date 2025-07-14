@@ -37,7 +37,7 @@ namespace Uweb4Media.API
             });
 
             //Repos
-            builder.Services.AddScoped<WeddingHallContext>();
+            builder.Services.AddScoped<Uweb4MediaContext>();
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>)); 
             builder.Services.AddScoped(typeof(IAppUserRepository), typeof(AppUserRepository));
             builder.Services.AddScoped(typeof(IAppRoleRepository), typeof(AppRoleRepository));
