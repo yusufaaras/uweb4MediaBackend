@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using uweb4Media.Application.Features.CQRS.Commands.Comments;
 using uweb4Media.Application.Features.CQRS.Handlers.Comments;
@@ -7,6 +8,7 @@ namespace Uweb4Media.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CommentController : ControllerBase
     {
         private readonly GetCommentQueryHandler _getCommentQueryHandler;

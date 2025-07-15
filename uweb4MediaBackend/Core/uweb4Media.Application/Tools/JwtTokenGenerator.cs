@@ -16,7 +16,7 @@ namespace uweb4Media.Application.Tools
         public static TokenResponseDto GenerateToken(GetCheckAppUserQueryResult result)
         {
             var claims = new List<Claim>();
-
+            
             if (!string.IsNullOrEmpty(result.Role))
                 claims.Add(new Claim(ClaimTypes.Role, result.Role));
 

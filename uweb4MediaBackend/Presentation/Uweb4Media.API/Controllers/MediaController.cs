@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using uweb4Media.Application.Features.CQRS.Commands.Media;
 using uweb4Media.Application.Features.CQRS.Handlers.Media;
@@ -7,6 +8,7 @@ namespace Uweb4Media.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MediaController : ControllerBase
     {
         
@@ -25,6 +27,7 @@ namespace Uweb4Media.API.Controllers
                 _removeMediaContentCommandHandler = removeMediaContentCommandHandler;
             }
             [HttpGet]
+            [AllowAnonymous]
             public async Task<IActionResult> MediaContentList()
             {
                 var values = await _getMediaContentQueryHandler.Handle();
@@ -32,6 +35,7 @@ namespace Uweb4Media.API.Controllers
             }
     
             [HttpGet("{id}")]
+            [AllowAnonymous]
             public async Task<IActionResult> GetMediaContent(int id)
             {
                 var value = await _getMediaContentByIdQueryHandler.Handle(new GetMediaContentByIdQuery(id));

@@ -540,3 +540,4 @@ C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.pdb
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.genruntimeconfig.cache
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/ref/Uweb4Media.API.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

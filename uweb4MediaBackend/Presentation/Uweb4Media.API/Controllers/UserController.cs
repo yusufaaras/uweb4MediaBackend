@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using uweb4Media.Application.Features.CQRS.Commands.User;
 using uweb4Media.Application.Features.CQRS.Handlers.User;
 using uweb4Media.Application.Features.CQRS.Queries.User;
@@ -7,6 +8,7 @@ namespace Uweb4Media.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly GetUserQueryHandler _getUserQueryHandler;

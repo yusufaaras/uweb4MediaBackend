@@ -2,7 +2,6 @@ namespace uweb4Media.Application.Features.CQRS.Commands.Media;
 
 public class CreateMediaContentCommand
 {
-    public int Id { get; set; }
     public int UserId { get; set; } 
     public string Url { get; set; }
     public string Title { get; set; }

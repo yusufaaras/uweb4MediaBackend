@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using uweb4Media.Application.Features.CQRS.Commands.Like;
 using uweb4Media.Application.Features.CQRS.Handlers.Like;
@@ -7,6 +8,7 @@ namespace Uweb4Media.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LikeController : ControllerBase
     {
         private readonly GetLikeQueryHandler _getLikeQueryHandler;
