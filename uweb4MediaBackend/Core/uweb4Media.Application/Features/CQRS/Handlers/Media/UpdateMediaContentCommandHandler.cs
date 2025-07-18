@@ -23,6 +23,13 @@ public class UpdateMediaContentCommandHandler
         values.Sector = command.Sector;
         values.Channel = command.Channel;
         values.ContentType = command.ContentType;
+        values.IsPremium = command.IsPremium.Value;
+        values.MetaTitle = command.MetaTitle;
+        values.MetaDescription = command.MetaDescription;
+        values.Duration= command.Duration;
+        values.Excerpt = command.Excerpt;
+        values.YoutubeVideoId = command.YoutubeVideoId;
+        values.Tags = command.Tags; 
         await _repository.UpdateAsync(values);
     }
 }

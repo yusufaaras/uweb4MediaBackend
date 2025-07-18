@@ -23,7 +23,19 @@ public class GetMediaContentByIdQueryHandler
             Sector = values.Sector,
             Channel = values.Channel,
             ContentType = values.ContentType,
-            Thumbnail = values.Thumbnail
+            Thumbnail = values.Thumbnail,
+            Likes = values.LikesCount, 
+            CommentsCount = values.CommentsCount, 
+            Timestamp = values.CreatedDate, 
+            ViewCount = values.ViewCount, 
+            IsPremium = values.IsPremium, 
+            MetaTitle = values.MetaTitle, 
+            MetaDescription = values.MetaDescription, 
+            Duration = values.Duration, 
+            Excerpt = values.Excerpt, 
+            YoutubeVideoId = values.YoutubeVideoId, 
+            Tags = values.Tags 
+            
         };
     }
 }

@@ -15,5 +15,8 @@ namespace uweb4Media.Application.Features.CQRS.Results.User
         public string Surname { get; set; }
         public string Email { get; set; }
         public int AppRoleID { get; set; }
+        public string? AvatarUrl { get; set; } 
+        public string? Bio { get; set; }
+        public string SubscriptionStatus { get; set; }
     }
 }

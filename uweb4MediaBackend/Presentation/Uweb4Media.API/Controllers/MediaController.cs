@@ -8,7 +8,6 @@ namespace Uweb4Media.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class MediaController : ControllerBase
     {
         

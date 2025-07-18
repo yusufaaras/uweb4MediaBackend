@@ -4,8 +4,11 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using uweb4Media.Application.Features.CQRS.Handlers.Comments;
+using uweb4Media.Application.Features.CQRS.Handlers.Firm;
 using uweb4Media.Application.Features.CQRS.Handlers.Like;
 using uweb4Media.Application.Features.CQRS.Handlers.Media;
+using uweb4Media.Application.Features.CQRS.Handlers.Plans;
+using uweb4Media.Application.Features.CQRS.Handlers.Subscription;
 using uweb4Media.Application.Features.CQRS.Handlers.User;
 using uweb4Media.Application.Interfaces.AppRoleInterfaces;
 using uweb4Media.Application.Interfaces.AppUserInterfaces;
@@ -70,23 +73,50 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<GetCommentByIdQueryHandler>(); 
             builder.Services.AddScoped<CreateCommentCommandHandler>(); 
             builder.Services.AddScoped<RemoveCommentCommandHandler>();
+            builder.Services.AddScoped<GetCommentsByMediaContentIdQueryHandler>();
+            
+            //Notification
+            builder.Services.AddScoped<GetNotificationQueryHandler>(); 
+            builder.Services.AddScoped<GetNotificationByIdQueryHandler>(); 
+            builder.Services.AddScoped<CreateNotificationCommandHandler>(); 
+            builder.Services.AddScoped<RemoveNotificationCommandHandler>();
+            
+            //Firm
+            builder.Services.AddScoped<GetFirmQueryHandler>();
+            builder.Services.AddScoped<GetFirmByIdQueryHandler>();
+            builder.Services.AddScoped<CreateFirmCommandHandler>();
+            builder.Services.AddScoped<UpdateFirmCommandHandler>();
+            builder.Services.AddScoped<RemoveFirmCommandHandler>();
+            
+            //Plans
+            builder.Services.AddScoped<GetPlansQueryHandler>();
+            builder.Services.AddScoped<GetPlansByIdQueryHandler>();
+            builder.Services.AddScoped<CreatePlansCommandHandler>();
+            builder.Services.AddScoped<UpdatePlansCommandHandler>();
+            builder.Services.AddScoped<RemovePlansCommandHandler>();
+            
+            //Subscription
+            builder.Services.AddScoped<GetSubscriptionQueryHandler>();
+            builder.Services.AddScoped<GetSubscriptionByIdQueryHandler>(); 
+            builder.Services.AddScoped<CreateSubscriptionCommandHandler>(); 
+            builder.Services.AddScoped<RemoveSubscriptionCommandHandler>();
             
             // JWT Kimlik Doğrulama Servislerini Ekleme
             
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
                 {
-                    opt.RequireHttpsMetadata = false; // Geliştirme ortamında true yapabilirsiniz, üretimde true olmalı
+                    opt.RequireHttpsMetadata = false; 
                     opt.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidAudience = JwtTokenDefaults.ValidAudience, // JwtTokenDefaults'tan okunacak
-                        ValidIssuer = JwtTokenDefaults.ValidIssuer,     // JwtTokenDefaults'tan okunacak
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)), // JwtTokenDefaults'tan okunacak
+                        ValidAudience = JwtTokenDefaults.ValidAudience, 
+                        ValidIssuer = JwtTokenDefaults.ValidIssuer,     
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)), 
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
                         ValidateAudience = true,
                         ValidateIssuer = true,
-                        ClockSkew = TimeSpan.Zero // Token'ın süresi bittiğinde hemen geçersiz sayılması için
+                        ClockSkew = TimeSpan.Zero 
                     };
                 });
 

@@ -7,8 +7,7 @@ using uweb4Media.Application.Features.CQRS.Queries.User;
 namespace Uweb4Media.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [Authorize(Roles = "Admin")]
+    [ApiController] 
     public class UserController : Controller
     {
         private readonly GetUserQueryHandler _getUserQueryHandler;

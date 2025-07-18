@@ -28,6 +28,9 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.User
                 Surname = x.Surname,
                 Email = x.Email,
                 AppRoleID = x.AppRoleID,
+                AvatarUrl = x.AvatarUrl,
+                Bio = x.Bio,
+                SubscriptionStatus = x.SubscriptionStatus,
             }).ToList();
         }
     }

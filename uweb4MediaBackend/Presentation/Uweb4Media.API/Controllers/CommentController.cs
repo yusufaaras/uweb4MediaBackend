@@ -7,27 +7,36 @@ using uweb4Media.Application.Features.CQRS.Queries.Comments;
 namespace Uweb4Media.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [Authorize]
+    [ApiController] 
     public class CommentController : ControllerBase
     {
         private readonly GetCommentQueryHandler _getCommentQueryHandler;
         private readonly GetCommentByIdQueryHandler _getCommentByIdQueryHandler;
         private readonly CreateCommentCommandHandler _createCommentCommandHandler;
         private readonly RemoveCommentCommandHandler _removeCommentCommandHandler;
+        private readonly GetCommentsByMediaContentIdQueryHandler _getCommentsByMediaContentIdQueryHandler;
 
-        public CommentController(GetCommentQueryHandler getCommentQueryHandler, GetCommentByIdQueryHandler getCommentByIdQueryHandler, CreateCommentCommandHandler createCommentCommandHandler, RemoveCommentCommandHandler removeCommentCommandHandler)
+        public CommentController(GetCommentQueryHandler getCommentQueryHandler, GetCommentByIdQueryHandler getCommentByIdQueryHandler, CreateCommentCommandHandler createCommentCommandHandler, RemoveCommentCommandHandler removeCommentCommandHandler, GetCommentsByMediaContentIdQueryHandler getCommentsByMediaContentIdQueryHandler)
         {
             _getCommentQueryHandler = getCommentQueryHandler;
             _getCommentByIdQueryHandler = getCommentByIdQueryHandler;
             _createCommentCommandHandler = createCommentCommandHandler;
             _removeCommentCommandHandler = removeCommentCommandHandler;
-        }
+            _getCommentsByMediaContentIdQueryHandler = getCommentsByMediaContentIdQueryHandler;
+        } 
         [HttpGet]
-        public async Task<IActionResult> CommentList()
+        public async Task<IActionResult> CommentList([FromQuery] int? mediaContentId) // Query parametresi ekleyin
         {
-            var values = await _getCommentQueryHandler.Handle();
-            return Ok(values);
+            if (mediaContentId.HasValue)
+            {
+                var comments = await _getCommentsByMediaContentIdQueryHandler.Handle(new GetCommentsByMediaContentIdQuery(mediaContentId.Value));
+                return Ok(comments);
+            }
+            else
+            {
+                var values = await _getCommentQueryHandler.Handle();
+                return Ok(values);
+            }
         }
 
         [HttpGet("{id}")]

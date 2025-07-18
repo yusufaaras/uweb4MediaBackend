@@ -24,6 +24,11 @@ public class GetMediaContentQueryHandler
             Sector = x.Sector,
             Channel = x.Channel,
             Thumbnail = x.Thumbnail,
+            Likes = x.LikesCount,
+            CommentsCount = x.CommentsCount,
+            Timestamp = x.CreatedDate,
+            ViewCount = x.ViewCount,
+            IsPremium = x.IsPremium,
         }).ToList();
     }
 } 

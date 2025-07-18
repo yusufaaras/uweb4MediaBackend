@@ -26,6 +26,9 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.User
             values.Surname = command.Surname;
             values.Email = command.Email;
             values.AppRoleID = command.AppRoleID;
+            values.SubscriptionStatus = command.SubscriptionStatus;
+            values.AvatarUrl = command.AvatarUrl;
+            values.Bio = command.Bio;
             await _repository.UpdateAsync(values);
         }
     }
