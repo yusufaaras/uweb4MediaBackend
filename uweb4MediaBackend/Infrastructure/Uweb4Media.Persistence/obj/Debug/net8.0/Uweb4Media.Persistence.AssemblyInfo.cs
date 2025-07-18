@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Uweb4Media.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9baec8241c6a0fccfa30ccbe17f6a587640c4415")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a48556647cd32d171453e76cbb04d07e721d9a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Uweb4Media.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Uweb4Media.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
