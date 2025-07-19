@@ -24,27 +24,27 @@ namespace Uweb4Media.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CarList()
+        public async Task<IActionResult> UserList()
         {
             var values = await _getUserQueryHandler.Handle();
             return Ok(values);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCar(int id)
+        public async Task<IActionResult> GetUser(int id)
         {
             var value = await _getUserByIdQueryHandler.Handle(new GetUserByIdQuery(id));
             return Ok(value);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> RemoveCar(int id)
+        public async Task<IActionResult> RemoveUser(int id)
         {
             await _removeUserCommandHandler.Handle(new RemoveUserCommand(id));
             return Ok("Kullanıcı Başarıyla Silindi");
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateCar(UpdateUserCommand command)
+        public async Task<IActionResult> UpdateUser(UpdateUserCommand command)
         {
             await _updateUserCommandHandler.Handle(command);
             return Ok("Kullanıcı Başarıyla Güncellendi");

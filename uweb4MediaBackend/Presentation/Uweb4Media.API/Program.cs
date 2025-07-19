@@ -95,7 +95,11 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<UpdatePlansCommandHandler>();
             builder.Services.AddScoped<RemovePlansCommandHandler>();
             
-            //Subscription
+            //Subscription 
+            builder.Services.AddScoped<UpdateSubscribeUserCommandHandler>();
+            builder.Services.AddScoped<GetSubscribeUserByIdQueryHandler>();
+            
+            //UserSubscribe
             builder.Services.AddScoped<GetSubscriptionQueryHandler>();
             builder.Services.AddScoped<GetSubscriptionByIdQueryHandler>(); 
             builder.Services.AddScoped<CreateSubscriptionCommandHandler>(); 
