@@ -3,8 +3,12 @@ using System.Globalization;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using uweb4Media.Application.Features.CQRS.Handlers.Comments;
-using uweb4Media.Application.Features.CQRS.Handlers.Firm;
+using uweb4Media.Application.Features.CQRS.Handlers.Admin.Camping;
+using uweb4Media.Application.Features.CQRS.Handlers.Admin.Channel;
+using uweb4Media.Application.Features.CQRS.Handlers.Admin.Company;
+using uweb4Media.Application.Features.CQRS.Handlers.Admin.Sector;
+using uweb4Media.Application.Features.CQRS.Handlers.Admin.Video;
+using uweb4Media.Application.Features.CQRS.Handlers.Comments; 
 using uweb4Media.Application.Features.CQRS.Handlers.Like;
 using uweb4Media.Application.Features.CQRS.Handlers.Media;
 using uweb4Media.Application.Features.CQRS.Handlers.Plans;
@@ -81,13 +85,6 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<CreateNotificationCommandHandler>(); 
             builder.Services.AddScoped<RemoveNotificationCommandHandler>();
             
-            //Firm
-            builder.Services.AddScoped<GetFirmQueryHandler>();
-            builder.Services.AddScoped<GetFirmByIdQueryHandler>();
-            builder.Services.AddScoped<CreateFirmCommandHandler>();
-            builder.Services.AddScoped<UpdateFirmCommandHandler>();
-            builder.Services.AddScoped<RemoveFirmCommandHandler>();
-            
             //Plans
             builder.Services.AddScoped<GetPlansQueryHandler>();
             builder.Services.AddScoped<GetPlansByIdQueryHandler>();
@@ -104,6 +101,41 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<GetSubscriptionByIdQueryHandler>(); 
             builder.Services.AddScoped<CreateSubscriptionCommandHandler>(); 
             builder.Services.AddScoped<RemoveSubscriptionCommandHandler>();
+            
+            //Admin/Campaign
+            builder.Services.AddScoped<GetCampaignQueryHandler>();
+            builder.Services.AddScoped<GetCampaignByIdQueryHandler>(); 
+            builder.Services.AddScoped<CreateCampaignCommandHandler>(); 
+            builder.Services.AddScoped<RemoveCampaignCommandHandler>();
+            builder.Services.AddScoped<UpdateCampaignCommandHandler>();
+            
+            //Admin/Channel
+            builder.Services.AddScoped<GetChannelQueryHandler>();
+            builder.Services.AddScoped<GetChannelByIdQueryHandler>(); 
+            builder.Services.AddScoped<CreateChannelCommandHandler>(); 
+            builder.Services.AddScoped<RemoveChannelCommandHandler>();
+            builder.Services.AddScoped<UpdateChannelCommandHandler>();
+            
+            //Admin/Company
+            builder.Services.AddScoped<GetCompanyQueryHandler>();
+            builder.Services.AddScoped<GetCompanyByIdQueryHandler>(); 
+            builder.Services.AddScoped<CreateCompanyCommandHandler>(); 
+            builder.Services.AddScoped<RemoveCompanyCommandHandler>();
+            builder.Services.AddScoped<UpdateCompanyCommandHandler>();
+            
+            //Admin/Sector
+            builder.Services.AddScoped<GetSectorQueryHandler>();
+            builder.Services.AddScoped<GetSectorByIdQueryHandler>(); 
+            builder.Services.AddScoped<CreateSectorCommandHandler>(); 
+            builder.Services.AddScoped<RemoveSectorCommandHandler>();
+            builder.Services.AddScoped<UpdateSectorCommandHandler>();
+            
+            //Admin/Video
+            builder.Services.AddScoped<GetVideoQueryHandler>();
+            builder.Services.AddScoped<GetVideoByIdQueryHandler>(); 
+            builder.Services.AddScoped<CreateVideoCommandHandler>(); 
+            builder.Services.AddScoped<RemoveVideoCommandHandler>();
+            builder.Services.AddScoped<UpdateVideoCommandHandler>();
             
             // JWT Kimlik Doğrulama Servislerini Ekleme
             

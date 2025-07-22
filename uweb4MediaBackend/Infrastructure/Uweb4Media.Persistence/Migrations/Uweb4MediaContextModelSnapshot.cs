@@ -22,6 +22,257 @@ namespace Uweb4Media.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Campaign.Campaign", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AdFormat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AppUserID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Budget")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.PrimitiveCollection<string>("Channels")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.PrimitiveCollection<string>("Sectors")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserID");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Campaigns");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Campaign.CampaignPerformance", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CampaignId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Impressions")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CampaignId")
+                        .IsUnique();
+
+                    b.ToTable("CampaignPerformances");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Channel.Channel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Channels");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.CompanyManagement.Company", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ActiveCampaigns")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AppUserID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ContactPerson")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ContentUploaded")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Logo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Sector")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalSpend")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Website")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserID");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Sector.Sector", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sectors");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.Video", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.PrimitiveCollection<string>("Channel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PublishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PublishStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Responsible")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.PrimitiveCollection<string>("Sector")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.PrimitiveCollection<string>("Tags")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Thumbnail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Videos");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.VideoLocalizedString", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LanguageCode")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("VideoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VideoId");
+
+                    b.ToTable("VideoLocalizedString");
+                });
+
             modelBuilder.Entity("Uweb4Media.Domain.Entities.AppRole", b =>
                 {
                     b.Property<int>("AppRoleID")
@@ -118,55 +369,6 @@ namespace Uweb4Media.Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("Uweb4Media.Domain.Entities.Firm", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AuthorizedPerson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AuthorizedPersonEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirmName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LogoUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sector")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WebSiteUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Firm");
                 });
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Like", b =>
@@ -359,6 +561,59 @@ namespace Uweb4Media.Persistence.Migrations
                     b.ToTable("Subscriptions");
                 });
 
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Campaign.Campaign", b =>
+                {
+                    b.HasOne("Uweb4Media.Domain.Entities.AppUser", null)
+                        .WithMany("Campaigns")
+                        .HasForeignKey("AppUserID");
+
+                    b.HasOne("Uweb4Media.Domain.Entities.Admin.CompanyManagement.Company", "Company")
+                        .WithMany("Campaigns")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Campaign.CampaignPerformance", b =>
+                {
+                    b.HasOne("Uweb4Media.Domain.Entities.Admin.Campaign.Campaign", "Campaign")
+                        .WithOne("Performance")
+                        .HasForeignKey("Uweb4Media.Domain.Entities.Admin.Campaign.CampaignPerformance", "CampaignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Campaign");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.CompanyManagement.Company", b =>
+                {
+                    b.HasOne("Uweb4Media.Domain.Entities.AppUser", null)
+                        .WithMany("Companies")
+                        .HasForeignKey("AppUserID");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.Video", b =>
+                {
+                    b.HasOne("Uweb4Media.Domain.Entities.Admin.CompanyManagement.Company", "Company")
+                        .WithMany("Videos")
+                        .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.VideoLocalizedString", b =>
+                {
+                    b.HasOne("Uweb4Media.Domain.Entities.Admin.Video.Video", "Video")
+                        .WithMany("LocalizedStrings")
+                        .HasForeignKey("VideoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Video");
+                });
+
             modelBuilder.Entity("Uweb4Media.Domain.Entities.AppUser", b =>
                 {
                     b.HasOne("Uweb4Media.Domain.Entities.AppRole", "AppRole")
@@ -385,17 +640,6 @@ namespace Uweb4Media.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("MediaContent");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Uweb4Media.Domain.Entities.Firm", b =>
-                {
-                    b.HasOne("Uweb4Media.Domain.Entities.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -460,6 +704,24 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Navigation("Subscriber");
                 });
 
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Campaign.Campaign", b =>
+                {
+                    b.Navigation("Performance")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.CompanyManagement.Company", b =>
+                {
+                    b.Navigation("Campaigns");
+
+                    b.Navigation("Videos");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.Video", b =>
+                {
+                    b.Navigation("LocalizedStrings");
+                });
+
             modelBuilder.Entity("Uweb4Media.Domain.Entities.AppRole", b =>
                 {
                     b.Navigation("AppUsers");
@@ -467,7 +729,11 @@ namespace Uweb4Media.Persistence.Migrations
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.AppUser", b =>
                 {
+                    b.Navigation("Campaigns");
+
                     b.Navigation("Comments");
+
+                    b.Navigation("Companies");
 
                     b.Navigation("Likes");
 

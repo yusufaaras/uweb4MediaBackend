@@ -1,7 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace uweb4Media.Application.Features.CQRS.Commands.Notification;
 
 public class CreateNotificationCommand
 {
-    public int UserId { get; set; }
-    public string Text { get; set; }
+    [Required]
+    public Guid UserId { get; set; } 
+
+    [Required]
+    public string Message { get; set; }  
+
+    [Required]
+    [MaxLength(50)]  
+    public string Type { get; set; }  
+
+    public bool IsRead { get; set; } = false;  
+    public DateTime? NotificationDate { get; set; }
 }

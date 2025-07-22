@@ -6,6 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Uweb4Media.Domain.Entities;
+using Uweb4Media.Domain.Entities.Admin.Campaign;
+using Uweb4Media.Domain.Entities.Admin.Channel;
+using Uweb4Media.Domain.Entities.Admin.CompanyManagement;
+using Uweb4Media.Domain.Entities.Admin.Sector;
+using Uweb4Media.Domain.Entities.Admin.Video;
 using Like = Uweb4Media.Domain.Entities.Like;
 
 namespace Uweb4Media.Persistence.Context
@@ -94,8 +99,13 @@ namespace Uweb4Media.Persistence.Context
         public DbSet<MediaContent> MediaContents { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-        public DbSet<Firm> Firm { get; set; }
         public DbSet<Plans> Plans { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<Sector> Sectors { get; set; } 
+        public DbSet<Channel> Channels { get; set; } 
+        public DbSet<Campaign> Campaigns { get; set; } 
+        public DbSet<CampaignPerformance> CampaignPerformances { get; set; }  
+        public DbSet<Company> Companies { get; set; }
     }
 }

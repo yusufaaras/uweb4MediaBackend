@@ -15,9 +15,13 @@ public class CreateNotificationCommandHandler
     public async Task Handle(CreateNotificationCommand command)
     {
         await _repository.CreateAsync(new Notification
-        { 
+        {
+            Id = Guid.NewGuid(), 
             UserId = command.UserId,
-            Text = command.Text,
+            Message = command.Message,
+            Type = command.Type,
+            IsRead = command.IsRead,
+            NotificationDate = command.NotificationDate ?? DateTime.UtcNow 
         });
     }
 }

@@ -22,16 +22,15 @@ namespace Uweb4Media.API.Controllers
             _removeNotificationCommandHandler = removeNotificationCommandHandler;
         }
         [HttpGet]
-        public async Task<IActionResult> NotificationList()
-        {
-            var values = await _getNotificationQueryHandler.Handle();
+        public async Task<IActionResult> NotificationList(CancellationToken cancellationToken)
+        { 
+            var values = await _getNotificationQueryHandler.Handle(new GetNotificationQuery(), cancellationToken);
             return Ok(values);
         }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetNotification(int id)
-        {
-            var value = await _getNotificationByIdQueryHandler.Handle(new GetNotificationByIdQuery(id));
+        [HttpGet("{id}")] 
+        public async Task<IActionResult> GetNotification(int id, CancellationToken cancellationToken)
+        { 
+            var value = await _getNotificationByIdQueryHandler.Handle(new GetNotificationByIdQuery(id), cancellationToken);
             return Ok(value);
         }
 

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Uweb4Media.Domain.Entities.Admin.Campaign; 
+using Uweb4Media.Domain.Entities.Admin.CompanyManagement;
 
 namespace Uweb4Media.Domain.Entities
 {
@@ -43,5 +45,9 @@ namespace Uweb4Media.Domain.Entities
         public ICollection<Like> Likes { get; set; } 
         public ICollection<Subscription> SubscriptionsMade { get; set; }
         public ICollection<Subscription> SubscriptionsReceived { get; set; }
+        public ICollection<Campaign> Campaigns { get; set; } 
+        public ICollection<Company> Companies { get; set; } 
+        public ICollection<Notification> Notifications { get; set; } 
+
     }
 }
