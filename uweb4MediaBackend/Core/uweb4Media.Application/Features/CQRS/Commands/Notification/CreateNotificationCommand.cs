@@ -5,7 +5,7 @@ namespace uweb4Media.Application.Features.CQRS.Commands.Notification;
 public class CreateNotificationCommand
 {
     [Required]
-    public Guid UserId { get; set; } 
+    public int UserId { get; set; } 
 
     [Required]
     public string Message { get; set; }  

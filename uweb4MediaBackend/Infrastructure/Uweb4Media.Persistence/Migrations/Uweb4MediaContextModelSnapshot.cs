@@ -24,9 +24,11 @@ namespace Uweb4Media.Persistence.Migrations
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Campaign.Campaign", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AdFormat")
                         .IsRequired()
@@ -42,8 +44,8 @@ namespace Uweb4Media.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -77,12 +79,14 @@ namespace Uweb4Media.Persistence.Migrations
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Campaign.CampaignPerformance", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("CampaignId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CampaignId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Impressions")
                         .HasColumnType("int");
@@ -115,9 +119,11 @@ namespace Uweb4Media.Persistence.Migrations
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.CompanyManagement.Company", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ActiveCampaigns")
                         .HasColumnType("int");
@@ -192,16 +198,18 @@ namespace Uweb4Media.Persistence.Migrations
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.Video", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.PrimitiveCollection<string>("Channel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ContentType")
                         .IsRequired()
@@ -246,9 +254,11 @@ namespace Uweb4Media.Persistence.Migrations
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.VideoLocalizedString", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -263,8 +273,8 @@ namespace Uweb4Media.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("VideoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("VideoId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -494,12 +504,20 @@ namespace Uweb4Media.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("NotificationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -677,7 +695,7 @@ namespace Uweb4Media.Persistence.Migrations
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Notification", b =>
                 {
                     b.HasOne("Uweb4Media.Domain.Entities.AppUser", "User")
-                        .WithMany()
+                        .WithMany("Notifications")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -738,6 +756,8 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Navigation("Likes");
 
                     b.Navigation("MediaContents");
+
+                    b.Navigation("Notifications");
 
                     b.Navigation("SubscriptionsMade");
 

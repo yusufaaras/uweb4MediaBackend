@@ -47,11 +47,9 @@ public class UpdateVideoCommandHandler
                     _localizedStringRepository.UpdateAsync(existingString);  
                 }
                 else
-                {
-                    // Yoksa yeni ekle
+                { 
                     var newLocalizedString = new VideoLocalizedString
-                    {
-                        Id = Guid.NewGuid(),
+                    { 
                         VideoId = values.Id,
                         LanguageCode = incomingLocalizedDto.LanguageCode,
                         Title = incomingLocalizedDto.Title,

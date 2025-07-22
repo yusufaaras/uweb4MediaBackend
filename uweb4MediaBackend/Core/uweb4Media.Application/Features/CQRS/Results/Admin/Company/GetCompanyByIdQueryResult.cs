@@ -2,7 +2,7 @@ namespace uweb4Media.Application.Features.CQRS.Results.Company;
 
 public class GetCompanyByIdQueryResult
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
 
     public string Logo { get; set; }

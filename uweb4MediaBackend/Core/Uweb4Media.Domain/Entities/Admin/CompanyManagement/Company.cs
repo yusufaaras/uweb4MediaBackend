@@ -8,7 +8,7 @@ namespace Uweb4Media.Domain.Entities.Admin.CompanyManagement
     public class Company
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

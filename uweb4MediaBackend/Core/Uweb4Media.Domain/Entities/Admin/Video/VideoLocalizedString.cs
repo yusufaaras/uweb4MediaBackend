@@ -5,18 +5,18 @@ namespace Uweb4Media.Domain.Entities.Admin.Video;
 
 public class VideoLocalizedString
 {
-    [Key] // Bu entity'nin birincil anahtarı
-    public Guid Id { get; set; } // int yerine Guid kullanmak daha iyi
+    [Key]  
+    public int Id { get; set; }  
 
     [Required]
-    public Guid VideoId { get; set; } // Bu, hangi Video'ya ait olduğunu belirten dış anahtardır
+    public int VideoId { get; set; } 
 
-    [ForeignKey("VideoId")] // Video tablosuna dış anahtar ilişkisi kurar
-    public Video Video { get; set; } // Video entity'sine navigasyon özelliği
+    [ForeignKey("VideoId")]  
+    public Video Video { get; set; }  
 
     [Required]
-    [MaxLength(10)] // "tr", "en", "de" gibi dil kodları için yeterli uzunluk
-    public string LanguageCode { get; set; } // Dil kodu (örn: "tr", "en", "de")
+    [MaxLength(10)]  
+    public string LanguageCode { get; set; }  
 
     public string Title { get; set; }  
     public string Description { get; set; }  

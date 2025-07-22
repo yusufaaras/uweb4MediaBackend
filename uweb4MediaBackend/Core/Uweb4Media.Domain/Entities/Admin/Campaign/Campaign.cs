@@ -10,13 +10,13 @@ namespace Uweb4Media.Domain.Entities.Admin.Campaign
     public class Campaign
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
         [Required]
-        public Guid CompanyId { get; set; }
+        public int CompanyId { get; set; }
 
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }

@@ -13,7 +13,7 @@ namespace Uweb4Media.Application.Features.CQRS.Commands.Admin.Campaign
         public string Name { get; set; }
 
         [Required]
-        public Guid CompanyId { get; set; }
+        public int CompanyId { get; set; }
 
         public decimal Budget { get; set; }
 

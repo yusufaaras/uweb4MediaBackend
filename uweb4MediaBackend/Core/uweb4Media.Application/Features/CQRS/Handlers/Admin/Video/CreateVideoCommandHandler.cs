@@ -17,8 +17,7 @@ public class CreateVideoCommandHandler
     public async Task Handle(CreateVideoCommand command)
     {
         var video = new Uweb4Media.Domain.Entities.Admin.Video.Video
-        {
-            Id = Guid.NewGuid(),
+        { 
             Link = command.Link,
             Thumbnail = command.Thumbnail,
             Sector = command.Sector,
@@ -35,8 +34,7 @@ public class CreateVideoCommandHandler
         foreach (var localizedDto in command.LocalizedData)
         {
             video.LocalizedStrings.Add(new VideoLocalizedString
-            {
-                Id = Guid.NewGuid(),
+            { 
                 LanguageCode = localizedDto.LanguageCode,
                 Title = localizedDto.Title,
                 Description = localizedDto.Description,

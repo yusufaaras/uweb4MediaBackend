@@ -7,10 +7,10 @@ namespace Uweb4Media.Domain.Entities;
 public class Notification
 {
     [Key]
-    public Guid Id { get; set; }  
+    public int Id { get; set; }  
  
     [Required]
-    public Guid UserId { get; set; }
+    public int UserId { get; set; }
 
     [ForeignKey("UserId")]
     public AppUser User { get; set; }  

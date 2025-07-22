@@ -7,12 +7,12 @@ namespace Uweb4Media.Domain.Entities.Admin.Campaign
     public class CampaignPerformance
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public int Impressions { get; set; }
 
         [Required]
-        public Guid CampaignId { get; set; }
+        public int CampaignId { get; set; }
 
         [ForeignKey("CampaignId")]
         public Campaign Campaign { get; set; }

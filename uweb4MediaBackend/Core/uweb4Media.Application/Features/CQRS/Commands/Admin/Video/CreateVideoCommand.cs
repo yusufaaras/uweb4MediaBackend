@@ -23,7 +23,7 @@ public class CreateVideoCommand
 
     public DateTime? Date { get; set; }
     public string Responsible { get; set; }
-    public Guid? CompanyId { get; set; }
+    public int? CompanyId { get; set; }
 }
 
 public class VideoLocalizedDataDto

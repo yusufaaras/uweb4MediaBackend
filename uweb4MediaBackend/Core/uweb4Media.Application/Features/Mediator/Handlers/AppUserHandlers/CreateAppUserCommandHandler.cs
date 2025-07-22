@@ -37,7 +37,8 @@ public class CreateAppUserCommandHandler : IRequestHandler<CreateAppUserCommand>
             AppRoleID = (int)RolesType.Member,
             Name = request.Name,
             Surname = request.Surname,
-            Email = request.Email
+            Email = request.Email,
+            SubscriptionStatus = "free" 
         });
     }
 }

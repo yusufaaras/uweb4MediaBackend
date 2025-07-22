@@ -2,9 +2,9 @@ namespace uweb4Media.Application.Features.CQRS.Results.Admin.Campaign;
 
 public class GetCampaignByIdQueryResult
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
-    public Guid CompanyId { get; set; }
+    public int CompanyId { get; set; }
     public decimal Budget { get; set; }
     public string Status { get; set; }
     public DateTime StartDate { get; set; }

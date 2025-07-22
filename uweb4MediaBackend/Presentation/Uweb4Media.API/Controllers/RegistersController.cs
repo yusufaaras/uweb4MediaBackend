@@ -24,8 +24,9 @@ namespace Uweb4Media.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message); 
-            } 
+                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return BadRequest($"Bir hata oluştu: {errorMessage}");
+            }
         }
     }
 }

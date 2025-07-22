@@ -5,7 +5,7 @@ namespace uweb4Media.Application.Features.CQRS.Results.Admin.Video;
 
 public class GetVideoByIdQueryResult
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string Link { get; set; }
     
     // This will hold localized titles and descriptions
@@ -20,6 +20,6 @@ public class GetVideoByIdQueryResult
     public List<string> Tags { get; set; }
     public DateTime? Date { get; set; }
     public string Responsible { get; set; }
-    public Guid? CompanyId { get; set; }
+    public int? CompanyId { get; set; }
 } 
 

@@ -8,7 +8,7 @@ namespace Uweb4Media.Domain.Entities.Admin.Video
     public class Video
     {
         [Key] 
-        public Guid Id { get; set; } 
+        public int Id { get; set; } 
 
         [Required]  
         public string Link { get; set; } 
@@ -28,7 +28,7 @@ namespace Uweb4Media.Domain.Entities.Admin.Video
         public DateTime Date { get; set; } // Genellikle oluşturulma tarihi
         public string Responsible { get; set; }
 
-        public Guid? CompanyId { get; set; }
+        public int? CompanyId { get; set; }
         [ForeignKey("CompanyId")]
         public Company Company { get; set; } // Company tablosuna dış anahtar ilişkisi
     }
