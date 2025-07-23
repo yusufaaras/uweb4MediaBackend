@@ -1,11 +1,10 @@
-﻿using System;
+﻿// uweb4Media.Application.Tools/JwtTokenGenerator.cs
+using System;
 using System.Collections.Generic;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt; 
-using System.Linq;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using uweb4Media.Application.Dtos;
 using uweb4Media.Application.Features.Mediator.Results.AppUserResults;
 
@@ -16,7 +15,7 @@ namespace uweb4Media.Application.Tools
         public static TokenResponseDto GenerateToken(GetCheckAppUserQueryResult result)
         {
             var claims = new List<Claim>();
-            
+
             if (!string.IsNullOrEmpty(result.Role))
                 claims.Add(new Claim(ClaimTypes.Role, result.Role));
 
@@ -25,11 +24,34 @@ namespace uweb4Media.Application.Tools
             if (!string.IsNullOrWhiteSpace(result.Username))
                 claims.Add(new Claim("Username", result.Username));
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key));
+            // Yeni eklenen alanları buraya ekleyin:
+            if (!string.IsNullOrWhiteSpace(result.Email))
+                claims.Add(new Claim(ClaimTypes.Email, result.Email));
 
+            if (!string.IsNullOrWhiteSpace(result.Name))
+                claims.Add(new Claim(ClaimTypes.GivenName, result.Name)); // İlk isim
+
+            if (!string.IsNullOrWhiteSpace(result.Surname))
+                claims.Add(new Claim(ClaimTypes.Surname, result.Surname)); // Soyad
+
+            // Tam adı da ekleyebilirsiniz (opsiyonel)
+            if (!string.IsNullOrWhiteSpace(result.Name) || !string.IsNullOrWhiteSpace(result.Surname))
+            {
+                claims.Add(new Claim(ClaimTypes.Name, $"{result.Name} {result.Surname}".Trim()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(result.GoogleId))
+                claims.Add(new Claim("GoogleId", result.GoogleId));
+
+            if (!string.IsNullOrWhiteSpace(result.AvatarUrl))
+                claims.Add(new Claim("AvatarUrl", result.AvatarUrl));
+
+            // Diğer orijinal claim'leriniz:
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key));
             var singninCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var expireDate = DateTime.UtcNow.AddDays(JwtTokenDefaults.Expire);
+            // JwtTokenDefaults.Expire değerinin nasıl tanımlandığına bağlı olarak AddHours veya AddDays kullanın
+            var expireDate = DateTime.UtcNow.AddHours(JwtTokenDefaults.Expire); // Varsayım: Expire saat cinsinden
 
             JwtSecurityToken token = new JwtSecurityToken(issuer: JwtTokenDefaults.ValidIssuer,
                                                           audience: JwtTokenDefaults.ValidAudience,

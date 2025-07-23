@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Iyzipay" Version="2.1.53" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.2" />
@@ -19,10 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Uweb4Media.Domain\Uweb4Media.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Mediator\Queries\AppUserQueries\" />
   </ItemGroup>
 
 </Project>

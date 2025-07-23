@@ -9,6 +9,7 @@
       "uweb4Media.Application/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
+          "Iyzipay": "2.1.53",
           "MediatR": "12.4.1",
           "MediatR.Contracts": "2.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.2",
@@ -40,6 +41,17 @@
           "lib/netstandard2.1/Elasticsearch.Net.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.17.5.0"
+          }
+        }
+      },
+      "Iyzipay/2.1.53": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Iyzipay.dll": {
+            "assemblyVersion": "2.1.53.0",
+            "fileVersion": "2.1.53.0"
           }
         }
       },
@@ -247,6 +259,14 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.2": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.2.27524"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {},
       "System.Diagnostics.DiagnosticSource/9.0.2": {
         "runtime": {
@@ -316,6 +336,13 @@
       "sha512": "sha512-orChsQi1Ceho/NyIylNOn6y4vuGcsbCfMZnCueNN0fzqYEGQmQdPfcVmsR5+3fwpXTgxCdjTUVmqOwvHpCSB+Q==",
       "path": "elasticsearch.net/7.17.5",
       "hashPath": "elasticsearch.net.7.17.5.nupkg.sha512"
+    },
+    "Iyzipay/2.1.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jKSOYR8hTr/pTAy9kK1Wxvbvq/+pBgfekPMNc9VfUVUnCYFc/Lv1TEFs4uJC0nht0u2yVANMiwAqB1/XqzTjVg==",
+      "path": "iyzipay/2.1.53",
+      "hashPath": "iyzipay.2.1.53.nupkg.sha512"
     },
     "MediatR/12.4.1": {
       "type": "package",
@@ -470,6 +497,13 @@
       "sha512": "sha512-bo9UyuIoVRx4IUQiuC8ZrlZuvAXKIccernC7UUKukQCEmRq2eVIk+gubHlnMQljrP51q0mN4cjgy9vv5uZPkoA==",
       "path": "nest/7.17.5",
       "hashPath": "nest.7.17.5.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

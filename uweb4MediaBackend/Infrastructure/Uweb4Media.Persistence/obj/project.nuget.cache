@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PbLP82cMAyE=",
+  "dgSpecHash": "UPGRh0pnZEU=",
   "success": true,
   "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "/Users/aliunnab/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/elasticsearch.net/7.17.5/elasticsearch.net.7.17.5.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/iyzipay/2.1.53/iyzipay.2.1.53.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/mediatr/12.4.1/mediatr.12.4.1.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
@@ -55,6 +56,7 @@
     "/Users/aliunnab/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/nest/7.17.5/nest.7.17.5.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/newtonsoft.json/13.0.2/newtonsoft.json.13.0.2.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.clientmodel/1.0.0/system.clientmodel.1.0.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.codedom/6.0.0/system.codedom.6.0.0.nupkg.sha512",

@@ -107,5 +107,6 @@ namespace Uweb4Media.Persistence.Context
         public DbSet<Campaign> Campaigns { get; set; } 
         public DbSet<CampaignPerformance> CampaignPerformances { get; set; }  
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }

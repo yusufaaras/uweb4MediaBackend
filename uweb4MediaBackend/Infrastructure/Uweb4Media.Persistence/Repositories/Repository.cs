@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// Uweb4Media.Persistence.Repositories/Repository.cs
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Uweb4Media.Persistence.Repositories
         {
             _weddingHallContext = WeddingHallContext;
         }
+
         public async Task CreateAsync(T entity)
         {
             _weddingHallContext.Set<T>().Add(entity);
@@ -28,9 +30,18 @@ namespace Uweb4Media.Persistence.Repositories
             return await _weddingHallContext.Set<T>().ToListAsync();
         }
 
-        public async Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        // Düzeltilen GetByFilterAsync metodu
+        public async Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes)
         {
-            return await _weddingHallContext.Set<T>().SingleOrDefaultAsync(filter);
+            IQueryable<T> query = _weddingHallContext.Set<T>();
+
+            // 'includes' parametresindeki her bir navigasyon özelliğini sorguya dahil et
+            foreach (var includeProperty in includes)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.SingleOrDefaultAsync(filter);
         }
 
         public async Task<T> GetByIdAsync(int id)

@@ -1,4 +1,3 @@
-
 using System.Globalization;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -22,7 +21,14 @@ using uweb4Media.Application.Tools;
 using Uweb4Media.Persistence.Context;
 using Uweb4Media.Persistence.Repositories.AppRoleRepositories;
 using Uweb4Media.Persistence.Repositories.AppUserRepositories;
-using Uweb4Media.Persistence.Repositories;
+using Uweb4Media.Persistence.Repositories; 
+using System.Security.Claims;        
+using Microsoft.AspNetCore.Authentication.Google; 
+using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies; 
+using uweb4Media.Application; 
+using uweb4Media.Application.Services.PaymentService;  
+
 namespace Uweb4Media.API
 {
     public class Program
@@ -34,7 +40,27 @@ namespace Uweb4Media.API
              
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
-
+ 
+            builder.Services.Configure<CookiePolicyOptions>(options =>
+            { 
+                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;  
+                options.OnAppendCookie = cookieContext =>
+                { 
+                    if (cookieContext.CookieName.Contains(".AspNetCore.Correlation.") || cookieContext.CookieName.Contains(".AspNetCore.Cookies")) 
+                    {
+                        cookieContext.CookieOptions.SameSite = SameSiteMode.None;
+                        cookieContext.CookieOptions.Secure = true; // HTTPS için TRUE
+                    }
+                };
+                options.OnDeleteCookie = cookieContext =>
+                {
+                    if (cookieContext.CookieName.Contains(".AspNetCore.Correlation.") || cookieContext.CookieName.Contains(".AspNetCore.Cookies"))
+                    {
+                        cookieContext.CookieOptions.SameSite = SameSiteMode.None;
+                        cookieContext.CookieOptions.Secure = true; // HTTPS için TRUE
+                    }
+                };
+            });
 
             builder.Services.AddCors(opt =>
             {
@@ -137,26 +163,69 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<RemoveVideoCommandHandler>();
             builder.Services.AddScoped<UpdateVideoCommandHandler>();
             
-            // JWT Kimlik Doğrulama Servislerini Ekleme
+            //Payment
+            builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
             
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>
-                {
-                    opt.RequireHttpsMetadata = false; 
-                    opt.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidAudience = JwtTokenDefaults.ValidAudience, 
-                        ValidIssuer = JwtTokenDefaults.ValidIssuer,     
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)), 
-                        ValidateIssuerSigningKey = true,
-                        ValidateLifetime = true,
-                        ValidateAudience = true,
-                        ValidateIssuer = true,
-                        ClockSkew = TimeSpan.Zero 
-                    };
-                });
+            
+            builder.Services.AddAuthentication(options =>
+        {
+            // Varsayılan kimlik doğrulama şemaları
+            options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme; // Google için varsayılan zorlama şeması
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // API istekleri için varsayılan kimlik doğrulama şeması
+        })
+        .AddCookie(options => // Cookie ayarları
+        {
+            options.Cookie.SameSite = SameSiteMode.None;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // HTTPS kullandığımız için ALWAYS olmalı
+            options.Cookie.IsEssential = true;
+            // Callback path'i belirtmenize genellikle gerek yok, zira Google'ın kendi callback'i kullanılacak.
+        })
+        .AddJwtBearer(opt => // JWT Bearer ayarları
+        {
+            opt.RequireHttpsMetadata = true; // HTTPS kullandığımız için TRUE olmalı (geliştirme ortamında false da olabilir ama iyi pratik true'dur)
+            opt.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidAudience = builder.Configuration["Jwt:ValidAudience"], // appsettings.json'dan oku
+                ValidIssuer = builder.Configuration["Jwt:ValidIssuer"],     // appsettings.json'dan oku
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])), 
+                ValidateIssuerSigningKey = true,
+                ValidateLifetime = true,
+                ValidateAudience = true,
+                ValidateIssuer = true,
+                ClockSkew = TimeSpan.Zero 
+            };
+        })
+        .AddGoogle(googleOptions => // Google ayarları
+        {
+            googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+            googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+            googleOptions.CallbackPath = "/api/auth/google-callback"; // Bu yolun doğru olduğundan emin olun
 
-            // Yetkilendirme Servislerini Ekleme
+            googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
+            googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.email");
+
+            googleOptions.Events.OnCreatingTicket = ctx =>
+            {
+                var nameClaim = ctx.Identity.FindFirst(ClaimTypes.Name);
+                if (nameClaim != null)
+                {
+                    var parts = nameClaim.Value.Split(' ', 2);
+                    if (parts.Length > 0)
+                        ctx.Identity.AddClaim(new Claim(ClaimTypes.GivenName, parts[0]));
+                    if (parts.Length > 1)
+                        ctx.Identity.AddClaim(new Claim(ClaimTypes.Surname, parts[1]));
+                }
+                var pictureClaim = ctx.Identity.FindFirst("picture");
+                if (pictureClaim != null)
+                {
+                    ctx.Identity.AddClaim(new Claim("profile_picture", pictureClaim.Value));
+                }
+                return Task.CompletedTask;
+            };
+        });
+            
             builder.Services.AddAuthorization();
 
             builder.Services.AddApplicationService(builder.Configuration);
@@ -165,16 +234,18 @@ namespace Uweb4Media.API
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
+ 
             if (app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage(); 
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
+            } 
 
             app.UseCors("CorsPolicy");
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection(); 
+            app.UseCookiePolicy(); 
+            
             app.UseAuthentication();
             app.UseAuthorization();
 
