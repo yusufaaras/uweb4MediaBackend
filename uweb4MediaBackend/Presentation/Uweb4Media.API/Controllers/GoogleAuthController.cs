@@ -9,7 +9,7 @@ using uweb4Media.Application.Tools;
 
 namespace Uweb4Media.API.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/auth")]
 [ApiController]
 public class AuthController : ControllerBase
 {

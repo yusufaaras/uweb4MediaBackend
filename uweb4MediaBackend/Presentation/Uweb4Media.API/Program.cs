@@ -42,14 +42,14 @@ namespace Uweb4Media.API
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
  
             builder.Services.Configure<CookiePolicyOptions>(options =>
-            { 
-                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;  
+            {
+                options.MinimumSameSitePolicy = SameSiteMode.None;
                 options.OnAppendCookie = cookieContext =>
-                { 
-                    if (cookieContext.CookieName.Contains(".AspNetCore.Correlation.") || cookieContext.CookieName.Contains(".AspNetCore.Cookies")) 
+                {
+                    if (cookieContext.CookieName.Contains(".AspNetCore.Correlation.") || cookieContext.CookieName.Contains(".AspNetCore.Cookies"))
                     {
                         cookieContext.CookieOptions.SameSite = SameSiteMode.None;
-                        cookieContext.CookieOptions.Secure = true; // HTTPS için TRUE
+                        cookieContext.CookieOptions.Secure = true;
                     }
                 };
                 options.OnDeleteCookie = cookieContext =>
@@ -57,20 +57,19 @@ namespace Uweb4Media.API
                     if (cookieContext.CookieName.Contains(".AspNetCore.Correlation.") || cookieContext.CookieName.Contains(".AspNetCore.Cookies"))
                     {
                         cookieContext.CookieOptions.SameSite = SameSiteMode.None;
-                        cookieContext.CookieOptions.Secure = true; // HTTPS için TRUE
+                        cookieContext.CookieOptions.Secure = true;
                     }
                 };
             });
 
-            builder.Services.AddCors(opt =>
+            builder.Services.AddCors(options =>
             {
-                opt.AddPolicy("CorsPolicy", builder =>
-                {
-                    builder.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .SetIsOriginAllowed((host) => true)
-                    .AllowCredentials();
-                });
+                options.AddPolicy("AllowLocalhost5173",
+                    policy => policy
+                        .WithOrigins("http://localhost:5173", "https://localhost:5173")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials());
             });
 
             //Repos
@@ -166,8 +165,8 @@ namespace Uweb4Media.API
             //Payment
             builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-            
-            
+             
+
             builder.Services.AddAuthentication(options =>
         {
             // Varsayılan kimlik doğrulama şemaları
@@ -175,12 +174,11 @@ namespace Uweb4Media.API
             options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme; // Google için varsayılan zorlama şeması
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // API istekleri için varsayılan kimlik doğrulama şeması
         })
-        .AddCookie(options => // Cookie ayarları
+        .AddCookie(options =>
         {
             options.Cookie.SameSite = SameSiteMode.None;
-            options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // HTTPS kullandığımız için ALWAYS olmalı
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             options.Cookie.IsEssential = true;
-            // Callback path'i belirtmenize genellikle gerek yok, zira Google'ın kendi callback'i kullanılacak.
         })
         .AddJwtBearer(opt => // JWT Bearer ayarları
         {
@@ -201,7 +199,7 @@ namespace Uweb4Media.API
         {
             googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
             googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
-            googleOptions.CallbackPath = "/api/auth/google-callback"; // Bu yolun doğru olduğundan emin olun
+            googleOptions.CallbackPath = "/api/auth/google-callback"; 
 
             googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
             googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.email");
@@ -242,7 +240,7 @@ namespace Uweb4Media.API
                 app.UseSwaggerUI();
             } 
 
-            app.UseCors("CorsPolicy");
+            app.UseCors("AllowLocalhost5173");
             app.UseHttpsRedirection(); 
             app.UseCookiePolicy(); 
             

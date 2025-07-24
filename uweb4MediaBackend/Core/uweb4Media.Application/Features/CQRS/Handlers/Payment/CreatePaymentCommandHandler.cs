@@ -12,7 +12,8 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
         private readonly IPaymentService _paymentService;
         private readonly IRepository<Uweb4Media.Domain.Entities.Payment> _repository;
 
-        public CreatePaymentCommandHandler(IPaymentService paymentService, IRepository<Uweb4Media.Domain.Entities.Payment> repository)
+        public CreatePaymentCommandHandler(IPaymentService paymentService,
+            IRepository<Uweb4Media.Domain.Entities.Payment> repository)
         {
             _paymentService = paymentService;
             _repository = repository;
@@ -20,18 +21,13 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
 
         public async Task<string> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
         {
+            // 1. iyzico ile ödeme isteği
             var paymentId = await _paymentService.CreatePaymentAsync(
-                request.Amount,
-                request.OrderId,
-                request.Email,
-                request.CardHolderName,
-                request.CardNumber,
-                request.ExpireMonth,
-                request.ExpireYear,
-                request.Cvc
+                request.Amount, request.OrderId, request.Email,
+                request.CardHolderName, request.CardNumber, request.ExpireMonth, request.ExpireYear, request.Cvc
             );
 
-            // Sadece başarılı ödeme olursa kaydet
+            // 2. Başarılı ise db'ye kaydet
             if (!string.IsNullOrEmpty(paymentId))
             {
                 await _repository.CreateAsync(new Uweb4Media.Domain.Entities.Payment
@@ -42,12 +38,12 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
                     Currency = "TRY",
                     Status = "success",
                     Email = request.Email,
+                    UserId = request.UserId,
                     CreatedAt = DateTime.UtcNow
                 });
-            };
+            }
 
             return paymentId;
-            
         }
     }
 }
