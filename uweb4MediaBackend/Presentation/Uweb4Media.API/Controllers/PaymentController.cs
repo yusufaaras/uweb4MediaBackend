@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using uweb4Media.Application.Features.CQRS.Commands.Payment;
 using uweb4Media.Application.Interfaces;
 using Microsoft.Extensions.Configuration;
+using uweb4Media.Application.Features.CQRS.Handlers.Payment;
+using uweb4Media.Application.Features.CQRS.Queries.Payment;
 using Payment = Uweb4Media.Domain.Entities.Payment;
 
 namespace Uweb4Media.API.Controllers
@@ -19,17 +21,15 @@ namespace Uweb4Media.API.Controllers
         private readonly IConfiguration _config;
         private readonly IRepository<Payment> _paymentRepo;
         private readonly IRepository<AppUser> _userRepo;
+        private readonly GetPaymentsByUserIdQueryHandler _getPaymentsByUserIdQueryHandler;
 
-        public PaymentController(
-            IMediator mediator,
-            IConfiguration config,
-            IRepository<Payment> paymentRepo,
-            IRepository<AppUser> userRepo)
+        public PaymentController(IMediator mediator, IConfiguration config, IRepository<Payment> paymentRepo, IRepository<AppUser> userRepo, GetPaymentsByUserIdQueryHandler getPaymentsByUserIdQueryHandler)
         {
             _mediator = mediator;
             _config = config;
             _paymentRepo = paymentRepo;
             _userRepo = userRepo;
+            _getPaymentsByUserIdQueryHandler = getPaymentsByUserIdQueryHandler;
         }
 
         [HttpPost("create")]
@@ -49,8 +49,9 @@ namespace Uweb4Media.API.Controllers
         [HttpPost("callback")]
         public async Task<IActionResult> Callback()
         {
+            
             var token = Request.Form["token"].FirstOrDefault();
-            // var orderId = Request.Form["conversationId"].FirstOrDefault(); // BUNU SİL
+            Console.WriteLine($"Callback çalıştı! Token: {token}");
 
             var options = new Iyzipay.Options
             {
@@ -99,6 +100,13 @@ namespace Uweb4Media.API.Controllers
             }
 
             return Ok();
+        }
+        
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetPaymentsByUserId(int userId)
+        {
+            var values = await _getPaymentsByUserIdQueryHandler.Handle(new GetPaymentsByUserIdQuery(userId));
+            return Ok(values);
         }
         
         [HttpPost("initiate")]

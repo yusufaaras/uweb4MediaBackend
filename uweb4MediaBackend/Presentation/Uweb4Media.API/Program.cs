@@ -26,8 +26,11 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Google; 
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies; 
-using uweb4Media.Application; 
-using uweb4Media.Application.Services.PaymentService;  
+using uweb4Media.Application;
+using uweb4Media.Application.Features.CQRS.Handlers.Payment;
+using uweb4Media.Application.Interfaces.Payment;
+using uweb4Media.Application.Services.PaymentService;
+using Uweb4Media.Persistence.Repositories.Payment;
 
 namespace Uweb4Media.API
 {
@@ -77,6 +80,7 @@ namespace Uweb4Media.API
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>)); 
             builder.Services.AddScoped(typeof(IAppUserRepository), typeof(AppUserRepository));
             builder.Services.AddScoped(typeof(IAppRoleRepository), typeof(AppRoleRepository));
+            builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 
             //User
             builder.Services.AddScoped<GetUserQueryHandler>();
@@ -165,8 +169,11 @@ namespace Uweb4Media.API
             //Payment
             builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+            builder.Services.AddScoped<GetPaymentsByUserIdQueryHandler>(); 
              
-
+            //sritpePayment
+            builder.Services.AddScoped<IStripePaymentService, StripePaymentService>();  
+        
             builder.Services.AddAuthentication(options =>
         {
             // Varsayılan kimlik doğrulama şemaları

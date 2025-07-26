@@ -562,8 +562,14 @@ namespace Uweb4Media.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Provider")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Status")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StripePaymentIntentId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")

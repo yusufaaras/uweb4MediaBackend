@@ -18,4 +18,10 @@ public class PaymentRepository : Repository<Domain.Entities.Payment>, IPaymentRe
         return await _context.Payments
             .FirstOrDefaultAsync(p => p.OrderId == orderId);
     }
+
+    public async Task<Domain.Entities.Payment?> GetByStripePaymentIntentIdAsync(string paymentIntentId)
+    {
+        return await _context.Payments
+            .FirstOrDefaultAsync(p => p.StripePaymentIntentId == paymentIntentId);
+    }
 }
