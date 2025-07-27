@@ -536,3 +536,6 @@ C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Iyzipay.dll
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Newtonsoft.Json.dll
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Stripe.net.dll
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.dll
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/refint/Uweb4Media.API.dll
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.pdb
