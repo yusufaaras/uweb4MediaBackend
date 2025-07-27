@@ -60,5 +60,18 @@ namespace Uweb4Media.Persistence.Repositories
             _weddingHallContext.Set<T>().Update(entity);
             await _weddingHallContext.SaveChangesAsync();
         }
+        // Repository.cs'e eklenecek method
+        public async Task<List<T>> GetAllWithIncludesAsync(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _weddingHallContext.Set<T>();
+
+            // 'includes' parametresindeki her bir navigasyon özelliğini sorguya dahil et
+            foreach (var includeProperty in includes)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }

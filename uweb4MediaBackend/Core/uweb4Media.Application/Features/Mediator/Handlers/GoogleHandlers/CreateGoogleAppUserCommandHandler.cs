@@ -25,14 +25,14 @@ public class CreateGoogleAppUserCommandHandler : IRequestHandler<CreateGoogleApp
             // Yeni kullanıcı kaydı
             await _repository.CreateAsync(new AppUser
             {
-                Username = request.Email, // Genellikle Google ile girişte e-posta kullanıcı adı olarak kullanılır
-                Email = request.Email,
+                Username = request.Email.Split('@')[0],
+                Password = null,
+                AppRoleID = (int)RolesType.Member, // ← GERİ ALDI! (2 olacak)
                 Name = request.Name,
                 Surname = request.Surname,
+                Email = request.Email,
                 GoogleId = request.GoogleId, 
                 AvatarUrl = request.AvatarUrl,
-                Password = null, 
-                AppRoleID = (int)RolesType.Member, 
                 SubscriptionStatus = "free"
             });
             return true;

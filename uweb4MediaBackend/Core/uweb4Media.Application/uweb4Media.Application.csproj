@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Uweb4Media.Domain\Uweb4Media.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\CQRS\Handlers\Notifications\" />
+  </ItemGroup>
+
 </Project>

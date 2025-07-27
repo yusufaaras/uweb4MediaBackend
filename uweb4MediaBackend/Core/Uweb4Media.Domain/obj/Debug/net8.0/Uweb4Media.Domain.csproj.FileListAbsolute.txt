@@ -36,3 +36,16 @@ C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.csproj.CoreCompileInputs.cache
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.sourcelink.json
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/ref/Uweb4Media.Domain.dll
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/bin/Debug/net8.0/Uweb4Media.Domain.deps.json
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/bin/Debug/net8.0/Uweb4Media.Domain.dll
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/bin/Debug/net8.0/Uweb4Media.Domain.pdb
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.csproj.AssemblyReference.cache
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.AssemblyInfoInputs.cache
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.AssemblyInfo.cs
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.csproj.CoreCompileInputs.cache
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.sourcelink.json
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.dll
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/refint/Uweb4Media.Domain.dll
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/Uweb4Media.Domain.pdb
+/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/Debug/net8.0/ref/Uweb4Media.Domain.dll

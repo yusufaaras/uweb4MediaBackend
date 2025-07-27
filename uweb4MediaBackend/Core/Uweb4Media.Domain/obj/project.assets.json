@@ -594,24 +594,25 @@
     ]
   },
   "packageFolders": {
-    "/Users/aliunnab/.nuget/packages/": {}
+    "/Users/yagmuryalcin/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
+      "projectUniqueName": "/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
       "projectName": "Uweb4Media.Domain",
-      "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
-      "packagesPath": "/Users/aliunnab/.nuget/packages/",
-      "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/",
+      "projectPath": "/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
+      "packagesPath": "/Users/yagmuryalcin/.nuget/packages/",
+      "outputPath": "/Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/aliunnab/.nuget/NuGet/NuGet.Config"
+        "/Users/yagmuryalcin/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -656,7 +657,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.411/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

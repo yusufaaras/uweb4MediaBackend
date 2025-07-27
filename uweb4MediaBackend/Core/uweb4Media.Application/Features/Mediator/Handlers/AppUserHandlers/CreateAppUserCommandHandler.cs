@@ -34,7 +34,7 @@ public class CreateAppUserCommandHandler : IRequestHandler<CreateAppUserCommand>
         {
             Username = request.Username,
             Password = passwordHash, 
-            AppRoleID = (int)RolesType.Member,
+            AppRoleID = (int)RolesType.Member, // ← GERİ ALDI! (2 olacak)
             Name = request.Name,
             Surname = request.Surname,
             Email = request.Email,
