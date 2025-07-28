@@ -10,7 +10,11 @@ namespace uweb4Media.Application.Enums
     {
         Admin = 1,
         Member = 2,
-        Visitor = 3,
-        Manager = 4
+        IcerikYoneticisi = 3,
+        EditorModerator = 4,
+        TeknikYonetici = 5,
+        RaporIzleyici = 6,
+        FinansYonetici = 7,
+        PazarlamaYonetici = 8
     }
 }
