@@ -15,15 +15,12 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.35.0" />
     <PackageReference Include="NEST" Version="7.17.5" />
+    <PackageReference Include="Stripe.net" Version="48.3.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.35.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Uweb4Media.Domain\Uweb4Media.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\CQRS\Handlers\Notifications\" />
   </ItemGroup>
 
 </Project>

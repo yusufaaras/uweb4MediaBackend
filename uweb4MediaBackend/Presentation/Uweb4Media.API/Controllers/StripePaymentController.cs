@@ -40,7 +40,7 @@ public class StripePaymentController : Controller
 
         if (stripeEvent.Type == "payment_intent.succeeded")
 
-    {
+        {
             var paymentIntent = stripeEvent.Data.Object as PaymentIntent;
             var payment = await _paymentRepo.GetByStripePaymentIntentIdAsync(paymentIntent.Id);
             if (payment != null)

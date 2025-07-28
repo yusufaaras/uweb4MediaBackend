@@ -16,6 +16,8 @@ namespace uweb4Media.Application.Interfaces
         Task RemoveAsync(T entity);
         Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes);
         Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter);
+        Task<List<T>> GetAllWithIncludesAsync(params Expression<Func<T, object>>[] includes);
+
     }
     
 }

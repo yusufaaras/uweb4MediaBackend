@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3Os+VNX1OG0=",
+  "dgSpecHash": "rAewpAVU76w=",
   "success": true,
   "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj",
   "expectedPackageFiles": [
@@ -29,12 +29,16 @@
     "/Users/aliunnab/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/nest/7.17.5/nest.7.17.5.nupkg.sha512",
-    "/Users/aliunnab/.nuget/packages/newtonsoft.json/13.0.2/newtonsoft.json.13.0.2.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/stripe.net/48.3.0/stripe.net.48.3.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/system.configuration.configurationmanager/8.0.0/system.configuration.configurationmanager.8.0.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.diagnostics.diagnosticsource/9.0.2/system.diagnostics.diagnosticsource.9.0.2.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/system.diagnostics.eventlog/8.0.0/system.diagnostics.eventlog.8.0.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.identitymodel.tokens.jwt/6.35.0/system.identitymodel.tokens.jwt.6.35.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/system.security.cryptography.protecteddata/8.0.0/system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.text.encoding/4.3.0/system.text.encoding.4.3.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.text.encodings.web/4.7.2/system.text.encodings.web.4.7.2.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/system.text.json/4.7.2/system.text.json.4.7.2.nupkg.sha512"
