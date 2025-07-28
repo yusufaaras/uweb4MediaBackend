@@ -36,7 +36,11 @@ namespace Uweb4Media.Domain.Entities
         [EmailAddress]  
         [MaxLength(100)]  
         public string Email { get; set; }
-        [MaxLength(256)] // Google ID'lerin uzunluğuna göre ayarlayın
+        
+        [MaxLength(6)]
+        public string? EmailVerificationCode { get; set; }
+        public bool IsEmailVerified { get; set; } = false;
+        [MaxLength(256)] 
         public string? GoogleId { get; set; }
         public int AppRoleID { get; set; }  
         [ForeignKey("AppRoleID")] 

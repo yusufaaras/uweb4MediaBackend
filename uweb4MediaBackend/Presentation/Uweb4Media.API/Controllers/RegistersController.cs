@@ -20,13 +20,23 @@ namespace Uweb4Media.API.Controllers
             try
             {
                 await _mediator.Send(command);
-                return Ok("The User Was Successfully Added");
+                return Ok("The User Was Successfully Added. Please check your email for the verification code.");
             }
             catch (Exception ex)
             {
                 var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
                 return BadRequest($"Bir hata oluştu: {errorMessage}");
             }
+        }
+
+        [HttpPost("VerifyEmail")]
+        public async Task<IActionResult> VerifyEmail([FromBody] VerifyEmailCommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (result)
+                return Ok("Email verified successfully.");
+            else
+                return BadRequest("Invalid verification code or email.");
         }
     }
 }

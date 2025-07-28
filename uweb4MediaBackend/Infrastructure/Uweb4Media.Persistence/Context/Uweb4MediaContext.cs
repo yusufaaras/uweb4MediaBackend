@@ -19,7 +19,8 @@ namespace Uweb4Media.Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=uweb4media_db;User Id=SA;Password=Yagmur2736;Encrypt=False;TrustServerCertificate=True");
+            //optionsBuilder.UseSqlServer("Server=localhost,1433;Database=uweb4media_db;User Id=SA;Password=Yagmur2736;Encrypt=False;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=uweb4media_db;User Id=SA;Password=Yusuf123;Encrypt=False;TrustServerCertificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -51,18 +52,13 @@ namespace Uweb4Media.Persistence.Context
                 .WithMany(mc => mc.Comments)
                 .HasForeignKey(c => c.MediaContentId)
                 .OnDelete(DeleteBehavior.NoAction); // NO ACTION olarak kalmaya devam etsin.
-
-
-            // KULLANICI SİLİNDİĞİNDE BEĞENİLERİN DAVRANIŞI - KRİTİK DÜZELTME BURADA!
-            // Bu ilişkiyi NO ACTION olarak ayarlayarak çakışmayı önlüyoruz.
-            // Beğeniler, MediaContent silindiğinde otomatik silinecekleri için dolaylı yoldan temizlenecektir.
+            
             modelBuilder.Entity<Like>()
                 .HasOne(l => l.User)
                 .WithMany(u => u.Likes)
                 .HasForeignKey(l => l.UserId)
-                .OnDelete(DeleteBehavior.NoAction); // DEĞİŞİKLİK BURADA!
-
-            // İÇERİK SİLİNDİĞİNDE BEĞENİLER SİLİNSİN
+                .OnDelete(DeleteBehavior.NoAction); 
+            
             modelBuilder.Entity<Like>()
                 .HasOne(l => l.MediaContent)
                 .WithMany(mc => mc.Likes)

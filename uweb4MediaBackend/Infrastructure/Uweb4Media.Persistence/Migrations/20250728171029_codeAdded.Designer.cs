@@ -12,8 +12,8 @@ using Uweb4Media.Persistence.Context;
 namespace Uweb4Media.Persistence.Migrations
 {
     [DbContext(typeof(Uweb4MediaContext))]
-    [Migration("20250725150259_stripePayment")]
-    partial class stripePayment
+    [Migration("20250728171029_codeAdded")]
+    partial class codeAdded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -325,9 +325,16 @@ namespace Uweb4Media.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("EmailVerificationCode")
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
                     b.Property<string>("GoogleId")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("IsEmailVerified")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasMaxLength(50)
