@@ -32,6 +32,7 @@ using uweb4Media.Application.Interfaces.Email;
 using uweb4Media.Application.Interfaces.Payment;
 using uweb4Media.Application.Services.Email;
 using uweb4Media.Application.Services.PaymentService;
+using Uweb4Media.Domain.Entities;
 using Uweb4Media.Persistence.Repositories.Payment;
 
 namespace Uweb4Media.API
@@ -177,7 +178,8 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<IStripePaymentService, StripePaymentService>(); 
             
             //Email
-            builder.Services.AddScoped<IEmailService, SmtpEmailService>();
+            builder.Services.AddScoped<IEmailService, SmtpEmailService>(); 
+            builder.Services.AddMemoryCache();
         
             builder.Services.AddAuthentication(options =>
         {

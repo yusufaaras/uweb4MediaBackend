@@ -33,9 +33,7 @@ public class CreateAppUserCommandHandler : IRequestHandler<CreateAppUserCommand>
             throw new Exception("Enter a valid email address. (There must be an @ in the email)");
         }
 
-        string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-
-        // Doğrulama kodu üret
+        string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password); 
         var verificationCode = new Random().Next(100000, 999999).ToString();
 
         var user = new AppUser

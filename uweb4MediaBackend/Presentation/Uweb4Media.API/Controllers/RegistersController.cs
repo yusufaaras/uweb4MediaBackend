@@ -9,34 +9,34 @@ namespace Uweb4Media.API.Controllers
     public class RegistersController : ControllerBase
     {
         private readonly IMediator _mediator;
+
         public RegistersController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateAppUserCommand command)
+        [HttpPost("StartRegistration")]
+        public async Task<IActionResult> StartRegistration(RegisterUserCommand command)
         {
             try
             {
                 await _mediator.Send(command);
-                return Ok("The User Was Successfully Added. Please check your email for the verification code.");
+                return Ok("Doğrulama kodu mailinize gönderildi.");
             }
             catch (Exception ex)
             {
-                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                return BadRequest($"Bir hata oluştu: {errorMessage}");
+                return BadRequest($"Bir hata oluştu: {ex.Message}");
             }
         }
 
-        [HttpPost("VerifyEmail")]
-        public async Task<IActionResult> VerifyEmail([FromBody] VerifyEmailCommand command)
+        [HttpPost("CompleteRegistration")]
+        public async Task<IActionResult> CompleteRegistration(VerifyEmailCommand command)
         {
             var result = await _mediator.Send(command);
             if (result)
-                return Ok("Email verified successfully.");
+                return Ok("Kayıt başarılı.");
             else
-                return BadRequest("Invalid verification code or email.");
+                return BadRequest("Kod yanlış veya süresi geçti.");
         }
     }
 }

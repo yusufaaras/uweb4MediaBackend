@@ -8,13 +8,13 @@ public class SmtpEmailService : IEmailService
 {
     public async Task SendEmailAsync(string to, string subject, string body)
     {
-        using var client = new SmtpClient("smtp.example.com")
+        using var client = new SmtpClient("smtp.gmail.com")
         {
             Port = 587,
-            Credentials = new NetworkCredential("username", "password"),
+            Credentials = new NetworkCredential("arasy541@gmail.com", "kstb gweb udku avhz"),
             EnableSsl = true,
         };
-        var mail = new MailMessage("from@example.com", to, subject, body);
+        var mail = new MailMessage("arasy541@gmail.com", to, subject, body);
         await client.SendMailAsync(mail);
     }
 }
