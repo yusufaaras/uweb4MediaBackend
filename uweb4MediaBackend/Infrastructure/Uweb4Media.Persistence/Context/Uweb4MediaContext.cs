@@ -11,6 +11,7 @@ using Uweb4Media.Domain.Entities.Admin.Channel;
 using Uweb4Media.Domain.Entities.Admin.CompanyManagement;
 using Uweb4Media.Domain.Entities.Admin.Sector;
 using Uweb4Media.Domain.Entities.Admin.Video;
+using Uweb4Media.Domain.Entities.StripePayment;
 using Like = Uweb4Media.Domain.Entities.Like;
 
 namespace Uweb4Media.Persistence.Context
@@ -104,5 +105,6 @@ namespace Uweb4Media.Persistence.Context
         public DbSet<CampaignPerformance> CampaignPerformances { get; set; }  
         public DbSet<Company> Companies { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<PartnerShare> PartnerShares { get; set; }
     }
 }

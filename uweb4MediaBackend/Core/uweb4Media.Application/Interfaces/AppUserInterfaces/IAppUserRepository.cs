@@ -11,5 +11,7 @@ namespace uweb4Media.Application.Interfaces.AppUserInterfaces
     public interface IAppUserRepository
     {
         Task<AppUser> GetByFilterAsync(Expression<Func<AppUser, bool>> filter);
+        Task<AppUser?> GetByIdAsync(int id);
+        Task<AppUser?> GetByEmailAsync(string email);
     }
 }

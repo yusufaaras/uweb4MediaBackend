@@ -333,6 +333,9 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Property<bool>("IsEmailVerified")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsKYCVerified")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -340,6 +343,10 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StripeAccountId")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("SubscriptionStatus")
                         .IsRequired()
@@ -562,12 +569,27 @@ namespace Uweb4Media.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("InvoiceId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InvoicePdfUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InvoiceStatus")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("IyzicoPaymentId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrderId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PaymentCodeGeneratedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Provider")
                         .HasColumnType("nvarchar(max)");
@@ -608,6 +630,26 @@ namespace Uweb4Media.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Plans");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.StripePayment.PartnerShare", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Percentage")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("StripeAccountId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PartnerShares");
                 });
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.Subscription", b =>

@@ -40,19 +40,14 @@ namespace Uweb4Media.API.Controllers
         public async Task<IActionResult> LikeList([FromQuery] int? userId)
         {
             if (userId.HasValue)
-            {
-                // Eğer userId parametresi geldiyse, o kullanıcıya ait beğenileri filtrele
+            { 
                 var userLikes = (await _likeRepository.GetAllAsync())
                                     .Where(l => l.UserId == userId.Value)
-                                    .ToList(); // ToList ekledim, GetAllAsync bir IEnumerable döndürebilir.
+                                    .ToList(); 
                 return Ok(userLikes);
             }
             else
-            {
-                // userId parametresi gelmediyse, tüm beğenileri döndür (mevcut davranış)
-                // Dikkat: Genellikle bu herkesin beğenisini döndürmek yerine,
-                // ya yetkilendirme ile sadece adminlerin erişebileceği bir endpoint olur,
-                // ya da bu durum engellenir. Şimdilik sizin isteğiniz doğrultusunda tutuyorum.
+            { 
                 var values = await _getLikeQueryHandler.Handle();
                 return Ok(values);
             }
@@ -115,4 +110,5 @@ namespace Uweb4Media.API.Controllers
             return Ok(new { IsLiked = result.IsLiked, NewLikesCount = result.NewLikesCount });
         }
     }
+    
 }

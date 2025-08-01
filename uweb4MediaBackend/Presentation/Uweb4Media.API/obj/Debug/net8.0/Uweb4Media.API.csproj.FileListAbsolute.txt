@@ -539,3 +539,12 @@ C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.dll
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/refint/Uweb4Media.API.dll
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/Debug/net8.0/Uweb4Media.API.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/FirebaseAdmin.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Google.Api.Gax.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Google.Api.Gax.Rest.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Google.Apis.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Google.Apis.Auth.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Google.Apis.Core.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/System.Management.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Management.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/firebase-service-account.json

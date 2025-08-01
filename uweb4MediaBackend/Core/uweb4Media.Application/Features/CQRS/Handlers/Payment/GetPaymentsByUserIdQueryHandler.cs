@@ -26,7 +26,10 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
                     Email = values.Email,
                     UserId = values.UserId,
                     Provider = values.Provider,
-                    CreatedAt = values.CreatedAt
+                    CreatedAt = values.CreatedAt, 
+                    InvoiceId = values.InvoiceId,
+                    InvoicePdfUrl = values.InvoicePdfUrl,
+                    InvoiceStatus = values.InvoiceStatus
                 })
                 .ToList();
         }

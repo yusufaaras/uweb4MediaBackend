@@ -25,15 +25,18 @@ using Uweb4Media.Persistence.Repositories;
 using System.Security.Claims;        
 using Microsoft.AspNetCore.Authentication.Google; 
 using MediatR;
-using Microsoft.AspNetCore.Authentication.Cookies; 
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Diagnostics;
 using uweb4Media.Application;
+using uweb4Media.Application.Features.CQRS.Handlers.Invoice;
 using uweb4Media.Application.Features.CQRS.Handlers.Payment;
-using uweb4Media.Application.Interfaces.Email;
+using uweb4Media.Application.Interfaces.Email; 
 using uweb4Media.Application.Interfaces.Payment;
-using uweb4Media.Application.Services.Email;
+using uweb4Media.Application.Services.Email; 
 using uweb4Media.Application.Services.PaymentService;
 using Uweb4Media.Domain.Entities;
 using Uweb4Media.Persistence.Repositories.Payment;
+using uweb4Media.Persistence.Services.PaymentService;
 
 namespace Uweb4Media.API
 {
@@ -169,14 +172,18 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<RemoveVideoCommandHandler>();
             builder.Services.AddScoped<UpdateVideoCommandHandler>();
             
+            //Invoice 
+            builder.Services.AddScoped<GetInvoicesQueryHandler>();  
+
+            
             //Payment
             builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
             builder.Services.AddScoped<GetPaymentsByUserIdQueryHandler>(); 
              
             //sritpePayment
-            builder.Services.AddScoped<IStripePaymentService, StripePaymentService>(); 
-            
+            builder.Services.AddScoped<IStripePaymentService, StripePaymentService>();   
+            builder.Services.AddScoped<IStripeConnectService, StripeConnectService>();   
             //Email
             builder.Services.AddScoped<IEmailService, SmtpEmailService>(); 
             builder.Services.AddMemoryCache();
@@ -187,6 +194,7 @@ namespace Uweb4Media.API
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme; // Google için varsayılan zorlama şeması
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // API istekleri için varsayılan kimlik doğrulama şeması
+            
         })
         .AddCookie(options =>
         {
@@ -238,7 +246,11 @@ namespace Uweb4Media.API
             };
         });
             
-            builder.Services.AddAuthorization();
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy =>
+                    policy.RequireClaim("AppRole", "1"));
+            });
 
             builder.Services.AddApplicationService(builder.Configuration);
             builder.Services.AddControllers(); 
@@ -253,7 +265,18 @@ namespace Uweb4Media.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             } 
-
+            app.UseExceptionHandler(errorApp =>
+            {
+                errorApp.Run(async context =>
+                {
+                    var exception = context.Features.Get<IExceptionHandlerFeature>()?.Error;
+                    if (exception is UnauthorizedAccessException)
+                    {
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        await context.Response.WriteAsync(exception.Message);
+                    } 
+                });
+            });
             app.UseCors("AllowLocalhost5173");
             app.UseHttpsRedirection(); 
             app.UseCookiePolicy(); 
