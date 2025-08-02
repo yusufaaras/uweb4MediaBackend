@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Uweb4Media.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+847a2c1cacb8c3e9b7165edbfb61de076583583e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1f49231f8ea12f363f7653dd229b554f6529f28")]
 [assembly: System.Reflection.AssemblyProductAttribute("Uweb4Media.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Uweb4Media.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

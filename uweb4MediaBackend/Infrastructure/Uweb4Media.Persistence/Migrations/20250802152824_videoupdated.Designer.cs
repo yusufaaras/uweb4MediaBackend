@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uweb4Media.Persistence.Context;
 
@@ -11,9 +12,11 @@ using Uweb4Media.Persistence.Context;
 namespace Uweb4Media.Persistence.Migrations
 {
     [DbContext(typeof(Uweb4MediaContext))]
-    partial class Uweb4MediaContextModelSnapshot : ModelSnapshot
+    [Migration("20250802152824_videoupdated")]
+    partial class videoupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,10 +224,6 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool?>("IsPremium")
                         .HasColumnType("bit");
 
@@ -252,10 +251,6 @@ namespace Uweb4Media.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
@@ -266,6 +261,32 @@ namespace Uweb4Media.Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Videos");
+                });
+
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.VideoLocalizedString", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VideoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VideoId");
+
+                    b.ToTable("VideoLocalizedString");
                 });
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.AppRole", b =>
@@ -722,6 +743,17 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Uweb4Media.Domain.Entities.Admin.Video.VideoLocalizedString", b =>
+                {
+                    b.HasOne("Uweb4Media.Domain.Entities.Admin.Video.Video", "Video")
+                        .WithMany("LocalizedStrings")
+                        .HasForeignKey("VideoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Video");
+                });
+
             modelBuilder.Entity("Uweb4Media.Domain.Entities.AppUser", b =>
                 {
                     b.HasOne("Uweb4Media.Domain.Entities.AppRole", "AppRole")
@@ -838,6 +870,8 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Likes");
+
+                    b.Navigation("LocalizedStrings");
                 });
 
             modelBuilder.Entity("Uweb4Media.Domain.Entities.AppRole", b =>

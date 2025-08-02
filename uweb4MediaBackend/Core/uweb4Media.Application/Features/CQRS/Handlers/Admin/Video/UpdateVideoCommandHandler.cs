@@ -6,15 +6,11 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
 {
     public class UpdateVideoCommandHandler
     {
-        private readonly IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> _repository;
-        private readonly IRepository<VideoLocalizedString> _localizedStringRepository;
+        private IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> _repository;
 
-        public UpdateVideoCommandHandler(
-            IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> repository,
-            IRepository<VideoLocalizedString> localizedStringRepository)
+        public UpdateVideoCommandHandler(IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> repository)
         {
             _repository = repository;
-            _localizedStringRepository = localizedStringRepository;
         }
 
         public async Task Handle(UpdateVideoCommand command)
@@ -27,47 +23,14 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
             // Null-coalescing assignment (if null, keep old value)
             values.Link          = command.Link          ?? values.Link;
             values.Thumbnail     = command.Thumbnail     ?? values.Thumbnail;
+            values.Title         = command.Title         ?? values.Title;
+            values.Description   = command.Description   ?? values.Description;
             values.Sector        = command.Sector        ?? values.Sector;
             values.Channel       = command.Channel       ?? values.Channel;
             values.ContentType   = command.ContentType   ?? values.ContentType;
             values.PublishStatus = command.PublishStatus ?? values.PublishStatus;
             values.Tags          = command.Tags          ?? values.Tags;
-            values.Responsible   = command.Responsible   ?? values.Responsible; 
-
-            if (command.LocalizedData != null)
-            {
-                var existingLocalizedStrings = values.LocalizedStrings.ToList();
-
-                foreach (var incoming in command.LocalizedData)
-                {
-                    var existing = existingLocalizedStrings.FirstOrDefault(x => x.Id == incoming.Id);
-
-                    if (existing != null)
-                    {
-                        existing.Title = incoming.Title;
-                        existing.Description = incoming.Description;
-                        await _localizedStringRepository.UpdateAsync(existing);
-                        existingLocalizedStrings.Remove(existing);
-                    }
-                    else
-                    {
-                        var newLocalized = new VideoLocalizedString
-                        {
-                            VideoId = values.Id,
-                            Title = incoming.Title,
-                            Description = incoming.Description
-                        };
-                        values.LocalizedStrings.Add(newLocalized);
-                        await _localizedStringRepository.CreateAsync(newLocalized);
-                    }
-                }
- 
-                foreach (var toRemove in existingLocalizedStrings)
-                {
-                    values.LocalizedStrings.Remove(toRemove);
-                    await _localizedStringRepository.RemoveAsync(toRemove);
-                }
-            }
+            values.Responsible   = command.Responsible   ?? values.Responsible;  
 
             await _repository.UpdateAsync(values);
         }

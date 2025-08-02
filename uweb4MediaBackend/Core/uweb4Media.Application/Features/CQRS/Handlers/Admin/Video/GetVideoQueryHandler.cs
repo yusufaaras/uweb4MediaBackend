@@ -17,12 +17,14 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
 
         public async Task<List<GetVideoQueryResult>> Handle()
         {
-            var values = await _repository.GetAllWithIncludesAsync(x => x.LocalizedStrings);
+            var values = await _repository.GetAllAsync();
 
             return values.Select(x => new GetVideoQueryResult
             {
                 Id = x.Id,
                 Link = x.Link,
+                Title = x.Title,
+                Description = x.Description,
                 Thumbnail = x.Thumbnail,
                 Sector = x.Sector,
                 Channel = x.Channel,
@@ -35,12 +37,7 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
                 Tags = x.Tags,
                 Date = x.Date,
                 Responsible = x.Responsible,
-                CompanyId = x.CompanyId,
-                LocalizedData = x.LocalizedStrings?.Select(ls => new VideoLocalizedDataResultDto
-                { 
-                    Title = ls.Title,
-                    Description = ls.Description
-                }).ToList() ?? new List<VideoLocalizedDataResultDto>()
+                CompanyId = x.CompanyId
             }).ToList();
         }
     }

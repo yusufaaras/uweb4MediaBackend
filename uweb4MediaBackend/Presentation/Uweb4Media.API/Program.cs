@@ -71,11 +71,17 @@ namespace Uweb4Media.API
                 };
             });
 
+            // CORS ayarlarını düzelt - Hem 5173 hem 5174 port'larına izin ver
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowLocalhost5173",
+                options.AddPolicy("AllowLocalhost",
                     policy => policy
-                        .WithOrigins("http://localhost:5173", "https://localhost:5173")
+                        .WithOrigins(
+                            "http://localhost:5173", 
+                            "https://localhost:5173",
+                            "http://localhost:5174", 
+                            "https://localhost:5174"
+                        )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials());
@@ -277,13 +283,15 @@ namespace Uweb4Media.API
                     } 
                 });
             });
-            app.UseCors("AllowLocalhost5173");
+            
+            // CORS middleware'ini düzelt
+            app.UseCors("AllowLocalhost");
+            
             app.UseHttpsRedirection(); 
             app.UseCookiePolicy(); 
             
             app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 

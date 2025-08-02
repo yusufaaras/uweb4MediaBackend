@@ -21,6 +21,8 @@ public class GetVideoByIdQueryHandler
             Link = values.Link, 
             Thumbnail = values.Thumbnail,
             Sector = values.Sector,
+            Title = values.Title,
+            Description = values.Description,
             Channel = values.Channel,
             ContentType = values.ContentType,
             PublishStatus = values.PublishStatus, 
@@ -31,12 +33,7 @@ public class GetVideoByIdQueryHandler
             IsPremium = values.IsPremium,
             LikesCount = values.LikesCount,
             CommentsCount = values.CommentsCount,
-            UserId = values.UserId,
-            LocalizedData = values.LocalizedStrings.Select(ls => new VideoLocalizedDataResultDto
-            { 
-            Title = ls.Title,
-            Description = ls.Description
-        }).ToList()
+            UserId = values.UserId
         };
     }
 }

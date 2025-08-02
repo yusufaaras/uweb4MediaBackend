@@ -8,12 +8,14 @@ public class UpdateVideoCommand
 
     public string? Link { get; set; }
 
-    public List<VideoLocalizedDataDto>? LocalizedData { get; set; }
+    
+    public string Title { get; set; }  
+    public string Description { get; set; }  
 
     public string? Thumbnail { get; set; }
 
-    public List<string>? Sector { get; set; }
-    public List<string>? Channel { get; set; }
+    public string? Sector { get; set; }
+    public string? Channel { get; set; }
 
     public string? ContentType { get; set; }
     public string? PublishStatus { get; set; } 

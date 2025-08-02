@@ -12,15 +12,18 @@ public class GetVideoQueryResult
     public List<VideoLocalizedDataResultDto> LocalizedData { get; set; } 
     
     public string Thumbnail { get; set; }
-    public List<string> Sector { get; set; }
-    public List<string> Channel { get; set; }
+    public string Sector { get; set; }
+    
+    public string Title { get; set; }  
+    public string Description { get; set; }  
+    public string Channel { get; set; }
     public string ContentType { get; set; }
     public string PublishStatus { get; set; } 
     public List<string> Tags { get; set; }
     public DateTime? Date { get; set; }
     public string Responsible { get; set; }
     public int? CompanyId { get; set; }
-    public bool IsPremium { get; set; }  
+    public bool? IsPremium { get; set; }  
     public int LikesCount { get; set; }  
     public int CommentsCount { get; set; }
     public int? UserId { get; set; }

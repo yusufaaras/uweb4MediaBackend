@@ -20,28 +20,21 @@ public class CreateVideoCommandHandler
         { 
             UserId = command.UserId,
             Link = command.Link,
-            Thumbnail = command.Thumbnail,
-            Sector = command.Sector,
-            Channel = command.Channel,
-            ContentType = command.ContentType,
-            PublishStatus = "Incelemede", 
-            Tags = command.Tags,
-            IsPremium = command.IsPremium,
+            Title = command.Title ?? "",
+            Description = command.Description ?? "",
+            Thumbnail = command.Thumbnail ?? "",
+            Sector = command.Sector ?? "",
+            Channel = command.Channel ?? "",
+            ContentType = command.ContentType ?? "",
+            PublishStatus = command.PublishStatus ?? "Incelemede", 
+            Tags = command.Tags ?? new List<string>(),
+            IsPremium = command.IsPremium ?? false,
             Date = command.Date ?? DateTime.UtcNow,
-            Responsible = command.Responsible,
+            Responsible = command.Responsible ?? "",
             CompanyId = command.CompanyId,
-            LikesCount = 0,
-            CommentsCount = 0, 
-        };
-
-        foreach (var localizedDto in command.LocalizedData)
-        {
-            video.LocalizedStrings.Add(new VideoLocalizedString
-            {  
-                Title = localizedDto.Title,
-                Description = localizedDto.Description,
-            });
-        }
+            LikesCount = command.LikesCount ?? 0,
+            CommentsCount = command.CommentsCount ?? 0, 
+        }; 
 
         await _repository.CreateAsync(video); 
     }
