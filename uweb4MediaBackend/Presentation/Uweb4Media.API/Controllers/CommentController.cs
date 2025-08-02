@@ -14,22 +14,22 @@ namespace Uweb4Media.API.Controllers
         private readonly GetCommentByIdQueryHandler _getCommentByIdQueryHandler;
         private readonly CreateCommentCommandHandler _createCommentCommandHandler;
         private readonly RemoveCommentCommandHandler _removeCommentCommandHandler;
-        private readonly GetCommentsByMediaContentIdQueryHandler _getCommentsByMediaContentIdQueryHandler;
+        private readonly GetCommentsByVideoIdQueryHandler _getCommentsByVideoIdQueryHandler;
 
-        public CommentController(GetCommentQueryHandler getCommentQueryHandler, GetCommentByIdQueryHandler getCommentByIdQueryHandler, CreateCommentCommandHandler createCommentCommandHandler, RemoveCommentCommandHandler removeCommentCommandHandler, GetCommentsByMediaContentIdQueryHandler getCommentsByMediaContentIdQueryHandler)
+        public CommentController(GetCommentQueryHandler getCommentQueryHandler, GetCommentByIdQueryHandler getCommentByIdQueryHandler, CreateCommentCommandHandler createCommentCommandHandler, RemoveCommentCommandHandler removeCommentCommandHandler, GetCommentsByVideoIdQueryHandler getCommentsByVideoIdQueryHandler)
         {
             _getCommentQueryHandler = getCommentQueryHandler;
             _getCommentByIdQueryHandler = getCommentByIdQueryHandler;
             _createCommentCommandHandler = createCommentCommandHandler;
             _removeCommentCommandHandler = removeCommentCommandHandler;
-            _getCommentsByMediaContentIdQueryHandler = getCommentsByMediaContentIdQueryHandler;
+            _getCommentsByVideoIdQueryHandler = getCommentsByVideoIdQueryHandler;
         } 
         [HttpGet]
-        public async Task<IActionResult> CommentList([FromQuery] int? mediaContentId) // Query parametresi ekleyin
+        public async Task<IActionResult> CommentList([FromQuery] int? VideoId) // Query parametresi ekleyin
         {
-            if (mediaContentId.HasValue)
+            if (VideoId.HasValue)
             {
-                var comments = await _getCommentsByMediaContentIdQueryHandler.Handle(new GetCommentsByMediaContentIdQuery(mediaContentId.Value));
+                var comments = await _getCommentsByVideoIdQueryHandler.Handle(new GetCommentsByVideoIdQuery(VideoId.Value));
                 return Ok(comments);
             }
             else

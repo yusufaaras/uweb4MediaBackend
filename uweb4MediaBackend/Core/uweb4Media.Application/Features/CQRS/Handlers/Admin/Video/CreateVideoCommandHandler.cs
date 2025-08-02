@@ -18,24 +18,26 @@ public class CreateVideoCommandHandler
     {
         var video = new Uweb4Media.Domain.Entities.Admin.Video.Video
         { 
+            UserId = command.UserId,
             Link = command.Link,
             Thumbnail = command.Thumbnail,
             Sector = command.Sector,
             Channel = command.Channel,
             ContentType = command.ContentType,
-            PublishStatus = command.PublishStatus,
-            PublishDate = command.PublishDate,
+            PublishStatus = "Incelemede", 
             Tags = command.Tags,
+            IsPremium = command.IsPremium,
             Date = command.Date ?? DateTime.UtcNow,
             Responsible = command.Responsible,
-            CompanyId = command.CompanyId
+            CompanyId = command.CompanyId,
+            LikesCount = 0,
+            CommentsCount = 0, 
         };
 
         foreach (var localizedDto in command.LocalizedData)
         {
             video.LocalizedStrings.Add(new VideoLocalizedString
-            { 
-                LanguageCode = localizedDto.LanguageCode,
+            {  
                 Title = localizedDto.Title,
                 Description = localizedDto.Description,
             });

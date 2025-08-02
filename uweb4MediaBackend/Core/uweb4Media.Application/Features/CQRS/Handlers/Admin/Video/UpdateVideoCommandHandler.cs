@@ -2,75 +2,74 @@ using uweb4Media.Application.Features.CQRS.Commands.Admin.Video;
 using uweb4Media.Application.Interfaces;
 using Uweb4Media.Domain.Entities.Admin.Video;
 
-namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video;
-
-public class UpdateVideoCommandHandler
+namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
 {
-    private IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> _repository;
-    private readonly IRepository<VideoLocalizedString> _localizedStringRepository;
-    public UpdateVideoCommandHandler(IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> repository)
+    public class UpdateVideoCommandHandler
     {
-        _repository = repository;
-    }
-    public async Task Handle(UpdateVideoCommand command)
-    {var values = await _repository.GetByIdAsync(command.Id); 
+        private readonly IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> _repository;
+        private readonly IRepository<VideoLocalizedString> _localizedStringRepository;
 
-        if (values == null)
+        public UpdateVideoCommandHandler(
+            IRepository<Uweb4Media.Domain.Entities.Admin.Video.Video> repository,
+            IRepository<VideoLocalizedString> localizedStringRepository)
         {
-            throw new ApplicationException($"Video with ID {command.Id} not found.");
+            _repository = repository;
+            _localizedStringRepository = localizedStringRepository;
         }
 
-        values.Link = command.Link ?? values.Link; 
-        values.Thumbnail = command.Thumbnail ?? values.Thumbnail;
-        values.Sector = command.Sector ?? values.Sector;
-        values.Channel = command.Channel ?? values.Channel;
-        values.ContentType = command.ContentType ?? values.ContentType;
-        values.PublishStatus = command.PublishStatus ?? values.PublishStatus;
-        values.PublishDate = command.PublishDate ?? values.PublishDate;
-        values.Tags = command.Tags ?? values.Tags; 
-        values.Date = command.Date ?? values.Date; 
-        values.Responsible = command.Responsible ?? values.Responsible;
-        values.CompanyId = command.CompanyId ?? values.CompanyId; 
-        if (command.LocalizedData != null)
+        public async Task Handle(UpdateVideoCommand command)
         {
-            var existingLocalizedStrings = values.LocalizedStrings.ToList(); 
-            foreach (var incomingLocalizedDto in command.LocalizedData)
-            {
-                var existingString = existingLocalizedStrings.FirstOrDefault(
-                    ls => ls.LanguageCode == incomingLocalizedDto.LanguageCode);
+            var values = await _repository.GetByIdAsync(command.Id);
 
-                if (existingString != null)
+            if (values == null)
+                throw new ApplicationException($"Video with ID {command.Id} not found.");
+
+            // Null-coalescing assignment (if null, keep old value)
+            values.Link          = command.Link          ?? values.Link;
+            values.Thumbnail     = command.Thumbnail     ?? values.Thumbnail;
+            values.Sector        = command.Sector        ?? values.Sector;
+            values.Channel       = command.Channel       ?? values.Channel;
+            values.ContentType   = command.ContentType   ?? values.ContentType;
+            values.PublishStatus = command.PublishStatus ?? values.PublishStatus;
+            values.Tags          = command.Tags          ?? values.Tags;
+            values.Responsible   = command.Responsible   ?? values.Responsible; 
+
+            if (command.LocalizedData != null)
+            {
+                var existingLocalizedStrings = values.LocalizedStrings.ToList();
+
+                foreach (var incoming in command.LocalizedData)
                 {
-                    // Mevcutsa güncelle
-                    existingString.Title = incomingLocalizedDto.Title;
-                    existingString.Description = incomingLocalizedDto.Description;
-                    _localizedStringRepository.UpdateAsync(existingString);  
-                }
-                else
-                { 
-                    var newLocalizedString = new VideoLocalizedString
-                    { 
-                        VideoId = values.Id,
-                        LanguageCode = incomingLocalizedDto.LanguageCode,
-                        Title = incomingLocalizedDto.Title,
-                        Description = incomingLocalizedDto.Description
-                    };
-                    values.LocalizedStrings.Add(newLocalizedString);  
-                    _localizedStringRepository.CreateAsync(newLocalizedString);  
-                }
-            } 
-            var languageCodesInCommand = command.LocalizedData.Select(dto => dto.LanguageCode).ToList();
-            var stringsToRemove = existingLocalizedStrings
-                .Where(ls => !languageCodesInCommand.Contains(ls.LanguageCode))
-                .ToList();
+                    var existing = existingLocalizedStrings.FirstOrDefault(x => x.Id == incoming.Id);
 
-            foreach (var stringToRemove in stringsToRemove)
-            {
-                values.LocalizedStrings.Remove(stringToRemove);  
-                _localizedStringRepository.RemoveAsync(stringToRemove);  
+                    if (existing != null)
+                    {
+                        existing.Title = incoming.Title;
+                        existing.Description = incoming.Description;
+                        await _localizedStringRepository.UpdateAsync(existing);
+                        existingLocalizedStrings.Remove(existing);
+                    }
+                    else
+                    {
+                        var newLocalized = new VideoLocalizedString
+                        {
+                            VideoId = values.Id,
+                            Title = incoming.Title,
+                            Description = incoming.Description
+                        };
+                        values.LocalizedStrings.Add(newLocalized);
+                        await _localizedStringRepository.CreateAsync(newLocalized);
+                    }
+                }
+ 
+                foreach (var toRemove in existingLocalizedStrings)
+                {
+                    values.LocalizedStrings.Remove(toRemove);
+                    await _localizedStringRepository.RemoveAsync(toRemove);
+                }
             }
-        } 
 
-        await _repository.UpdateAsync(values);
+            await _repository.UpdateAsync(values);
+        }
     }
 }

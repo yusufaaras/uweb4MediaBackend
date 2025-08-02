@@ -6,20 +6,20 @@ using uweb4Media.Application.Features.CQRS.Queries.Comments; // Where metodunu k
 
 namespace uweb4Media.Application.Features.CQRS.Handlers.Comments;
 
-public class GetCommentsByMediaContentIdQueryHandler
+public class GetCommentsByVideoIdQueryHandler
 {
     private readonly IRepository<Comment> _repository;
 
-    public GetCommentsByMediaContentIdQueryHandler(IRepository<Comment> repository)
+    public GetCommentsByVideoIdQueryHandler(IRepository<Comment> repository)
     {
         _repository = repository;
     }
 
-    public async Task<List<GetCommentQueryResult>> Handle(GetCommentsByMediaContentIdQuery query)
+    public async Task<List<GetCommentQueryResult>> Handle(GetCommentsByVideoIdQuery query)
     {
         // Medya içerik ID'sine göre yorumları filtrele
         var values = (await _repository.GetAllAsync())
-            .Where(x => x.MediaContentId == query.MediaContentId)
+            .Where(x => x.VideoId == query.VideoId)
             .ToList(); 
         return values.Select(x => new GetCommentQueryResult
         {
@@ -27,7 +27,7 @@ public class GetCommentsByMediaContentIdQueryHandler
             UserId = x.UserId,
             Text = x.Text,
             CommentDate = x.CommentDate,
-            MediaContentId = x.MediaContentId,
+            VideoId = x.VideoId,
         }).ToList();
     }
 }

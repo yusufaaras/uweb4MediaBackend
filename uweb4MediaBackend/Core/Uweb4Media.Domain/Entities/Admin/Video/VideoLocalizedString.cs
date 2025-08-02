@@ -13,11 +13,6 @@ public class VideoLocalizedString
 
     [ForeignKey("VideoId")]  
     public Video Video { get; set; }  
-
-    [Required]
-    [MaxLength(10)]  
-    public string LanguageCode { get; set; }  
-
     public string Title { get; set; }  
     public string Description { get; set; }  
     

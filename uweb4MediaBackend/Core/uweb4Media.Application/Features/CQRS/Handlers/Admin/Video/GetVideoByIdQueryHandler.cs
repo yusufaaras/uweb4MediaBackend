@@ -23,15 +23,17 @@ public class GetVideoByIdQueryHandler
             Sector = values.Sector,
             Channel = values.Channel,
             ContentType = values.ContentType,
-            PublishStatus = values.PublishStatus,
-            PublishDate = values.PublishDate,
+            PublishStatus = values.PublishStatus, 
             Tags = values.Tags,
             Date = values.Date,
             Responsible = values.Responsible,
             CompanyId = values.CompanyId,
+            IsPremium = values.IsPremium,
+            LikesCount = values.LikesCount,
+            CommentsCount = values.CommentsCount,
+            UserId = values.UserId,
             LocalizedData = values.LocalizedStrings.Select(ls => new VideoLocalizedDataResultDto
-            {
-            LanguageCode = ls.LanguageCode,
+            { 
             Title = ls.Title,
             Description = ls.Description
         }).ToList()

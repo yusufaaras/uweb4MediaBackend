@@ -18,19 +18,27 @@ namespace Uweb4Media.Domain.Entities.Admin.Video
         public List<string> Sector { get; set; } = new List<string>();
         public List<string> Channel { get; set; } = new List<string>();
 
-        public string ContentType { get; set; } // 'Video', 'Podcast' vb. (tercihen enum)
-        public string PublishStatus { get; set; } // 'Aktif', 'İncelemede' vb. (tercihen enum)
+        public string ContentType { get; set; } 
+        public string PublishStatus { get; set; } = "Incelemede";
 
-        public DateTime? PublishDate { get; set; } // Opsiyonel olabilir (DateTime tipi)
+        public List<string> Tags { get; set; } = new List<string>();  
 
-        public List<string> Tags { get; set; } = new List<string>(); // Yine JSON olarak saklanacak
-
-        public DateTime Date { get; set; } // Genellikle oluşturulma tarihi
+        public DateTime Date { get; set; }  
         public string Responsible { get; set; }
+        
+        public bool IsPremium { get; set; } = false; 
+        
+        public int LikesCount { get; set; } = 0; 
+        public int CommentsCount { get; set; } = 0;  
 
+        public int? UserId { get; set; }
+        [ForeignKey("UserId")]
+        public AppUser User { get; set; } 
         public int? CompanyId { get; set; }
         [ForeignKey("CompanyId")]
-        public Company Company { get; set; } // Company tablosuna dış anahtar ilişkisi
+        public Company Company { get; set; } 
+        public ICollection<Like> Likes { get; set; }  
+        public ICollection<Comment> Comments { get; set; } 
     }
 
 }

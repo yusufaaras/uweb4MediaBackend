@@ -66,7 +66,7 @@ namespace Uweb4Media.API.Controllers
             try
             {
                 var existingLike = (await _likeRepository.GetAllAsync())
-                                    .FirstOrDefault(l => l.UserId == command.UserId && l.MediaContentId == command.MediaContentId);
+                                    .FirstOrDefault(l => l.UserId == command.UserId && l.VideoId == command.VideoId);
 
                 (bool IsLiked, int NewLikesCount) result;
 
@@ -79,7 +79,7 @@ namespace Uweb4Media.API.Controllers
                     result = await _createLikeCommandHandler.Handle(new CreateLikeCommand
                     {
                         UserId = command.UserId,
-                        MediaContentId = command.MediaContentId
+                        VideoId = command.VideoId
                     });
                 }
 
@@ -92,8 +92,7 @@ namespace Uweb4Media.API.Controllers
             }
         }
 
-        [HttpPost] // Bu endpoint'i ToggleLike'ı çağıracak şekilde kullanmanızı önermem, ayrı işlevleri ayrı tutun.
-                   // Eğer bir Like oluşturma işlemi hala gerekiyorsa, bunu koruyun.
+        [HttpPost]  
         public async Task<IActionResult> CreateLike(CreateLikeCommand command)
         {
             var result = await _createLikeCommandHandler.Handle(command);
@@ -104,7 +103,7 @@ namespace Uweb4Media.API.Controllers
         [HttpDelete("{id}")] // Bu endpoint de RemoveLike'ı çağırıyor gibi davranacak
         public async Task<IActionResult> RemoveLike(int id)
         {
-            // Bu endpoint'e gelen 'id', Like nesnesinin kendi ID'si olmalı, MediaContentId değil.
+            // Bu endpoint'e gelen 'id', Like nesnesinin kendi ID'si olmalı, VideoId değil.
             // Bu nedenle, komutu uygun şekilde oluşturduğunuzdan emin olun.
             var result = await _removeLikeCommandHandler.Handle(new RemoveLikeCommand(id));
             return Ok(new { IsLiked = result.IsLiked, NewLikesCount = result.NewLikesCount });

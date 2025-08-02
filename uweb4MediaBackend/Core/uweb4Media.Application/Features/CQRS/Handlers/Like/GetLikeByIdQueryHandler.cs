@@ -19,7 +19,7 @@ public class GetLikeByIdQueryHandler
         {
             Id = values.Id,
             UserId = values.UserId,
-            MediaContentId = values.MediaContentId,
+            VideoId = values.VideoId,
             LikeDate = values.LikeDate,
         };
     }

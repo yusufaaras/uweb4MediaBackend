@@ -4,7 +4,7 @@ public class GetLikeByIdQueryResult
 {
     public int Id { get; set; } 
     public int UserId { get; set; } 
-    public int MediaContentId { get; set; } 
+    public int VideoId { get; set; } 
     public DateTime LikeDate { get; set; } 
     
 }

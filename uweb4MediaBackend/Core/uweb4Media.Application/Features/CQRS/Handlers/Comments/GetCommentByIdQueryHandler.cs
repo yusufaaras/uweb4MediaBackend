@@ -20,7 +20,7 @@ public class GetCommentByIdQueryHandler
             Id = values.Id,
             UserId = values.UserId,
             Text = values.Text, 
-            MediaContentId = values.MediaContentId,
+            VideoId = values.VideoId,
             CommentDate = values.CommentDate,
         };
     }

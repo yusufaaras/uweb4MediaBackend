@@ -49,9 +49,9 @@ namespace Uweb4Media.Persistence.Context
 
             // İÇERİK SİLİNDİĞİNDE YORUMLARIN DAVRANIŞI
             modelBuilder.Entity<Comment>()
-                .HasOne(c => c.MediaContent)
+                .HasOne(c => c.Video)
                 .WithMany(mc => mc.Comments)
-                .HasForeignKey(c => c.MediaContentId)
+                .HasForeignKey(c => c.VideoId)
                 .OnDelete(DeleteBehavior.NoAction); // NO ACTION olarak kalmaya devam etsin.
             
             modelBuilder.Entity<Like>()
@@ -61,9 +61,9 @@ namespace Uweb4Media.Persistence.Context
                 .OnDelete(DeleteBehavior.NoAction); 
             
             modelBuilder.Entity<Like>()
-                .HasOne(l => l.MediaContent)
+                .HasOne(l => l.Video)
                 .WithMany(mc => mc.Likes)
-                .HasForeignKey(l => l.MediaContentId)
+                .HasForeignKey(l => l.VideoId)
                 .OnDelete(DeleteBehavior.Cascade); // Bu CASCADE olarak kalmalı, MediaContent silinince beğenileri de silinsin.
 
             // ABONELİK İLİŞKİLERİ (Restrict olarak doğru ayarlanmışlar)
@@ -82,7 +82,7 @@ namespace Uweb4Media.Persistence.Context
 
             // Benzersiz indeksler
             modelBuilder.Entity<Like>()
-                .HasIndex(l => new { l.MediaContentId, l.UserId })
+                .HasIndex(l => new { l.VideoId, l.UserId })
                 .IsUnique();
 
             modelBuilder.Entity<Subscription>()

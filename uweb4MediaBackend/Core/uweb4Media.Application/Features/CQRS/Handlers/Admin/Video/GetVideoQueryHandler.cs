@@ -27,15 +27,17 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
                 Sector = x.Sector,
                 Channel = x.Channel,
                 ContentType = x.ContentType,
-                PublishStatus = x.PublishStatus,
-                PublishDate = x.PublishDate,
+                PublishStatus = x.PublishStatus, 
+                IsPremium = x.IsPremium,
+                LikesCount = x.LikesCount,
+                CommentsCount = x.CommentsCount,
+                UserId = x.UserId,
                 Tags = x.Tags,
                 Date = x.Date,
                 Responsible = x.Responsible,
                 CompanyId = x.CompanyId,
                 LocalizedData = x.LocalizedStrings?.Select(ls => new VideoLocalizedDataResultDto
-                {
-                    LanguageCode = ls.LanguageCode,
+                { 
                     Title = ls.Title,
                     Description = ls.Description
                 }).ToList() ?? new List<VideoLocalizedDataResultDto>()

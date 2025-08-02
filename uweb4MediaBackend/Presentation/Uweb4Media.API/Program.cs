@@ -112,7 +112,7 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<GetCommentByIdQueryHandler>(); 
             builder.Services.AddScoped<CreateCommentCommandHandler>(); 
             builder.Services.AddScoped<RemoveCommentCommandHandler>();
-            builder.Services.AddScoped<GetCommentsByMediaContentIdQueryHandler>();
+            builder.Services.AddScoped<GetCommentsByVideoIdQueryHandler>();
             
             //Notification
             builder.Services.AddScoped<GetNotificationQueryHandler>(); 

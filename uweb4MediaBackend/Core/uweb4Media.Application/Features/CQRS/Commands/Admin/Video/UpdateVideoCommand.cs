@@ -16,11 +16,7 @@ public class UpdateVideoCommand
     public List<string>? Channel { get; set; }
 
     public string? ContentType { get; set; }
-    public string? PublishStatus { get; set; }
-    public DateTime? PublishDate { get; set; }
-    public List<string>? Tags { get; set; }
-
-    public DateTime? Date { get; set; }
-    public string? Responsible { get; set; }
-    public int? CompanyId { get; set; }
-}
+    public string? PublishStatus { get; set; } 
+    public List<string>? Tags { get; set; } 
+    public string? Responsible { get; set; }  
+}        

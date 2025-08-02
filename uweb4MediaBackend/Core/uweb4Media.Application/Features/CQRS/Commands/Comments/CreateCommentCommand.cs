@@ -4,5 +4,5 @@ public class CreateCommentCommand
 {
     public string Text { get; set; } 
     public int UserId { get; set; } 
-    public int MediaContentId { get; set; } 
+    public int VideoId { get; set; } 
 }

@@ -21,7 +21,7 @@ public class GetLikeQueryHandler
             Id=x.Id,
             UserId = x.UserId,
             LikeDate = x.LikeDate,
-            MediaContentId = x.MediaContentId,
+            VideoId = x.VideoId,
         }).ToList();
     }
 }

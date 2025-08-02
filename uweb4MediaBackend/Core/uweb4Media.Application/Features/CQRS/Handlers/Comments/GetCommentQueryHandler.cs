@@ -21,7 +21,7 @@ public class GetCommentQueryHandler
             UserId = x.UserId,
             Text = x.Text,
             CommentDate = x.CommentDate,
-            MediaContentId = x.MediaContentId,
+            VideoId = x.VideoId,
         }).ToList();
     }
 }

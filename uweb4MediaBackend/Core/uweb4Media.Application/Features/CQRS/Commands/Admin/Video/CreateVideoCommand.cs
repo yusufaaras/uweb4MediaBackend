@@ -17,20 +17,26 @@ public class CreateVideoCommand
     public List<string> Channel { get; set; } = new();
 
     public string ContentType { get; set; }
-    public string PublishStatus { get; set; }
-    public DateTime? PublishDate { get; set; }
+    public string PublishStatus { get; set; } = "Incelemede";
     public List<string> Tags { get; set; } = new();
 
     public DateTime? Date { get; set; }
     public string Responsible { get; set; }
-    public int? CompanyId { get; set; }
+    public int? CompanyId { get; set; } 
+        
+    public bool IsPremium { get; set; } = false; 
+        
+    public int LikesCount { get; set; } = 0; 
+    public int CommentsCount { get; set; } = 0;  
+
+    public int? UserId { get; set; }
 }
 
 public class VideoLocalizedDataDto
 {
+    public int Id { get; set; }
     [Required]
-    [MaxLength(10)]
-    public string LanguageCode { get; set; }
+    [MaxLength(10)] 
 
     public string Title { get; set; }
     public string Description { get; set; }
