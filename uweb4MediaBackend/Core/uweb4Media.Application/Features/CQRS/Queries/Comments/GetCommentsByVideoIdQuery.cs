@@ -4,8 +4,8 @@ public class GetCommentsByVideoIdQuery
 {
     public int VideoId { get; set; }
 
-    public GetCommentsByVideoIdQuery(int VideoId)
+    public GetCommentsByVideoIdQuery(int videoId)
     {
-        VideoId = VideoId;
+        VideoId = videoId;
     }
 }

@@ -20,7 +20,7 @@ public class CreateVideoCommand
     public List<string>? Tags { get; set; }
     public DateTime? Date { get; set; }
     public string? Responsible { get; set; }
-    public bool? IsPremium { get; set; }
+    public bool? IsPremium { get; set; } = false;
     public int? LikesCount { get; set; }
     public int? CommentsCount { get; set; }
     public int? UserId { get; set; }
