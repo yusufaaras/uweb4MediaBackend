@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Uweb4MediaAPI20250806002728" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Yusuf\ ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Presentation\\Uweb4Media\.API\\obj\\Release\\net8\.0\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

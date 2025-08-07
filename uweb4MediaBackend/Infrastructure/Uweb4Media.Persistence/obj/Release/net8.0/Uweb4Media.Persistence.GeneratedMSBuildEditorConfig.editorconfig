@@ -16,6 +16,6 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Uweb4Media.Persistence
-build_property.ProjectDir = C:\Users\Yusuf ARAS\OneDrive\Masaüstü\mediabackend\uweb4MediaBackend-338358b56bf7276b8a7402b3929c5568271ac5d8\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\
+build_property.ProjectDir = C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

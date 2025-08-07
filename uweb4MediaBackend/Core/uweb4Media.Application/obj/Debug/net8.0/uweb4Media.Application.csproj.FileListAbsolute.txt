@@ -61,3 +61,19 @@ C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/refint/uweb4Media.Application.dll
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/uweb4Media.Application.pdb
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/Debug/net8.0/ref/uweb4Media.Application.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.deps.json
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\uweb4Media.Application.pdb
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\Uweb4Media.Domain.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\bin\Debug\net8.0\Uweb4Media.Domain.pdb
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.AssemblyReference.cache
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.AssemblyInfoInputs.cache
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.AssemblyInfo.cs
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.CoreCompileInputs.cache
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.sourcelink.json
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.csproj.CopyComplete
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\refint\uweb4Media.Application.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\uweb4Media.Application.pdb
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Core\uweb4Media.Application\obj\Debug\net8.0\ref\uweb4Media.Application.dll

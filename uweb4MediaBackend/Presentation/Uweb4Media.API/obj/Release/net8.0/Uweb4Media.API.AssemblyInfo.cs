@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Uweb4Media.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ae1eb5b8e83c92548a0cc30e276b7d188868827")]
 [assembly: System.Reflection.AssemblyProductAttribute("Uweb4Media.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Uweb4Media.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -21,7 +21,9 @@ namespace Uweb4Media.Persistence.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer("Server=localhost,1433;Database=uweb4media_db;User Id=SA;Password=Yagmur2736;Encrypt=False;TrustServerCertificate=True");
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=uweb4media_db;User Id=SA;Password=Yusuf123;Encrypt=False;TrustServerCertificate=True");
+            //optionsBuilder.UseSqlServer("Server=localhost,1433;Database=uweb4media_db;User Id=SA;Password=Yusuf123;Encrypt=False;TrustServerCertificate=True");
+
+            optionsBuilder.UseSqlServer("Server=tcp:uweb4mediadb.database.windows.net,1433;Initial Catalog=uweb4media_db;Persist Security Info=False;User ID=web4Prime;Password=Uweb4.2025;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

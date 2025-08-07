@@ -1,33 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj": {}
+    "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Presentation\\Uweb4Media.API\\Uweb4Media.API.csproj": {}
   },
   "projects": {
-    "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj": {
+    "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\uweb4Media.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\uweb4Media.Application.csproj",
         "projectName": "uweb4Media.Application",
-        "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj",
-        "packagesPath": "/Users/aliunnab/.nuget/packages/",
-        "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/obj/",
+        "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\uweb4Media.Application.csproj",
+        "packagesPath": "C:\\Users\\Yusuf ARAS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/aliunnab/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Yusuf ARAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj": {
-                "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj"
+              "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj": {
+                "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj"
               }
             }
           }
@@ -36,11 +43,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -112,26 +114,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj": {
+    "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj",
         "projectName": "Uweb4Media.Domain",
-        "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
-        "packagesPath": "/Users/aliunnab/.nuget/packages/",
-        "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/",
+        "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj",
+        "packagesPath": "C:\\Users\\Yusuf ARAS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/aliunnab/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Yusuf ARAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -144,11 +153,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -176,37 +180,44 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj": {
+    "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Infrastructure\\Uweb4Media.Persistence\\Uweb4Media.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Infrastructure\\Uweb4Media.Persistence\\Uweb4Media.Persistence.csproj",
         "projectName": "Uweb4Media.Persistence",
-        "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
-        "packagesPath": "/Users/aliunnab/.nuget/packages/",
-        "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/",
+        "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Infrastructure\\Uweb4Media.Persistence\\Uweb4Media.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Yusuf ARAS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Infrastructure\\Uweb4Media.Persistence\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/aliunnab/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Yusuf ARAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj": {
-                "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj"
+              "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\uweb4Media.Application.csproj": {
+                "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\uweb4Media.Application.csproj"
               },
-              "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj": {
-                "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj"
+              "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj": {
+                "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\Uweb4Media.Domain\\Uweb4Media.Domain.csproj"
               }
             }
           }
@@ -215,11 +226,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -271,37 +277,44 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj": {
+    "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Presentation\\Uweb4Media.API\\Uweb4Media.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
+        "projectUniqueName": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Presentation\\Uweb4Media.API\\Uweb4Media.API.csproj",
         "projectName": "Uweb4Media.API",
-        "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
-        "packagesPath": "/Users/aliunnab/.nuget/packages/",
-        "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/",
+        "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Presentation\\Uweb4Media.API\\Uweb4Media.API.csproj",
+        "packagesPath": "C:\\Users\\Yusuf ARAS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Presentation\\Uweb4Media.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/aliunnab/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Yusuf ARAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj": {
-                "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj"
+              "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\uweb4Media.Application.csproj": {
+                "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Core\\uweb4Media.Application\\uweb4Media.Application.csproj"
               },
-              "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj": {
-                "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj"
+              "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Infrastructure\\Uweb4Media.Persistence\\Uweb4Media.Persistence.csproj": {
+                "projectPath": "C:\\Users\\Yusuf ARAS\\OneDrive\\Belgeler\\GitHub\\uweb4MediaBackend\\uweb4MediaBackend\\Infrastructure\\Uweb4Media.Persistence\\Uweb4Media.Persistence.csproj"
               }
             }
           }
@@ -310,11 +323,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -383,7 +391,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
