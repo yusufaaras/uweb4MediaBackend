@@ -48,7 +48,7 @@ public async Task DistributePaymentAsync(string paymentIntentId, IEnumerable<Par
         var balanceTransaction = await balanceTransactionService.GetAsync(charge.BalanceTransactionId);
         stripeFee = balanceTransaction.Fee;
     }
-
+    
     // Fee alınamazsa charge.Amount ile devam et (test ortamı için)
     var distributableAmount = charge.Amount - stripeFee;
     if (stripeFee == 0)
