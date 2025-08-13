@@ -29,6 +29,7 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.User
                 AvatarUrl = values.AvatarUrl,
                 Bio = values.Bio,
                 SubscriptionStatus = values.SubscriptionStatus,
+                PostToken = values.PostToken,
             };
         }
     }

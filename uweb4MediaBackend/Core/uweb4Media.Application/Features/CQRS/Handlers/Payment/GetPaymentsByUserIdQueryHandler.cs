@@ -29,7 +29,8 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
                     CreatedAt = values.CreatedAt, 
                     InvoiceId = values.InvoiceId,
                     InvoicePdfUrl = values.InvoicePdfUrl,
-                    InvoiceStatus = values.InvoiceStatus
+                    InvoiceStatus = values.InvoiceStatus,
+                    IsToken = values.IsToken
                 })
                 .ToList();
         }

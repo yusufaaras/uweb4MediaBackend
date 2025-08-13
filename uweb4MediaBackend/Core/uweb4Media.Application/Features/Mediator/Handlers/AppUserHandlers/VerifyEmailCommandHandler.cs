@@ -38,6 +38,7 @@ public class VerifyEmailCommandHandler : IRequestHandler<VerifyEmailCommand, boo
             Surname = temp.Surname,
             Email = temp.Email,
             SubscriptionStatus = "free",
+            PostToken = 0,
             EmailVerificationCode = null,
             IsEmailVerified = true
         };

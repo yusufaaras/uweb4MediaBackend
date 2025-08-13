@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uweb4Media.Persistence.Context;
 
@@ -11,9 +12,11 @@ using Uweb4Media.Persistence.Context;
 namespace Uweb4Media.Persistence.Migrations
 {
     [DbContext(typeof(Uweb4MediaContext))]
-    partial class Uweb4MediaContextModelSnapshot : ModelSnapshot
+    [Migration("20250813132855_addPostToken")]
+    partial class addPostToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -576,9 +579,6 @@ namespace Uweb4Media.Persistence.Migrations
                     b.Property<string>("InvoiceStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsToken")
-                        .HasColumnType("bit");
-
                     b.Property<string>("IyzicoPaymentId")
                         .HasColumnType("nvarchar(max)");
 
@@ -623,9 +623,6 @@ namespace Uweb4Media.Persistence.Migrations
 
                     b.Property<string>("Icon")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsToken")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()

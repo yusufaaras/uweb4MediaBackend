@@ -18,8 +18,11 @@ public class GetPlansByIdQueryHandler
         {
             Id = values.Id,
             Name = values.Name, 
+            Description = values.Description,
+            Icon = values.Icon,
             Price = values.Price,
             status = values.status,
+            IsToken = values.IsToken,
         };
     }
 }

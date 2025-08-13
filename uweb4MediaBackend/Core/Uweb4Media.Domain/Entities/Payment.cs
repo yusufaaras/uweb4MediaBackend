@@ -13,9 +13,10 @@ public class Payment
     public int UserId { get; set; }
     public string? Provider { get; set; }
     public DateTime CreatedAt { get; set; }
-    public string? PaymentCode { get; set; } // yeni alan
+    public string? PaymentCode { get; set; }  
     public DateTime? PaymentCodeGeneratedAt { get; set; }
     public string? InvoiceId { get; set; }
     public string? InvoicePdfUrl { get; set; }
     public string? InvoiceStatus { get; set; }
+    public bool IsToken { get; set; } 
 }

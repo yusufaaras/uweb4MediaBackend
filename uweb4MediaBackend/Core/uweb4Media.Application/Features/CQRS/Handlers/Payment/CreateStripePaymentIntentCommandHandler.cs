@@ -46,9 +46,15 @@ public class CreateStripePaymentIntentCommandHandler : IRequestHandler<CreateStr
             Provider = "stripe",
             Email = request.Email,
             UserId = request.UserId,
-            CreatedAt = DateTime.UtcNow
+            CreatedAt = DateTime.UtcNow,
+            IsToken = request.IsToken
         });
+        if (request.IsToken)
+        {
+            user.PostToken += 5;
+            await _userRepository.UpdateAsync(user);
+        }
 
-        return result.ClientSecret;
+        return result.ClientSecret; 
     }
 }

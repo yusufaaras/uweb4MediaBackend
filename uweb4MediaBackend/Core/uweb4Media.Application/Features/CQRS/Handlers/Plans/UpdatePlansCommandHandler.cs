@@ -15,8 +15,11 @@ public class UpdatePlansCommandHandler
     {
         var values = await _repository.GetByIdAsync(command.Id);
         values.Name = command.Name;
+        values.Description = command.Description;
+        values.Icon = command.Icon;
         values.Price = command.Price;
         values.status=command.status;
+        values.IsToken=command.IsToken;
         await _repository.UpdateAsync(values);
     }
 }

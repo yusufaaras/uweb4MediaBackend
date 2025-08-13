@@ -11,12 +11,15 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
     {
         private readonly IPaymentService _paymentService;
         private readonly IRepository<Uweb4Media.Domain.Entities.Payment> _repository;
+        private readonly IRepository<AppUser> _userRepository; // kullanıcıya ulaşmak için ekledik
 
         public CreatePaymentCommandHandler(IPaymentService paymentService,
-            IRepository<Uweb4Media.Domain.Entities.Payment> repository)
+            IRepository<Uweb4Media.Domain.Entities.Payment> repository,
+            IRepository<AppUser> userRepository)
         {
             _paymentService = paymentService;
             _repository = repository;
+            _userRepository = userRepository;
         }
 
         public async Task<string> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
@@ -39,8 +42,20 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
                     Status = "success",
                     Email = request.Email,
                     UserId = request.UserId,
+                    IsToken = request.IsToken,
                     CreatedAt = DateTime.UtcNow
                 });
+
+                if (request.IsToken)
+                {
+                    // Kullanıcıya +5 PostToken ekle
+                    var user = await _userRepository.GetByIdAsync(request.UserId);
+                    if (user != null)
+                    {
+                        user.PostToken += 5;
+                        await _userRepository.UpdateAsync(user);
+                    }
+                }
             }
 
             return paymentId;

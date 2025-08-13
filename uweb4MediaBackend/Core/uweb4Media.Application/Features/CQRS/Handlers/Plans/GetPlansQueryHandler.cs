@@ -18,8 +18,11 @@ public class GetPlansQueryHandler
         {
             Id = x.Id,
             Price = x.Price,
+            Description = x.Description,
+            Icon = x.Icon,
             Name = x.Name,
-            status = x.status
+            status = x.status,
+            IsToken = x.IsToken,
         }).ToList();
     }
 }

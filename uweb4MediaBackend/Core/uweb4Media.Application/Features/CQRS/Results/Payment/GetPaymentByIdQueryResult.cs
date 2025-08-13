@@ -11,6 +11,7 @@ public class GetPaymentByIdQueryResult
     public string? Provider { get; set; } // "iyzico", "stripe" gibi
     public DateTime CreatedAt { get; set; }
     public string? InvoiceId { get; set; }
+    public bool IsToken { get; set; } 
     public string? InvoicePdfUrl { get; set; }
     public string? InvoiceStatus { get; set; }
     

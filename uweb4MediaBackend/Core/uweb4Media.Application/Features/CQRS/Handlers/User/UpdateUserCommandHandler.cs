@@ -27,6 +27,7 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.User
             values.Email = command.Email;
             values.AppRoleID = command.AppRoleID.Value;
             values.SubscriptionStatus = command.SubscriptionStatus;
+            values.PostToken = command.PostToken;
             values.AvatarUrl = command.AvatarUrl;
             values.Bio = command.Bio;
             await _repository.UpdateAsync(values);

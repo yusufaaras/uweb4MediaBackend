@@ -27,15 +27,24 @@ namespace Uweb4Media.Persistence.Repositories.AppUserRepositories
                 .FirstOrDefaultAsync();
             return values;
         }
+
         public async Task<AppUser?> GetByIdAsync(int id)
         {
             return await _context.AppUsers
                 .Include(r => r.AppRole)
                 .FirstOrDefaultAsync(x => x.AppUserID == id);
         }
+
         public async Task<AppUser?> GetByEmailAsync(string email)
         {
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == email);
         }
+
+        public async Task UpdateAsync(AppUser user) // EKLENDİ
+        {
+            _context.AppUsers.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
+    
 }

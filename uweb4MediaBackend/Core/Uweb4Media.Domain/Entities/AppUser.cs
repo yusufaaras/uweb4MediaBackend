@@ -39,6 +39,8 @@ namespace Uweb4Media.Domain.Entities
         
         [MaxLength(6)]
         public string? EmailVerificationCode { get; set; }
+
+        public int PostToken { get; set; } = 0;
         public bool IsKYCVerified { get; set; }
         [MaxLength(128)]
         public string? StripeAccountId { get; set; }

@@ -45,7 +45,7 @@ public class SendPaymentCodeCommandHandler : IRequestHandler<SendPaymentCodeComm
             UserId = request.UserId,
             CreatedAt = DateTime.UtcNow,
             PaymentCode = code,
-            PaymentCodeGeneratedAt = DateTime.UtcNow
+            PaymentCodeGeneratedAt = DateTime.UtcNow,
         };
         await _paymentRepository.CreateAsync(payment);
 

@@ -15,8 +15,11 @@ public class CreatePlansCommandHandler
         await _repository.CreateAsync(new Uweb4Media.Domain.Entities.Plans
         {
             Name = command.Name,
+            Description = command.Description,
+            Icon = command.Icon,
             Price = command.Price,
-            status = false 
+            status = false,
+            IsToken = command.IsToken,
         });
 
     }

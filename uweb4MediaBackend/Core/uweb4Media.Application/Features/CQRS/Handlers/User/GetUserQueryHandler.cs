@@ -30,6 +30,7 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.User
                 AppRoleID = x.AppRoleID,
                 AvatarUrl = x.AvatarUrl,
                 Bio = x.Bio,
+                PostToken = x.PostToken,
                 SubscriptionStatus = x.SubscriptionStatus,
             }).ToList();
         }

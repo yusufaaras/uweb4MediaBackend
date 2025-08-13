@@ -9,4 +9,6 @@ public class CreateStripePaymentIntentCommand : IRequest<string>
     public string Email { get; set; }
     public int UserId { get; set; }
     public string Currency { get; set; }
+    public bool IsToken { get; set; } // EKLENDİ!
+
 }

@@ -45,6 +45,7 @@ public class CreateAppUserCommandHandler : IRequestHandler<CreateAppUserCommand>
             Surname = request.Surname,
             Email = request.Email,
             SubscriptionStatus = "free",
+            PostToken = 0,
             EmailVerificationCode = verificationCode,
             IsEmailVerified = false
         };

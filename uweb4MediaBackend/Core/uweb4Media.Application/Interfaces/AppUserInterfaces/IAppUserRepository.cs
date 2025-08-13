@@ -13,5 +13,6 @@ namespace uweb4Media.Application.Interfaces.AppUserInterfaces
         Task<AppUser> GetByFilterAsync(Expression<Func<AppUser, bool>> filter);
         Task<AppUser?> GetByIdAsync(int id);
         Task<AppUser?> GetByEmailAsync(string email);
+        Task UpdateAsync(AppUser user); 
     }
 }

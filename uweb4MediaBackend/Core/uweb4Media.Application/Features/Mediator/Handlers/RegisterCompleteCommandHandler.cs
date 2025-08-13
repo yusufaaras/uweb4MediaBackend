@@ -34,6 +34,7 @@ public class RegisterCompleteCommandHandler : IRequestHandler<RegisterCompleteCo
             Surname = temp.Surname,
             Email = temp.Email,
             SubscriptionStatus = "free",
+            PostToken = 0,
             EmailVerificationCode = null,
             IsEmailVerified = true
         };

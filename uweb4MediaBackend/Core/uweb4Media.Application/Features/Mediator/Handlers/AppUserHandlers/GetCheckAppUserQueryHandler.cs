@@ -40,7 +40,7 @@ namespace uweb4Media.Application.Features.Mediator.Handlers.AppUserHandlers
                 values.Username = user.Username;
                 values.Email = user.Email; // DTO'ya e-postayı atayın
                 values.Role = user.AppRole?.Name; // İlişki yüklendiği için AppRole.Name'e güvenle erişebiliriz
-                values.Name = user.Name; // Diğer bilgileri de DTO'ya atayın
+                values.Name = user.Name; 
                 values.Surname = user.Surname;
                 values.AvatarUrl = user.AvatarUrl;
                 values.GoogleId = user.GoogleId; // Normal kullanıcılar için null olacaktır, sorun değil

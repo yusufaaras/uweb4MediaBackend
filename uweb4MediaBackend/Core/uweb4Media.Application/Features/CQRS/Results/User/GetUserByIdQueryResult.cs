@@ -18,5 +18,7 @@ namespace uweb4Media.Application.Features.CQRS.Results.User
         public string? AvatarUrl { get; set; } 
         public string? Bio { get; set; }
         public string SubscriptionStatus { get; set; }
+        
+        public int PostToken { get; set; } = 0;
     }
 }
