@@ -18,6 +18,7 @@ public class GetSubscriptionByIdQueryHandler
         {
             SubscriberUserId = values.SubscriberUserId,
             AuthorUserId = values.AuthorUserId,
+            AuthorCompanyId = values.AuthorCompanyId,
             SubscribedDate = values.SubscribedDate,
         };
     }

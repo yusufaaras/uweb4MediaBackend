@@ -16,9 +16,10 @@ public class GetSubscriptionQueryHandler
         var values = await _repository.GetAllAsync();
         return values.Select(x => new GetSubscriptionQueryResult
         {
-            Id=x.Id,
-            AuthorUserId = x.AuthorUserId,
+            Id = x.Id,
             SubscriberUserId = x.SubscriberUserId,
+            AuthorUserId = x.AuthorUserId,
+            AuthorCompanyId = x.AuthorCompanyId,
             SubscribedDate = x.SubscribedDate
         }).ToList();
     }

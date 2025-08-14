@@ -13,12 +13,21 @@ public class CreateSubscriptionCommandHandler
     {
         _repository = repository;
     }
+
     public async Task Handle(CreateSubscriptionCommand command)
     {
+        // Validasyon: Sadece biri dolu olmalı!
+        if ((command.AuthorUserId == null && command.AuthorCompanyId == null) ||
+            (command.AuthorUserId != null && command.AuthorCompanyId != null))
+        {
+            throw new Exception("Takip edilen sadece bir kullanıcı veya bir şirket olmalı.");
+        }
+
         await _repository.CreateAsync(new Uweb4Media.Domain.Entities.Subscription
-        { 
+        {
             SubscriberUserId = command.SubscriberUserId,
-            AuthorUserId=command.AuthorUserId
+            AuthorUserId = command.AuthorUserId,
+            AuthorCompanyId = command.AuthorCompanyId
         });
     }
 }

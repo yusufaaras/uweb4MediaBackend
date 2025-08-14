@@ -81,6 +81,12 @@ namespace Uweb4Media.Persistence.Context
                 .HasForeignKey(s => s.AuthorUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Subscription>()
+                .HasOne(s => s.AuthorCompany)
+                .WithMany() 
+                .HasForeignKey(s => s.AuthorCompanyId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             // Benzersiz indeksler
             modelBuilder.Entity<Like>()
