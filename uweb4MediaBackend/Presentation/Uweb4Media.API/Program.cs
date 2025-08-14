@@ -76,7 +76,7 @@ namespace Uweb4Media.API
             {
                 options.AddPolicy("AllowFirebase", policy =>
                     policy.WithOrigins(
-                        "https://primeweb4-9c444.firebaseapp.com", "https://adminprimeweb4.web.app"
+                        "https://primeweb4-9c444.firebaseapp.com", "https://adminprimeweb4.web.app","https://primeui2.web.app"
                     )
                     .AllowAnyHeader()
                     .AllowAnyMethod()
