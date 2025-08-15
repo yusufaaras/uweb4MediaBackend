@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using uweb4Media.Application.Features.Mediator.Commands.AppUserCommands;
+using uweb4Media.Application.Helper;
 using uweb4Media.Application.Interfaces.Email;
 using uweb4Media.Application.Model;
 
@@ -19,15 +20,18 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, b
 
     public async Task<bool> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
-        // Benzersiz kontrolü ve validasyon burada yapılmalı (kendi repository'de kontrol edebilirsin)
+        
         if (string.IsNullOrEmpty(request.Email) || !request.Email.Contains("@"))
             throw new Exception("Geçerli bir e-posta adresi giriniz.");
-
+        
+        if (!EmailDomainHelper.IsAllowedDomain(request.Email))
+            throw new Exception("Bu e-posta sağlayıcısına izin verilmiyor.");
+        
         var verificationCode = new Random().Next(100000, 999999).ToString();
         var cacheModel = new TempRegisterModel
         {
             Username = request.Username,
-            Password = request.Password, // hashlemeden, çünkü kayıt tamamlandığında hashleyeceğiz!
+            Password = request.Password, 
             Name = request.Name,
             Surname = request.Surname,
             Email = request.Email,
