@@ -267,8 +267,7 @@ namespace Uweb4Media.API
                         }
                     });
                 });
-            }
-            app.UseForwardedHeaders();
+            } 
             app.UseHttpsRedirection();
             app.UseCookiePolicy();
             app.UseAuthentication();
