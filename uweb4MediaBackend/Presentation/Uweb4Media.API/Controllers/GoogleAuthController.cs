@@ -32,21 +32,22 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("google-callback")]
-    public async Task<IActionResult> GoogleCallback()
+public async Task<IActionResult> GoogleCallback()
+{
+    try
     {
         var authenticateResult = await HttpContext.AuthenticateAsync("Google");
 
         if (!authenticateResult.Succeeded)
         {
-            // Kimlik doğrulama başarısız olursa hata sayfasına yönlendir
             return Redirect($"{_configuration["Jwt:Audience"]}/login-error?message=Google kimlik doğrulama başarısız.");
         }
 
         var claims = authenticateResult.Principal.Claims;
         var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
         var name = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-        var surname = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value; // Google genellikle soyadı ayrı vermez, Name'in içinde olabilir.
-        var googleId = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value; // Google'dan gelen benzersiz ID
+        var surname = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
+        var googleId = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
         var profilePic = claims.FirstOrDefault(c => c.Type == "picture")?.Value;
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(googleId))
@@ -54,7 +55,6 @@ public class AuthController : ControllerBase
             return Redirect($"{_configuration["Jwt:Audience"]}/login-error?message=Google'dan gerekli bilgiler alınamadı.");
         }
 
-        // Google ile giriş yapan kullanıcıyı kaydet veya güncelle
         var createGoogleUserCommand = new CreateGoogleAppUserCommand
         {
             Email = email,
@@ -64,7 +64,7 @@ public class AuthController : ControllerBase
             AvatarUrl = profilePic
         };
         await _mediator.Send(createGoogleUserCommand);
- 
+
         var userCheckQuery = new GetAppUserByGoogleIdQuery { GoogleId = googleId, Email = email };
         var userResult = await _mediator.Send(userCheckQuery);
 
@@ -73,17 +73,23 @@ public class AuthController : ControllerBase
             return Redirect($"{_configuration["Jwt:Audience"]}/login-error?message=Kullanıcı bilgisi veritabanında bulunamadı.");
         }
 
-        // JWT Token Oluşturma
-        var tokenDto = JwtTokenGenerator.GenerateToken(userResult); 
+        var tokenDto = JwtTokenGenerator.GenerateToken(userResult);
         var redirectUrl = $"{_configuration["Jwt:Audience"]}/auth/google-success" +
                           $"?token={tokenDto.Token}" +
                           $"&email={email}" +
                           $"&name={name}" +
                           $"&profilePic={profilePic}" +
-                          $"&expires={tokenDto.ExpireDate.ToString("o")}";  
+                          $"&expires={tokenDto.ExpireDate.ToString("o")}";
 
         return Redirect(redirectUrl);
-    }    
+    }
+    catch (Exception ex)
+    {
+        // Hata detayını browser'da görebilmek için:
+        return Content($"EXCEPTION: {ex.Message} <br/><br/> {ex.StackTrace}");
+    }
+}
+    
     [HttpGet("protected-data")]
     public IActionResult GetProtectedData()
     {
