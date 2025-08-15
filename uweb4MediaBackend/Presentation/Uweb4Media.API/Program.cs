@@ -27,6 +27,7 @@ using Microsoft.AspNetCore.Authentication.Google;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.HttpOverrides;
 using uweb4Media.Application;
 using uweb4Media.Application.Features.CQRS.Handlers.Invoice;
 using uweb4Media.Application.Features.CQRS.Handlers.Payment;
@@ -44,9 +45,10 @@ namespace Uweb4Media.API
     {
         public static void Main(string[] args)
         {
+            
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddHttpClient();
-
+    
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
@@ -70,7 +72,7 @@ namespace Uweb4Media.API
                     }
                 };
             });
-
+    
             // CORS Policy tanımları
             builder.Services.AddCors(options =>
             {
@@ -235,6 +237,13 @@ namespace Uweb4Media.API
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+            
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+                // Azure için şu opsiyonu da eklemen yararlı olur:
+                // KnownNetworks = { }, KnownProxies = { }
+            });
 
             if (app.Environment.IsDevelopment())
             {
@@ -259,7 +268,7 @@ namespace Uweb4Media.API
                     });
                 });
             }
-
+            app.UseForwardedHeaders();
             app.UseHttpsRedirection();
             app.UseCookiePolicy();
             app.UseAuthentication();
