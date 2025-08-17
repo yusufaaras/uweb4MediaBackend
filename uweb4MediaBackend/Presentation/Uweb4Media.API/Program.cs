@@ -15,14 +15,14 @@ using uweb4Media.Application.Features.CQRS.Handlers.Subscription;
 using uweb4Media.Application.Features.CQRS.Handlers.User;
 using uweb4Media.Application.Interfaces.AppRoleInterfaces;
 using uweb4Media.Application.Interfaces.AppUserInterfaces;
-using uweb4Media.Application.Interfaces;
+using uweb4Media.Application.Interfaces; 
 using uweb4Media.Application.Services;
 using uweb4Media.Application.Tools;
 using Uweb4Media.Persistence.Context;
 using Uweb4Media.Persistence.Repositories.AppRoleRepositories;
 using Uweb4Media.Persistence.Repositories.AppUserRepositories;
 using Uweb4Media.Persistence.Repositories;
-using System.Security.Claims;
+using System.Security.Claims; 
 using Microsoft.AspNetCore.Authentication.Google;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -31,6 +31,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using uweb4Media.Application;
 using uweb4Media.Application.Features.CQRS.Handlers.Invoice;
 using uweb4Media.Application.Features.CQRS.Handlers.Payment;
+using uweb4Media.Application.Features.Mediator.Handlers.GitHub;
 using uweb4Media.Application.Interfaces.Email;
 using uweb4Media.Application.Interfaces.Payment;
 using uweb4Media.Application.Services.Email;
@@ -162,6 +163,7 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<RemoveVideoCommandHandler>();
             builder.Services.AddScoped<UpdateVideoCommandHandler>();
             builder.Services.AddScoped<GetInvoicesQueryHandler>();
+            builder.Services.AddScoped<CreateGithubAppUserCommandHandler>();
             builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
             builder.Services.AddScoped<GetPaymentsByUserIdQueryHandler>();
@@ -169,20 +171,18 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<IStripeConnectService, StripeConnectService>();
             builder.Services.AddScoped<IEmailService, SmtpEmailService>();
             builder.Services.AddMemoryCache();
-
+    
             builder.Services.AddAuthentication(options =>
-            {
-                // Varsayılan kimlik doğrulama şemaları
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddCookie(options =>
-            {
-                options.Cookie.SameSite = SameSiteMode.None;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-                options.Cookie.IsEssential = true;
-            })
+                {
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                })
+                .AddCookie(options =>
+                {
+                    options.Cookie.SameSite = SameSiteMode.None;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                    options.Cookie.IsEssential = true;
+                })
             .AddJwtBearer(opt =>
             {
                 opt.RequireHttpsMetadata = true;
@@ -223,6 +223,24 @@ namespace Uweb4Media.API
                     }
                     return Task.CompletedTask;
                 };
+            })
+            .AddGitHub(options =>
+            {
+                options.ClientId = builder.Configuration["Authentication:GitHub:ClientId"];
+                options.ClientSecret = builder.Configuration["Authentication:GitHub:ClientSecret"];
+                options.CallbackPath = "/api/auth/github-callback";
+                options.Scope.Add("user:email");
+                options.SaveTokens = true;
+                options.Events.OnCreatingTicket = ctx =>
+                {
+                    var id = ctx.User.GetProperty("id").GetInt32().ToString();
+                    ctx.Identity.AddClaim(new Claim("GithubId", id));
+                    var login = ctx.User.GetProperty("login").GetString();
+                    ctx.Identity.AddClaim(new Claim("GithubLogin", login));
+                    var avatar = ctx.User.GetProperty("avatar_url").GetString();
+                    ctx.Identity.AddClaim(new Claim("AvatarUrl", avatar));
+                    return Task.CompletedTask;
+                };
             });
 
             builder.Services.AddAuthorization(options =>
@@ -240,9 +258,7 @@ namespace Uweb4Media.API
             
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
-                // Azure için şu opsiyonu da eklemen yararlı olur:
-                // KnownNetworks = { }, KnownProxies = { }
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
             if (app.Environment.IsDevelopment())

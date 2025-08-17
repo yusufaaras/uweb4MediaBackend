@@ -15,8 +15,9 @@ namespace Uweb4Media.Domain.Entities
         [MaxLength(50)]  
         public string Username { get; set; }
 
-        [Required] 
-        public string Password { get; set; }
+        
+        [MaxLength(255)]
+        public string? Password { get; set; }
 
         [MaxLength(50)]
         public string? Name { get; set; } 
@@ -25,7 +26,7 @@ namespace Uweb4Media.Domain.Entities
         public string? Surname { get; set; }  
 
         public string? AvatarUrl { get; set; }  
-
+        
         [Required]  
         [MaxLength(20)]
         public string SubscriptionStatus { get; set; } = "free";  
@@ -47,6 +48,8 @@ namespace Uweb4Media.Domain.Entities
         public bool IsEmailVerified { get; set; } = false;
         [MaxLength(256)] 
         public string? GoogleId { get; set; }
+        [MaxLength(256)]
+        public string? GithubId { get; set; }  
         public int AppRoleID { get; set; }  
         [ForeignKey("AppRoleID")] 
         public AppRole AppRole { get; set; }   

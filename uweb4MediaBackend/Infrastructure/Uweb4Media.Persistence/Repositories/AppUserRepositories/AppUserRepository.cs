@@ -21,11 +21,10 @@ namespace Uweb4Media.Persistence.Repositories.AppUserRepositories
 
         public async Task<AppUser> GetByFilterAsync(Expression<Func<AppUser, bool>> filter)
         {
-            var values = await _context.AppUsers
+            return await _context.AppUsers
                 .Where(filter)
                 .Include(r => r.AppRole)
                 .FirstOrDefaultAsync();
-            return values;
         }
 
         public async Task<AppUser?> GetByIdAsync(int id)
@@ -40,11 +39,21 @@ namespace Uweb4Media.Persistence.Repositories.AppUserRepositories
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task UpdateAsync(AppUser user) // EKLENDİ
+        public async Task<AppUser?> GetByGithubIdAsync(string githubId)
+        {
+            return await _context.AppUsers.FirstOrDefaultAsync(u => u.GithubId == githubId);
+        }
+
+        public async Task AddAsync(AppUser user)
+        {
+            await _context.AppUsers.AddAsync(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(AppUser user)
         {
             _context.AppUsers.Update(user);
             await _context.SaveChangesAsync();
         }
     }
-    
 }

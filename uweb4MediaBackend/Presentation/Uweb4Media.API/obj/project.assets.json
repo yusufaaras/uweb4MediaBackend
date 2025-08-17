@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "AspNet.Security.OAuth.GitHub/8.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AspNet.Security.OAuth.GitHub.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AspNet.Security.OAuth.GitHub.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Azure.Core/1.46.2": {
         "type": "package",
         "dependencies": {
@@ -1939,6 +1955,21 @@
     }
   },
   "libraries": {
+    "AspNet.Security.OAuth.GitHub/8.1.0": {
+      "sha512": "Gk0FlIFrUxl4btxUEllCkHyAUPYehYkwIm2rMoHlYUzJGnYt5pGzIM2THzxjEIkMhT4UuC3ne2pWxLXcofiPeQ==",
+      "type": "package",
+      "path": "aspnet.security.oauth.github/8.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "README.md",
+        "aspnet.security.oauth.github.8.1.0.nupkg.sha512",
+        "aspnet.security.oauth.github.nuspec",
+        "lib/net8.0/AspNet.Security.OAuth.GitHub.dll",
+        "lib/net8.0/AspNet.Security.OAuth.GitHub.xml"
+      ]
+    },
     "Azure.Core/1.46.2": {
       "sha512": "HFcvd1besmgBFPIZ7iSFHZOgzGfHTZNTzG8gWYdIP8ZJQySrb+vAdArcmFw7je3kFRMDbbtMoWKNVGj2vvH1sw==",
       "type": "package",
@@ -5512,6 +5543,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "AspNet.Security.OAuth.GitHub >= 8.1.0",
       "Azure.Storage.Blobs >= 12.26.0-beta.1",
       "FirebaseAdmin >= 3.3.0",
       "Google.Apis.Auth >= 1.70.0",
@@ -5576,6 +5608,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "AspNet.Security.OAuth.GitHub": {
+            "target": "Package",
+            "version": "[8.1.0, )"
+          },
           "Azure.Storage.Blobs": {
             "target": "Package",
             "version": "[12.26.0-beta.1, )"

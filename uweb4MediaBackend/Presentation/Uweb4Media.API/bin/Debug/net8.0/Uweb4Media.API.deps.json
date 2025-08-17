@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Uweb4Media.API/1.0.0": {
         "dependencies": {
+          "AspNet.Security.OAuth.GitHub": "8.1.0",
           "Azure.Storage.Blobs": "12.26.0-beta.1",
           "FirebaseAdmin": "3.3.0",
           "Google.Apis.Auth": "1.70.0",
@@ -24,6 +25,14 @@
         },
         "runtime": {
           "Uweb4Media.API.dll": {}
+        }
+      },
+      "AspNet.Security.OAuth.GitHub/8.1.0": {
+        "runtime": {
+          "lib/net8.0/AspNet.Security.OAuth.GitHub.dll": {
+            "assemblyVersion": "8.1.0.0",
+            "fileVersion": "8.100.24.31458"
+          }
         }
       },
       "Azure.Core/1.46.2": {
@@ -1277,6 +1286,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AspNet.Security.OAuth.GitHub/8.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gk0FlIFrUxl4btxUEllCkHyAUPYehYkwIm2rMoHlYUzJGnYt5pGzIM2THzxjEIkMhT4UuC3ne2pWxLXcofiPeQ==",
+      "path": "aspnet.security.oauth.github/8.1.0",
+      "hashPath": "aspnet.security.oauth.github.8.1.0.nupkg.sha512"
     },
     "Azure.Core/1.46.2": {
       "type": "package",

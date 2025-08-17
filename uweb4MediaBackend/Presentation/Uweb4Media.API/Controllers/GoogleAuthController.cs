@@ -14,9 +14,9 @@ namespace Uweb4Media.API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IConfiguration _configuration;
-    private readonly IMediator _mediator; // IMediator eklendi
+    private readonly IMediator _mediator;  
 
-    public AuthController(IConfiguration configuration, IMediator mediator) // Constructor güncellendi
+    public AuthController(IConfiguration configuration, IMediator mediator)  
     {
         _configuration = configuration;
         _mediator = mediator;
@@ -25,10 +25,9 @@ public class AuthController : ControllerBase
     [HttpGet("google-login")]
     public IActionResult GoogleLogin()
     {
-        // React uygulamasından doğrudan bu endpoint'e yönlendirilecek.
-        // Google'ın kendi giriş sayfasını tetikler.
-        var properties = new AuthenticationProperties { RedirectUri = Url.Action(nameof(GoogleCallback)) };
-        return Challenge(properties, "Google"); // "Google" stringi, AddGoogle metodunda tanımladığınız default şemadır.
+        var redirectUri = $"{Request.Scheme}://{Request.Host}/api/auth/google-callback";
+        var properties = new AuthenticationProperties { RedirectUri = redirectUri };
+        return Challenge(properties, "Google");
     }
 
     [HttpGet("google-callback")]

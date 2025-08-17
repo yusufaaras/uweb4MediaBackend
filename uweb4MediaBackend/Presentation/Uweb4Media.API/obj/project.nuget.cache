@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "x3IfhH+dmF8=",
+  "dgSpecHash": "ZMHSfZfR5ho=",
   "success": true,
   "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
   "expectedPackageFiles": [
+    "/Users/aliunnab/.nuget/packages/aspnet.security.oauth.github/8.1.0/aspnet.security.oauth.github.8.1.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/azure.core/1.46.2/azure.core.1.46.2.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/azure.storage.blobs/12.26.0-beta.1/azure.storage.blobs.12.26.0-beta.1.nupkg.sha512",

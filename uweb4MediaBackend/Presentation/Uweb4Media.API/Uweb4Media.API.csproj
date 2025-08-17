@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="8.1.0" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.26.0-beta.1" />
     <PackageReference Include="FirebaseAdmin" Version="3.3.0" />
     <PackageReference Include="Google.Apis.Auth" Version="1.70.0" />
