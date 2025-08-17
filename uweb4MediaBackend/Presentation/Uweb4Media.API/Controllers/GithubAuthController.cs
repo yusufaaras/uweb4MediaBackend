@@ -72,7 +72,7 @@ public class GitHubAuthController : ControllerBase
             GoogleId = user.GoogleId 
         }; 
         var token = JwtTokenGenerator.GenerateToken(appUserResult); 
-        Console.WriteLine("[DEBUG] Redirect URL:https://primeweb4-9c444.firebaseapp.com/auth/github-success?token=" + token.Token);
+        Console.WriteLine("[DEBUG] Redirect URL:https://primeweb4-9c444.firebaseapp.com/#/auth/github-success?token=" + token.Token);
         return Redirect($"https://primeweb4-9c444.firebaseapp.com/#/auth/github-success?token={token.Token}");
         
     }
