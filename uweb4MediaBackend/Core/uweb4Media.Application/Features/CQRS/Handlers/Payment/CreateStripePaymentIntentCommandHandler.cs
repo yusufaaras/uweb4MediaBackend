@@ -49,9 +49,17 @@ public class CreateStripePaymentIntentCommandHandler : IRequestHandler<CreateStr
             CreatedAt = DateTime.UtcNow,
             IsToken = request.IsToken
         });
+
         if (request.IsToken)
         {
             user.PostToken += 5;
+            await _userRepository.UpdateAsync(user);
+        }
+        else
+        { 
+            user.SubscriptionStatus = "premium";
+            user.SubscriptionStartDate = DateTime.UtcNow;
+            user.SubscriptionEndDate = DateTime.UtcNow.AddYears(1);
             await _userRepository.UpdateAsync(user);
         }
 

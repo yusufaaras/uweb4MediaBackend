@@ -1,22 +1,28 @@
-﻿
-using uweb4Media.Application.Features.CQRS.Queries.User;
+﻿using uweb4Media.Application.Features.CQRS.Queries.User;
 using uweb4Media.Application.Features.CQRS.Results.User;
 using uweb4Media.Application.Interfaces;
 using Uweb4Media.Domain.Entities;
+using uweb4Media.Application.Services.User; // UserService için eklendi
 
 namespace uweb4Media.Application.Features.CQRS.Handlers.User
 {
     public class GetUserByIdQueryHandler
     {
         private readonly IRepository<AppUser> _repository;
-        public GetUserByIdQueryHandler(IRepository<AppUser> repository)
+        private readonly UserService _userService;
+
+        public GetUserByIdQueryHandler(IRepository<AppUser> repository, UserService userService)
         {
             _repository = repository;
+            _userService = userService;
         }
 
         public async Task<GetUserByIdQueryResult> Handle(GetUserByIdQuery query)
         {
             var values = await _repository.GetByIdAsync(query.Id);
+ 
+            await _userService.CheckAndUpdateSubscriptionAsync(values);
+
             return new GetUserByIdQueryResult
             {
                 AppUserID = values.AppUserID,

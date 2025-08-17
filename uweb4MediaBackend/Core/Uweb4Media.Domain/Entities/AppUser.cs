@@ -30,6 +30,8 @@ namespace Uweb4Media.Domain.Entities
         [Required]  
         [MaxLength(20)]
         public string SubscriptionStatus { get; set; } = "free";  
+        public DateTime? SubscriptionStartDate { get; set; }  
+        public DateTime? SubscriptionEndDate { get; set; }    
 
         public string? Bio { get; set; } 
 
