@@ -31,6 +31,8 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.User
                 Name = values.Name,
                 Surname = values.Surname,
                 Email = values.Email,
+                SubscriptionStartDate = values.SubscriptionStartDate,
+                SubscriptionEndDate = values.SubscriptionEndDate,
                 AppRoleID = values.AppRoleID,
                 AvatarUrl = values.AvatarUrl,
                 Bio = values.Bio,

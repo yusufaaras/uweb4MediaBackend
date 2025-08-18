@@ -10,6 +10,8 @@
         public string? Email { get; set; }    // Made nullable
         public int? AppRoleID { get; set; } // Made nullable
         public string? AvatarUrl { get; set; }
+        public DateTime? SubscriptionStartDate { get; set; }
+        public DateTime? SubscriptionEndDate { get; set; }
         public string? Bio { get; set; }
         
         public int PostToken { get; set; } 

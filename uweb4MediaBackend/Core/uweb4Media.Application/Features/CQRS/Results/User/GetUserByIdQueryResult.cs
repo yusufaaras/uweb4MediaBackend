@@ -14,6 +14,9 @@ namespace uweb4Media.Application.Features.CQRS.Results.User
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
+        
+        public DateTime? SubscriptionStartDate { get; set; }  
+        public DateTime? SubscriptionEndDate { get; set; }    
         public int AppRoleID { get; set; }
         public string? AvatarUrl { get; set; } 
         public string? Bio { get; set; }

@@ -29,7 +29,10 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.User
             values.SubscriptionStatus = command.SubscriptionStatus;
             values.PostToken = command.PostToken;
             values.AvatarUrl = command.AvatarUrl;
-            values.Bio = command.Bio;
+            values.Bio = command.Bio; 
+            values.SubscriptionStartDate = command.SubscriptionStartDate;
+            values.SubscriptionEndDate = command.SubscriptionEndDate;
+
             await _repository.UpdateAsync(values);
         }
     }
