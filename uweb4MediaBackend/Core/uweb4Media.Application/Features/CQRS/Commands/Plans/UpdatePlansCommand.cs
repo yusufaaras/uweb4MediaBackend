@@ -9,5 +9,5 @@ public class UpdatePlansCommand
     public double Price { get; set; }
     public bool status { get; set; }
     public bool IsToken { get; set; }
-
+    public int? TokenCount { get; set; } // <-- EKLE
 }

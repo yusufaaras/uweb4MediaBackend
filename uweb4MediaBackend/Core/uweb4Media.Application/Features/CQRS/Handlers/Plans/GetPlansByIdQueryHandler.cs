@@ -17,12 +17,13 @@ public class GetPlansByIdQueryHandler
         return new GetPlansByIdQueryResult
         {
             Id = values.Id,
-            Name = values.Name, 
+            Name = values.Name,
             Description = values.Description,
             Icon = values.Icon,
             Price = values.Price,
             status = values.status,
             IsToken = values.IsToken,
+            TokenCount = values.TokenCount // <-- EKLE
         };
     }
 }

@@ -23,6 +23,7 @@ public class GetPlansQueryHandler
             Name = x.Name,
             status = x.status,
             IsToken = x.IsToken,
+            TokenCount = x.TokenCount // <-- EKLE
         }).ToList();
     }
 }

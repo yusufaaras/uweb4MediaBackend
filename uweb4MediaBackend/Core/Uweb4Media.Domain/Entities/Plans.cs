@@ -7,6 +7,7 @@ public class Plans
     public string? Description { get; set; }
     public string? Icon { get; set; }
     public double Price { get; set; }
-    public bool status { get; set; }=false;
+    public bool status { get; set; } = false;
     public bool IsToken { get; set; }
+    public int? TokenCount { get; set; } 
 }

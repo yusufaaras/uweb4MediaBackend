@@ -20,7 +20,7 @@ public class CreatePlansCommandHandler
             Price = command.Price,
             status = false,
             IsToken = command.IsToken,
+            TokenCount = command.TokenCount // <-- EKLE
         });
-
     }
 }

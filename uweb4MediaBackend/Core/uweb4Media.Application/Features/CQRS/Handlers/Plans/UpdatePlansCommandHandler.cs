@@ -18,8 +18,9 @@ public class UpdatePlansCommandHandler
         values.Description = command.Description;
         values.Icon = command.Icon;
         values.Price = command.Price;
-        values.status=command.status;
-        values.IsToken=command.IsToken;
+        values.status = command.status;
+        values.IsToken = command.IsToken;
+        values.TokenCount = command.TokenCount; // <-- EKLE
         await _repository.UpdateAsync(values);
     }
 }

@@ -11,15 +11,18 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
     {
         private readonly IPaymentService _paymentService;
         private readonly IRepository<Uweb4Media.Domain.Entities.Payment> _repository;
-        private readonly IRepository<AppUser> _userRepository; // kullanıcıya ulaşmak için ekledik
+        private readonly IRepository<AppUser> _userRepository;
+        private readonly IRepository<Uweb4Media.Domain.Entities.Plans> _plansRepository; // <-- EKLENDİ
 
         public CreatePaymentCommandHandler(IPaymentService paymentService,
             IRepository<Uweb4Media.Domain.Entities.Payment> repository,
-            IRepository<AppUser> userRepository)
+            IRepository<AppUser> userRepository,
+            IRepository<Uweb4Media.Domain.Entities.Plans> plansRepository) // <-- EKLENDİ
         {
             _paymentService = paymentService;
             _repository = repository;
             _userRepository = userRepository;
+            _plansRepository = plansRepository; // <-- EKLENDİ
         }
 
         public async Task<string> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
@@ -48,11 +51,18 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Payment
 
                 if (request.IsToken)
                 {
-                    // Kullanıcıya +5 PostToken ekle
+                    // PlanId bilgisini de CreatePaymentCommand'a eklemiş olmalısın!
+                    var plan = await _plansRepository.GetByIdAsync(request.PlanId);
+                    int tokenCount = 1;
+                    if (plan != null && plan.IsToken && plan.TokenCount.HasValue)
+                    {
+                        tokenCount = plan.TokenCount.Value;
+                    }
+
                     var user = await _userRepository.GetByIdAsync(request.UserId);
                     if (user != null)
                     {
-                        user.PostToken += 5;
+                        user.PostToken += tokenCount;
                         await _userRepository.UpdateAsync(user);
                     }
                 }
