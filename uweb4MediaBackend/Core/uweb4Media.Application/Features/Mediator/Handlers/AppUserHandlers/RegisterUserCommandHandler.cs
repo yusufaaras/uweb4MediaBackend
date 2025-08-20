@@ -39,7 +39,16 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, b
         };
 
         _cache.Set(request.Email, cacheModel, TimeSpan.FromMinutes(10));
-        await _emailService.SendEmailAsync(request.Email, "Doğrulama Kodunuz", $"Kodunuz: {verificationCode}");
+        await _emailService.SendEmailAsync(
+            request.Email,
+            "Your Verification Code",
+            $@"Dear user,
+            Please use the following code to verify your account:
+            Verification Code: {verificationCode}
+            If you did not request this code, please ignore this email.
+            Best regards,
+            Your Team"
+        );        
         return true;
     }
 }

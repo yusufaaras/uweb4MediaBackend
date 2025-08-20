@@ -73,7 +73,7 @@ public class CreateVideoCommandHandler
  
         if (user != null)
         {
-            user.PostToken -= 1;
+            user.PostToken -= 3;
             await _userRepository.UpdateAsync(user);
         }
     }

@@ -26,13 +26,25 @@ public class SendPaymentCodeCommandHandler : IRequestHandler<SendPaymentCodeComm
     {
         var user = await _userRepository.GetByIdAsync(request.UserId);
         if (user == null || !user.IsEmailVerified)
-            throw new UnauthorizedAccessException("Mail doğrulanmadan ödeme kodu alınamaz!");
+            throw new UnauthorizedAccessException("Payment code cannot be obtained without email verification!");
 
         var code = new Random().Next(100000, 999999).ToString();
 
         // Mail gönder
-        await _mailService.SendEmailAsync(request.Email, "Ödeme Doğrulama Kodu", $"Kodunuz: {code}");
+        await _mailService.SendEmailAsync(
+            request.Email,
+            "Payment Verification Code",
+            $@"Dear user,
 
+Thank you for your payment request. Please use the following code to verify your payment process:
+
+Verification Code: {code}
+
+If you did not initiate this request, please ignore this email.
+
+Best regards,
+Your Team"
+        );
         // Payment kaydı (intent yok, sadece code ve status)
         var payment = new Uweb4Media.Domain.Entities.Payment
         {
