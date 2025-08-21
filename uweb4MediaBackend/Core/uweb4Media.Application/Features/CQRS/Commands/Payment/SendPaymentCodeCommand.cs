@@ -9,5 +9,6 @@ public class SendPaymentCodeCommand : IRequest<int>
     public int UserId { get; set; }
     public string Email { get; set; }
     public string Currency { get; set; }
-
+    
+    public int? PlanId { get; set; }
 }
