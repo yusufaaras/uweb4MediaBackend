@@ -80,7 +80,13 @@ namespace Uweb4Media.API
             {
                 options.AddPolicy("AllowFirebase", policy =>
                     policy.WithOrigins(
-                        "https://primeweb4-9c444.firebaseapp.com", "https://adminprimeweb4.web.app","https://primeui2.web.app"
+                        "https://primeweb4-9c444.firebaseapp.com",
+                        "https://adminprimeweb4.web.app",
+                        "https://primeui2.web.app",
+                        "https://prime.uweb4.com/",
+                        "http://prime.uweb4.com/",
+                        "http://admin.uweb4.com/",
+                        "https://admin.uweb4.com/"
                     )
                     .AllowAnyHeader()
                     .AllowAnyMethod()
@@ -92,11 +98,7 @@ namespace Uweb4Media.API
                             "http://localhost:5173",
                             "https://localhost:5173",
                             "http://localhost:5174",
-                            "https://localhost:5174",
-                            "https://prime.uweb4.com/",
-                            "http://prime.uweb4.com/",
-                            "http://admin.uweb4.com/",
-                            "https://admin.uweb4.com/"
+                            "https://localhost:5174"
                         )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
