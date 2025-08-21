@@ -63,8 +63,8 @@ Your Team"
             CreatedAt = DateTime.UtcNow,
             PaymentCode = code,
             PaymentCodeGeneratedAt = DateTime.UtcNow,
-            IsToken = request.IsToken,    // <-- EKLE!
-            PlanId  = request.PlanId      // <-- EKLE!
+            IsToken = request.IsToken,  
+            PlanId  = request.PlanId   
         };
         await _paymentRepository.CreateAsync(payment);
 

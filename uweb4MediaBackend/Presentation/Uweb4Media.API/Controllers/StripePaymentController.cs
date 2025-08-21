@@ -138,8 +138,19 @@ public async Task<IActionResult> StripeWebhook()
     [HttpPost("request-payment-code")]
     public async Task<IActionResult> RequestPaymentCode([FromBody] SendPaymentCodeCommand command)
     {
-        var paymentId = await _mediator.Send(command);
-        return Ok(new { paymentId });
+        try
+        {
+            var paymentId = await _mediator.Send(command);
+            return Ok(new { paymentId });
+        }
+        catch (Exception ex)
+        {
+            // Hata mesajını loglamak için:
+            Console.WriteLine("RequestPaymentCode hatası: " + ex.ToString());
+
+            // Frontend'e hata mesajı ile dön:
+            return StatusCode(500, new { error = ex.Message, detail = ex.ToString() });
+        }
     }
 
     [HttpPost("create-stripe-intent-with-code")]
