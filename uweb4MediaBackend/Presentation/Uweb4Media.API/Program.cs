@@ -92,7 +92,11 @@ namespace Uweb4Media.API
                             "http://localhost:5173",
                             "https://localhost:5173",
                             "http://localhost:5174",
-                            "https://localhost:5174"
+                            "https://localhost:5174",
+                            "https://prime.uweb4.com/",
+                            "http://prime.uweb4.com/",
+                            "http://admin.uweb4.com/",
+                            "https://admin.uweb4.com/"
                         )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
