@@ -36,21 +36,21 @@ public class CreateVideoCommandHandler
             }
         }
 
-        // --- Önce token kontrolü yap ---
         AppUser? user = null;
         if (command.UserId.HasValue)
         {
             user = await _userRepository.GetByIdAsync(command.UserId.Value);
             if (user == null)
-                throw new Exception("Kullanıcı bulunamadı.");
+                throw new Exception("User not found.");
 
-            if (user.PostToken < 1)
-                throw new Exception("Your token has expired. Please purchase more tokens to upload a new video.");
-        } 
-        
-        
+            // Kullanıcıda en az 3 token yoksa video oluşturulamaz!
+            if (user.PostToken < 3)
+                throw new Exception("You need at least 3 tokens to upload a video. Please purchase more tokens.");
+        }
+
+        // Video oluşturuluyor
         var video = new Uweb4Media.Domain.Entities.Admin.Video.Video
-        { 
+        {
             UserId = command.UserId,
             Link = command.Link,
             Title = command.Title ?? "",
@@ -59,18 +59,19 @@ public class CreateVideoCommandHandler
             Sector = command.Sector ?? "",
             Channel = command.Channel ?? "",
             ContentType = command.ContentType ?? "",
-            PublishStatus = command.PublishStatus ?? "Incelemede", 
+            PublishStatus = command.PublishStatus ?? "Incelemede",
             Tags = command.Tags ?? new List<string>(),
             IsPremium = command.IsPremium ?? false,
             Date = command.Date ?? DateTime.UtcNow,
-            Responsible = responsibleName, 
+            Responsible = responsibleName,
             CompanyId = command.CompanyId,
             LikesCount = command.LikesCount ?? 0,
-            CommentsCount = command.CommentsCount ?? 0, 
-        }; 
+            CommentsCount = command.CommentsCount ?? 0,
+        };
 
         await _repository.CreateAsync(video);
- 
+
+        // Video oluşturulursa 3 token eksilt
         if (user != null)
         {
             user.PostToken -= 3;

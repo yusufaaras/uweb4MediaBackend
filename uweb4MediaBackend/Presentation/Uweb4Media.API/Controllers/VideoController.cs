@@ -58,7 +58,7 @@ namespace Uweb4Media.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize] // Hem admin hem giriş yapan kullanıcı erişebilsin
+        [Authorize]  
         public async Task<IActionResult> RemoveVideo(int id)
         {
             var video = await _getVideoByIdQueryHandler.Handle(new GetVideoByIdQuery(id));
@@ -75,9 +75,9 @@ namespace Uweb4Media.API.Controllers
             var userIdClaim = userClaims.Claims.FirstOrDefault(c => c.Type == "AppUserID" || c.Type == "sub")?.Value;
             int.TryParse(userIdClaim, out var userId);
 
-            // 3. Şart: admin ise her şeyi silebilir, kullanıcı ise sadece kendi videosunu
+            
             if (!isAdmin && video.UserId != userId)
-                return Forbid(); // 403
+                return Forbid(); 
 
             await _removeVideoCommandHandler.Handle(new RemoveVideoCommand(id));
             return Ok();
