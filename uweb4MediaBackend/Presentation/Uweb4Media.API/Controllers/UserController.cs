@@ -94,5 +94,6 @@ namespace Uweb4Media.API.Controllers
             // Şifre ve hassas alanları göndermemeye dikkat et!
             return Ok(value);
         }
+        
     }
 }
