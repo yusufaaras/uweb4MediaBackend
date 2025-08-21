@@ -58,23 +58,27 @@ namespace Uweb4Media.API.Controllers
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value 
+                           ?? User.FindFirst("role")?.Value 
+                           ?? User.FindFirst("Role")?.Value;
+
+            // LOG EKLE!
+            Console.WriteLine($"userIdStr: {userIdStr}, userRole: {userRole}, command.AppUserID: {command.AppUserID}");
 
             if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out var userId))
                 return Unauthorized();
- 
+
             if (userRole == "Admin")
             {
                 await _updateUserCommandHandler.Handle(command);
                 return Ok("Kullanıcı Başarıyla Güncellendi");
-            } 
+            }
             if (command.AppUserID != userId)
-                return Forbid(); // Sadece bu!
+                return Forbid();
 
             await _updateUserCommandHandler.Handle(command);
             return Ok("Profiliniz başarıyla güncellendi.");
         }
-
         // Giriş yapan kendi verisini çekebilir
         [HttpGet("me")]
         public async Task<IActionResult> GetMyProfile()
