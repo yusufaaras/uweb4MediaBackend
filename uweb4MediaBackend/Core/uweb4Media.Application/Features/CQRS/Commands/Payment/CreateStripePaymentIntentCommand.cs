@@ -10,5 +10,5 @@ public class CreateStripePaymentIntentCommand : IRequest<string>
     public int UserId { get; set; }
     public string Currency { get; set; }
     public bool IsToken { get; set; } // EKLENDİ!
-
+    public int? PlanId { get; set; }
 }

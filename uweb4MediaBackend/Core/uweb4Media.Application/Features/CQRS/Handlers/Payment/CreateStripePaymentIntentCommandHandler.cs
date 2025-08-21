@@ -1,5 +1,6 @@
 using MediatR;
 using uweb4Media.Application.Features.CQRS.Commands.Payment;
+using uweb4Media.Application.Interfaces;
 using uweb4Media.Application.Interfaces.AppUserInterfaces;
 using uweb4Media.Application.Interfaces.Payment;
 
@@ -10,15 +11,14 @@ public class CreateStripePaymentIntentCommandHandler : IRequestHandler<CreateStr
     private readonly IPaymentRepository _repository;
     private readonly IStripePaymentService _stripeService;
     private readonly IAppUserRepository _userRepository;
+    private readonly IRepository<Uweb4Media.Domain.Entities.Plans> _plansRepository;
 
-    public CreateStripePaymentIntentCommandHandler(
-        IPaymentRepository repository,
-        IStripePaymentService stripeService,
-        IAppUserRepository userRepository)
+    public CreateStripePaymentIntentCommandHandler(IPaymentRepository repository, IStripePaymentService stripeService, IAppUserRepository userRepository, IRepository<Uweb4Media.Domain.Entities.Plans> plansRepository)
     {
         _repository = repository;
         _stripeService = stripeService;
         _userRepository = userRepository;
+        _plansRepository = plansRepository;
     }
 
     public async Task<string> Handle(CreateStripePaymentIntentCommand request, CancellationToken cancellationToken)
@@ -47,12 +47,21 @@ public class CreateStripePaymentIntentCommandHandler : IRequestHandler<CreateStr
             Email = request.Email,
             UserId = request.UserId,
             CreatedAt = DateTime.UtcNow,
-            IsToken = request.IsToken
+            IsToken = request.IsToken,
+            PlanId = request.PlanId  
         });
 
         if (request.IsToken)
         {
-            user.PostToken += 5;
+            if (request.PlanId == null)
+                throw new ArgumentException("Token ödemesi için PlanId zorunludur!");
+
+            var plan = await _plansRepository.GetByIdAsync(request.PlanId.Value);
+            int tokenCount = 1;
+            if (plan != null && plan.IsToken && plan.TokenCount.HasValue)
+                tokenCount = plan.TokenCount.Value;
+
+            user.PostToken += tokenCount;
             await _userRepository.UpdateAsync(user);
         }
         else

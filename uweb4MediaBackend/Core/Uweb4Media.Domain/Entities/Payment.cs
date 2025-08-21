@@ -19,4 +19,6 @@ public class Payment
     public string? InvoicePdfUrl { get; set; }
     public string? InvoiceStatus { get; set; }
     public bool IsToken { get; set; } 
+    
+    public int? PlanId { get; set; }
 }
