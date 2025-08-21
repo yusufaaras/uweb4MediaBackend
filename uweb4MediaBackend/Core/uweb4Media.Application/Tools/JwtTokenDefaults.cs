@@ -8,8 +8,8 @@ namespace uweb4Media.Application.Tools
 {
     public class JwtTokenDefaults
     {
-        public const string ValidAudience = "https://localhost";  
-        public const string ValidIssuer = "https://localhost:7296";    
+        public const string ValidAudience = "http://localhost:5174"; // frontend'in local adresi
+        public const string ValidIssuer = "http://localhost:5285";   // backend'in local adresi
         public const string Key = "Uweb4SystemsGlobals+*010203CARBOOK01+*..020304CarBookProje";
         public const int Expire = 5;
     }

@@ -10,56 +10,67 @@ namespace Uweb4Media.API.Controllers
     [ApiController]
     public class PlansController : ControllerBase
     {
-        
-            private readonly GetPlansQueryHandler _getPlansQueryHandler;
-            private readonly GetPlansByIdQueryHandler _getPlansByIdQueryHandler;
-            private readonly CreatePlansCommandHandler _createPlansCommandHandler;
-            private readonly UpdatePlansCommandHandler _updatePlansCommandHandler;
-            private readonly RemovePlansCommandHandler _removePlansCommandHandler;
-    
-            public PlansController(GetPlansQueryHandler getPlansQueryHandler, GetPlansByIdQueryHandler getPlansByIdQueryHandler, CreatePlansCommandHandler createPlansCommandHandler, UpdatePlansCommandHandler updatePlansCommandHandler, RemovePlansCommandHandler removePlansCommandHandler)
-            {
-                _getPlansQueryHandler = getPlansQueryHandler;
-                _getPlansByIdQueryHandler = getPlansByIdQueryHandler;
-                _createPlansCommandHandler = createPlansCommandHandler;
-                _updatePlansCommandHandler = updatePlansCommandHandler;
-                _removePlansCommandHandler = removePlansCommandHandler;
-            }
-            [HttpGet]
-            [AllowAnonymous]
-            public async Task<IActionResult> PlansList()
-            {
-                var values = await _getPlansQueryHandler.Handle();
-                return Ok(values);
-            }
-    
-            [HttpGet("{id}")]
-            [AllowAnonymous]
-            public async Task<IActionResult> GetPlans(int id)
-            {
-                var value = await _getPlansByIdQueryHandler.Handle(new GetPlansByIdQuery(id));
-                return Ok(value);
-            }
-    
-            [HttpPost]
-            public async Task<IActionResult> CreatePlans(CreatePlansCommand command)
-            {
-                await _createPlansCommandHandler.Handle(command);
-                return Ok();
-            }
-    
-            [HttpDelete("{id}")]
-            public async Task<IActionResult> RemovePlans(int id)
-            {
-                await _removePlansCommandHandler.Handle(new RemovePlansCommand(id));
-                return Ok();
-            }
-    
-            [HttpPut]
-            public async Task<IActionResult> UpdatePlans(UpdatePlansCommand command)
-            {
-                await _updatePlansCommandHandler.Handle(command);
-                return Ok();
-            }
+        private readonly GetPlansQueryHandler _getPlansQueryHandler;
+        private readonly GetPlansByIdQueryHandler _getPlansByIdQueryHandler;
+        private readonly CreatePlansCommandHandler _createPlansCommandHandler;
+        private readonly UpdatePlansCommandHandler _updatePlansCommandHandler;
+        private readonly RemovePlansCommandHandler _removePlansCommandHandler;
+
+        public PlansController(
+            GetPlansQueryHandler getPlansQueryHandler,
+            GetPlansByIdQueryHandler getPlansByIdQueryHandler,
+            CreatePlansCommandHandler createPlansCommandHandler,
+            UpdatePlansCommandHandler updatePlansCommandHandler,
+            RemovePlansCommandHandler removePlansCommandHandler)
+        {
+            _getPlansQueryHandler = getPlansQueryHandler;
+            _getPlansByIdQueryHandler = getPlansByIdQueryHandler;
+            _createPlansCommandHandler = createPlansCommandHandler;
+            _updatePlansCommandHandler = updatePlansCommandHandler;
+            _removePlansCommandHandler = removePlansCommandHandler;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> PlansList()
+        {
+            var values = await _getPlansQueryHandler.Handle();
+            return Ok(values);
+        }
+
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetPlans(int id)
+        {
+            var value = await _getPlansByIdQueryHandler.Handle(new GetPlansByIdQuery(id));
+            return Ok(value);
+        }
+
+        // SADECE ADMIN
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreatePlans(CreatePlansCommand command)
+        {
+            await _createPlansCommandHandler.Handle(command);
+            return Ok();
+        }
+
+        // SADECE ADMIN
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RemovePlans(int id)
+        {
+            await _removePlansCommandHandler.Handle(new RemovePlansCommand(id));
+            return Ok();
+        }
+
+        // SADECE ADMIN
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UpdatePlans(UpdatePlansCommand command)
+        {
+            await _updatePlansCommandHandler.Handle(command);
+            return Ok();
+        }
     }
-} 
+}

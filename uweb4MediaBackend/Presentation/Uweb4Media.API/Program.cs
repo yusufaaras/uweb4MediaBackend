@@ -176,30 +176,25 @@ namespace Uweb4Media.API
     
             builder.Services.AddAuthentication(options =>
                 {
-                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddCookie(options =>
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
-                    options.Cookie.SameSite = SameSiteMode.None;
-                    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-                    options.Cookie.IsEssential = true;
+                    var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
+
+                    opt.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidAudiences = audiences,
+                        ValidIssuer = builder.Configuration["Jwt:ValidIssuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                        ValidateIssuerSigningKey = true,
+                        ValidateLifetime = true,
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ClockSkew = TimeSpan.Zero
+                    };
                 })
-            .AddJwtBearer(opt =>
-            {
-                opt.RequireHttpsMetadata = true;
-                opt.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidAudience = builder.Configuration["Jwt:ValidAudience"],
-                    ValidIssuer = builder.Configuration["Jwt:ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-                    ValidateIssuerSigningKey = true,
-                    ValidateLifetime = true,
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
-                    ClockSkew = TimeSpan.Zero
-                };
-            })
             .AddGoogle(googleOptions =>
             {
                 googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
