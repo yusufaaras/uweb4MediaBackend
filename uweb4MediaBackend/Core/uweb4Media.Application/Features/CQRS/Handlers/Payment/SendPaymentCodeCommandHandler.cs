@@ -10,7 +10,7 @@ public class SendPaymentCodeCommandHandler : IRequestHandler<SendPaymentCodeComm
 {
     private readonly IPaymentRepository _paymentRepository;
     private readonly IAppUserRepository _userRepository;
-    private readonly IEmailService _mailService; //  
+    private readonly IEmailService _mailService;
 
     public SendPaymentCodeCommandHandler(
         IPaymentRepository paymentRepository,
@@ -27,6 +27,10 @@ public class SendPaymentCodeCommandHandler : IRequestHandler<SendPaymentCodeComm
         var user = await _userRepository.GetByIdAsync(request.UserId);
         if (user == null || !user.IsEmailVerified)
             throw new UnauthorizedAccessException("Payment code cannot be obtained without email verification!");
+
+        // Eğer token ödemesi ise, PlanId zorunlu!
+        if (request.IsToken && request.PlanId == null)
+            throw new ArgumentException("Token ödemesi için PlanId zorunludur!");
 
         var code = new Random().Next(100000, 999999).ToString();
 
@@ -45,6 +49,7 @@ If you did not initiate this request, please ignore this email.
 Best regards,
 Your Team"
         );
+
         // Payment kaydı (intent yok, sadece code ve status)
         var payment = new Uweb4Media.Domain.Entities.Payment
         {
@@ -58,6 +63,8 @@ Your Team"
             CreatedAt = DateTime.UtcNow,
             PaymentCode = code,
             PaymentCodeGeneratedAt = DateTime.UtcNow,
+            IsToken = request.IsToken,    // <-- EKLE!
+            PlanId  = request.PlanId      // <-- EKLE!
         };
         await _paymentRepository.CreateAsync(payment);
 
