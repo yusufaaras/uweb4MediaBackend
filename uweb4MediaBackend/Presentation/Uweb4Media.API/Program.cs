@@ -182,11 +182,12 @@ namespace Uweb4Media.API
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
-
+                    var issuers = builder.Configuration.GetSection("Jwt:ValidIssuer").Get<string[]>();
+                    
                     opt.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidAudiences = audiences,
-                        ValidIssuer = builder.Configuration["Jwt:ValidIssuer"],
+                        ValidAudiences = audiences, // dizi olmalı!
+                        ValidIssuers = issuers,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
