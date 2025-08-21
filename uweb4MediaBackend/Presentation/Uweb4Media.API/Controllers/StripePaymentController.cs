@@ -44,7 +44,7 @@ public class StripePaymentController : Controller
     }
 
     [HttpPost("stripe-webhook")]
-public async Task<IActionResult> StripeWebhook()
+    public async Task<IActionResult> StripeWebhook()
 {
     string json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
     Event stripeEvent;
@@ -62,67 +62,87 @@ public async Task<IActionResult> StripeWebhook()
     }
 
     if (stripeEvent.Type == "payment_intent.succeeded")
-{
-    var paymentIntent = stripeEvent.Data.Object as PaymentIntent;
-    var payment = await _paymentRepo.GetByStripePaymentIntentIdAsync(paymentIntent.Id);
-    if (payment != null)
     {
-        payment.Status = "success";
-        await _paymentRepo.UpdateAsync(payment);
-
-        var shares = _db.PartnerShares.ToList();
-        await _stripeConnectService.DistributePaymentAsync(paymentIntent.Id, shares);
-
-        // Stripe Customer oluştur veya bul
-        var customerService = new CustomerService();
-        var customerList = await customerService.ListAsync(new CustomerListOptions { Email = payment.Email });
-        var customer = customerList.Data.FirstOrDefault();
-        if (customer == null)
+        var paymentIntent = stripeEvent.Data.Object as PaymentIntent;
+        var payment = await _paymentRepo.GetByStripePaymentIntentIdAsync(paymentIntent.Id);
+        if (payment != null)
         {
-            customer = await customerService.CreateAsync(new CustomerCreateOptions
+            payment.Status = "success";
+            await _paymentRepo.UpdateAsync(payment);
+
+            // TOKEN PLAN için kullanıcıya token Ekle!
+            if (payment.IsToken && payment.PlanId != null)
             {
-                Email = payment.Email,
-                Name = payment.Email // Varsa isim alanını da kullanabilirsin
+                var user = await _db.AppUsers.FindAsync(payment.UserId);
+                var plan = await _db.Plans.FindAsync(payment.PlanId);
+
+                int tokenCount = 1;
+                if (plan != null && plan.IsToken && plan.TokenCount.HasValue)
+                    tokenCount = plan.TokenCount.Value;
+
+                if (user != null)
+                {
+                    user.PostToken += tokenCount;
+                    await _db.SaveChangesAsync();
+                }
+            }
+
+            // Partner paylaşımları ve fatura işlemleri devam...
+            var shares = _db.PartnerShares.ToList();
+            await _stripeConnectService.DistributePaymentAsync(paymentIntent.Id, shares);
+
+            // Stripe Customer oluştur veya bul
+            var customerService = new CustomerService();
+            var customerList = await customerService.ListAsync(new CustomerListOptions { Email = payment.Email });
+            var customer = customerList.Data.FirstOrDefault();
+            if (customer == null)
+            {
+                customer = await customerService.CreateAsync(new CustomerCreateOptions
+                {
+                    Email = payment.Email,
+                    Name = payment.Email // Varsa isim alanını da kullanabilirsin
+                });
+            }
+
+            // --- Önce Invoice oluştur ---
+            var invoiceService = new InvoiceService();
+            var invoice = await invoiceService.CreateAsync(new InvoiceCreateOptions
+            {
+                Customer = customer.Id,
+                CollectionMethod = "send_invoice",
+                DaysUntilDue = 0
             });
+
+            // --- Sonra InvoiceItem'ı invoice'a bağlayarak ekle ---
+            var invoiceItemService = new InvoiceItemService();
+            await invoiceItemService.CreateAsync(new InvoiceItemCreateOptions
+            {
+                Customer = customer.Id,
+                Invoice = invoice.Id,
+                Amount = (long)(payment.Amount * 100),
+                Currency = payment.Currency,
+                Description = "Ödeme faturası"
+            });
+
+            // Invoice finalize et ve e-posta gönder
+            await invoiceService.FinalizeInvoiceAsync(invoice.Id);
+            var finalizedInvoice = await invoiceService.GetAsync(invoice.Id);
+            if (finalizedInvoice.Status == "open")
+            {
+                await invoiceService.SendInvoiceAsync(finalizedInvoice.Id);
+            }
+
+            payment.InvoiceId = finalizedInvoice.Id;
+            payment.InvoicePdfUrl = finalizedInvoice.InvoicePdf ?? finalizedInvoice.HostedInvoiceUrl;
+            payment.InvoiceStatus = finalizedInvoice.Status;
+            await _paymentRepo.UpdateAsync(payment);
         }
-
-        // --- Önce Invoice oluştur ---
-        var invoiceService = new InvoiceService();
-        var invoice = await invoiceService.CreateAsync(new InvoiceCreateOptions
-        {
-            Customer = customer.Id,
-            CollectionMethod = "send_invoice",
-            DaysUntilDue = 0
-        });
-
-        // --- Sonra InvoiceItem'ı invoice'a bağlayarak ekle ---
-        var invoiceItemService = new InvoiceItemService();
-        await invoiceItemService.CreateAsync(new InvoiceItemCreateOptions
-        {
-            Customer = customer.Id,
-            Invoice = invoice.Id, // <-- BURAYA EKLE!
-            Amount = (long)(payment.Amount * 100),
-            Currency = payment.Currency,
-            Description = "Ödeme faturası"
-        });
-
-        // Invoice finalize et ve e-posta gönder
-        await invoiceService.FinalizeInvoiceAsync(invoice.Id);  
-        var finalizedInvoice = await invoiceService.GetAsync(invoice.Id); 
-        if (finalizedInvoice.Status == "open")
-        {
-            await invoiceService.SendInvoiceAsync(finalizedInvoice.Id);  
-        }
-
-        payment.InvoiceId = finalizedInvoice.Id;
-        payment.InvoicePdfUrl = finalizedInvoice.InvoicePdf ?? finalizedInvoice.HostedInvoiceUrl; 
-        payment.InvoiceStatus = finalizedInvoice.Status;
-        await _paymentRepo.UpdateAsync(payment);
     }
-}
-    
+
     return Ok();
 }
+
+
     [HttpGet("get-kyc-link")]
     public async Task<IActionResult> GetKycLink([FromQuery] int userId)
     {

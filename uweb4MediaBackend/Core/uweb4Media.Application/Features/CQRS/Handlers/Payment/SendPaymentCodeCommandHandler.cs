@@ -1,73 +1,73 @@
-using MediatR;
-using uweb4Media.Application.Features.CQRS.Commands.Payment;
-using uweb4Media.Application.Interfaces.AppUserInterfaces;
-using uweb4Media.Application.Interfaces.Email;
-using uweb4Media.Application.Interfaces.Payment;
+    using MediatR;
+    using uweb4Media.Application.Features.CQRS.Commands.Payment;
+    using uweb4Media.Application.Interfaces.AppUserInterfaces;
+    using uweb4Media.Application.Interfaces.Email;
+    using uweb4Media.Application.Interfaces.Payment;
 
-namespace uweb4Media.Application.Features.CQRS.Handlers.Payment;
+    namespace uweb4Media.Application.Features.CQRS.Handlers.Payment;
 
-public class SendPaymentCodeCommandHandler : IRequestHandler<SendPaymentCodeCommand, int>
-{
-    private readonly IPaymentRepository _paymentRepository;
-    private readonly IAppUserRepository _userRepository;
-    private readonly IEmailService _mailService;
-
-    public SendPaymentCodeCommandHandler(
-        IPaymentRepository paymentRepository,
-        IAppUserRepository userRepository,
-        IEmailService mailService)
+    public class SendPaymentCodeCommandHandler : IRequestHandler<SendPaymentCodeCommand, int>
     {
-        _paymentRepository = paymentRepository;
-        _userRepository = userRepository;
-        _mailService = mailService;
-    }
+        private readonly IPaymentRepository _paymentRepository;
+        private readonly IAppUserRepository _userRepository;
+        private readonly IEmailService _mailService;
 
-    public async Task<int> Handle(SendPaymentCodeCommand request, CancellationToken cancellationToken)
-    {
-        var user = await _userRepository.GetByIdAsync(request.UserId);
-        if (user == null || !user.IsEmailVerified)
-            throw new UnauthorizedAccessException("Payment code cannot be obtained without email verification!");
-
-        // Eğer token ödemesi ise, PlanId zorunlu!
-        if (request.IsToken && request.PlanId == null)
-            throw new ArgumentException("Token ödemesi için PlanId zorunludur!");
-
-        var code = new Random().Next(100000, 999999).ToString();
-
-        // Mail gönder
-        await _mailService.SendEmailAsync(
-            request.Email,
-            "Payment Verification Code",
-            $@"Dear user,
-
-Thank you for your payment request. Please use the following code to verify your payment process:
-
-Verification Code: {code}
-
-If you did not initiate this request, please ignore this email.
-
-Best regards,
-Your Team"
-        );
-
-        // Payment kaydı (intent yok, sadece code ve status)
-        var payment = new Uweb4Media.Domain.Entities.Payment
+        public SendPaymentCodeCommandHandler(
+            IPaymentRepository paymentRepository,
+            IAppUserRepository userRepository,
+            IEmailService mailService)
         {
-            OrderId = request.OrderId,
-            Amount = request.Amount,
-            Currency = request.Currency ?? "usd",
-            Status = "awaiting_code",
-            Provider = "stripe",
-            Email = request.Email,
-            UserId = request.UserId,
-            CreatedAt = DateTime.UtcNow,
-            PaymentCode = code,
-            PaymentCodeGeneratedAt = DateTime.UtcNow,
-            IsToken = request.IsToken,  
-            PlanId  = request.PlanId   
-        };
-        await _paymentRepository.CreateAsync(payment);
+            _paymentRepository = paymentRepository;
+            _userRepository = userRepository;
+            _mailService = mailService;
+        }
 
-        return payment.Id;
+        public async Task<int> Handle(SendPaymentCodeCommand request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetByIdAsync(request.UserId);
+            if (user == null || !user.IsEmailVerified)
+                throw new UnauthorizedAccessException("Payment code cannot be obtained without email verification!");
+
+            // Eğer token ödemesi ise, PlanId zorunlu!
+            if (request.IsToken && request.PlanId == null)
+                throw new ArgumentException("Token ödemesi için PlanId zorunludur!");
+
+            var code = new Random().Next(100000, 999999).ToString();
+
+            // Mail gönder
+            await _mailService.SendEmailAsync(
+                request.Email,
+                "Payment Verification Code",
+                $@"Dear user,
+
+    Thank you for your payment request. Please use the following code to verify your payment process:
+
+    Verification Code: {code}
+
+    If you did not initiate this request, please ignore this email.
+
+    Best regards,
+    Your Team"
+            );
+
+            // Payment kaydı (intent yok, sadece code ve status)
+            var payment = new Uweb4Media.Domain.Entities.Payment
+            {
+                OrderId = request.OrderId,
+                Amount = request.Amount,
+                Currency = request.Currency ?? "usd",
+                Status = "awaiting_code",
+                Provider = "stripe",
+                Email = request.Email,
+                UserId = request.UserId,
+                CreatedAt = DateTime.UtcNow,
+                PaymentCode = code,
+                PaymentCodeGeneratedAt = DateTime.UtcNow,
+                IsToken = request.IsToken,  
+                PlanId  = request.PlanId   
+            };
+            await _paymentRepository.CreateAsync(payment);
+
+            return payment.Id;
+        }
     }
-}
