@@ -37,14 +37,13 @@ public class StripePaymentController : Controller
 
     [HttpPost("create-stripe-intent")]
     public async Task<IActionResult> CreateStripeIntent([FromBody] CreateStripePaymentIntentCommand command)
-    {
-        // Sadece email doğrulama kontrolü (KYC yok)
+    { 
         var clientSecret = await _mediator.Send(command);
         return Ok(new { clientSecret });
     }
 
     [HttpPost("stripe-webhook")]
-    public async Task<IActionResult> StripeWebhook()
+public async Task<IActionResult> StripeWebhook()
 {
     string json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
     Event stripeEvent;
@@ -70,7 +69,20 @@ public class StripePaymentController : Controller
             payment.Status = "success";
             await _paymentRepo.UpdateAsync(payment);
 
-            // TOKEN PLAN için kullanıcıya token Ekle!
+            // Abonelik ise: premium + start/end date
+            if (!payment.IsToken && payment.PlanId != null)
+            {
+                var user = await _db.AppUsers.FindAsync(payment.UserId);
+                if (user != null)
+                {
+                    user.SubscriptionStatus = "premium";
+                    user.SubscriptionStartDate = DateTime.UtcNow;
+                    user.SubscriptionEndDate = DateTime.UtcNow.AddYears(1); // veya AddMonths(1)
+                    await _db.SaveChangesAsync();
+                }
+            }
+
+            // Token ise: token ekle
             if (payment.IsToken && payment.PlanId != null)
             {
                 var user = await _db.AppUsers.FindAsync(payment.UserId);
@@ -86,7 +98,6 @@ public class StripePaymentController : Controller
                     await _db.SaveChangesAsync();
                 }
             }
-
             // Partner paylaşımları ve fatura işlemleri devam...
             var shares = _db.PartnerShares.ToList();
             await _stripeConnectService.DistributePaymentAsync(paymentIntent.Id, shares);

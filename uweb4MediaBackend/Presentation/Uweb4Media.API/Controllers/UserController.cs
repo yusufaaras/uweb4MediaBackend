@@ -5,6 +5,7 @@ using System.Security.Claims;
 using uweb4Media.Application.Features.CQRS.Commands.User;
 using uweb4Media.Application.Features.CQRS.Handlers.User;
 using uweb4Media.Application.Features.CQRS.Queries.User;
+using Uweb4Media.Persistence.Context;
 
 namespace Uweb4Media.API.Controllers
 {
@@ -17,13 +18,15 @@ namespace Uweb4Media.API.Controllers
         private readonly UpdateUserCommandHandler _updateUserCommandHandler;
         private readonly RemoveUserCommandHandler _removeUserCommandHandler;
         private readonly GetUserByIdQueryHandler _getUserByIdQueryHandler;
+        private readonly Uweb4MediaContext _db;
 
-        public UserController(GetUserQueryHandler getUserQueryHandler, UpdateUserCommandHandler updateUserCommandHandler, RemoveUserCommandHandler removeUserCommandHandler, GetUserByIdQueryHandler getUserByIdQueryHandler)
+        public UserController(GetUserQueryHandler getUserQueryHandler, UpdateUserCommandHandler updateUserCommandHandler, RemoveUserCommandHandler removeUserCommandHandler, GetUserByIdQueryHandler getUserByIdQueryHandler, Uweb4MediaContext db)
         {
             _getUserQueryHandler = getUserQueryHandler;
             _updateUserCommandHandler = updateUserCommandHandler;
             _removeUserCommandHandler = removeUserCommandHandler;
             _getUserByIdQueryHandler = getUserByIdQueryHandler;
+            _db = db;
         }
 
         // Sadece admin görebilir
@@ -79,7 +82,7 @@ namespace Uweb4Media.API.Controllers
             await _updateUserCommandHandler.Handle(command);
             return Ok("Profiliniz başarıyla güncellendi.");
         }
-        // Giriş yapan kendi verisini çekebilir
+        
         [HttpGet("me")]
         public async Task<IActionResult> GetMyProfile()
         {
@@ -87,12 +90,18 @@ namespace Uweb4Media.API.Controllers
             if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out var userId))
                 return Unauthorized();
 
-            var value = await _getUserByIdQueryHandler.Handle(new GetUserByIdQuery(userId));
-            if (value == null)
-                return NotFound();
+            var user = await _db.AppUsers.FindAsync(userId);
+            if (user == null)
+                return NotFound(); 
+            if (user.SubscriptionStatus == "premium" && user.SubscriptionEndDate != null && user.SubscriptionEndDate < DateTime.UtcNow)
+            {
+                user.SubscriptionStatus = "free";
+                user.SubscriptionStartDate = null;
+                user.SubscriptionEndDate = null;
+                await _db.SaveChangesAsync();
+            }
 
-            // Şifre ve hassas alanları göndermemeye dikkat et!
-            return Ok(value);
+            return Ok(user);  
         }
         
     }
