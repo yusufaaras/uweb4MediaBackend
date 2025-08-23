@@ -54,7 +54,7 @@ public class GitHubAuthController : ControllerBase
                 Username = githubLogin ?? email,
                 AvatarUrl = avatarUrl,
                 SubscriptionStatus = "free",
-                AppRoleID = 2  
+                AppRoleID = 2
             };
             await _appUserRepository.AddAsync(user);
         }
@@ -73,7 +73,6 @@ public class GitHubAuthController : ControllerBase
         }; 
         var token = JwtTokenGenerator.GenerateToken(appUserResult); 
         Console.WriteLine("[DEBUG] Redirect URL:https://primeweb4-9c444.firebaseapp.com/#/auth/github-success?token=" + token.Token);
-        return Redirect($"https://primeweb4-9c444.firebaseapp.com/#/auth/github-success?token={token.Token}");
-        
+        return Redirect("https://prime.uweb4.com/auth/github-success?token=" + token.Token);        
     }
 }
