@@ -182,9 +182,12 @@ namespace Uweb4Media.API
     
             builder.Services.AddAuthentication(options =>
                 {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
+                .AddCookie()
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
@@ -232,7 +235,7 @@ namespace Uweb4Media.API
             {
                 options.ClientId = builder.Configuration["Authentication:GitHub:ClientId"];
                 options.ClientSecret = builder.Configuration["Authentication:GitHub:ClientSecret"];
-                options.CallbackPath = "/api/auth/github-callback";
+                options.CallbackPath = "/api/GitHubAuth/callback";
                 options.Scope.Add("user:email");
                 options.SaveTokens = true;
                 options.Events.OnCreatingTicket = ctx =>
