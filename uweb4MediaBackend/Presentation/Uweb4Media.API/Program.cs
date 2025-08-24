@@ -185,6 +185,7 @@ namespace Uweb4Media.API
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
+                .AddCookie("External")
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
@@ -203,6 +204,7 @@ namespace Uweb4Media.API
                         RoleClaimType = ClaimTypes.Role // JWT'de "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" bakar
                     };
                 })
+                
             .AddGoogle(googleOptions =>
             {
                 googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
