@@ -182,9 +182,12 @@ namespace Uweb4Media.API
     
             builder.Services.AddAuthentication(options =>
                 {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
+                .AddCookie()
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
@@ -198,8 +201,9 @@ namespace Uweb4Media.API
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
                         ValidateAudience = true,
-                        ValidateIssuer = true,
-                        ClockSkew = TimeSpan.Zero
+                        ValidateIssuer = true, 
+                        ClockSkew = TimeSpan.Zero,
+                        RoleClaimType = ClaimTypes.Role 
                     };
                 })
             .AddGoogle(googleOptions =>
