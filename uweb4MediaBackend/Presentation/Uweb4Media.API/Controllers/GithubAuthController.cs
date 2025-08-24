@@ -54,7 +54,8 @@ public class GitHubAuthController : ControllerBase
                 Username = githubLogin ?? email,
                 AvatarUrl = avatarUrl,
                 SubscriptionStatus = "free",
-                AppRoleID = 2
+                AppRoleID = 2,
+                IsEmailVerified = true
             };
             await _appUserRepository.AddAsync(user);
         }
