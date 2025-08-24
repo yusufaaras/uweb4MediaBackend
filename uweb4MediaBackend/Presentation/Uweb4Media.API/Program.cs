@@ -235,7 +235,7 @@ namespace Uweb4Media.API
             {
                 options.ClientId = builder.Configuration["Authentication:GitHub:ClientId"];
                 options.ClientSecret = builder.Configuration["Authentication:GitHub:ClientSecret"];
-                options.CallbackPath = "/api/GitHubAuth/callback";
+                options.CallbackPath = "/api/auth/github-callback";
                 options.Scope.Add("user:email");
                 options.SaveTokens = true;
                 options.Events.OnCreatingTicket = ctx =>
