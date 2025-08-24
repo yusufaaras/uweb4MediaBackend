@@ -182,12 +182,10 @@ namespace Uweb4Media.API
     
             builder.Services.AddAuthentication(options =>
                 {
-                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                }) 
-                .AddCookie()
+                })
+                .AddCookie("External")
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
@@ -213,6 +211,7 @@ namespace Uweb4Media.API
                 googleOptions.CallbackPath = "/api/auth/google-callback";
                 googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
                 googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.email");
+                googleOptions.SignInScheme = "External";
                 googleOptions.Events.OnCreatingTicket = ctx =>
                 {
                     var nameClaim = ctx.Identity.FindFirst(ClaimTypes.Name);
@@ -238,6 +237,7 @@ namespace Uweb4Media.API
                 options.ClientSecret = builder.Configuration["Authentication:GitHub:ClientSecret"];
                 options.CallbackPath = "/api/auth/github-callback";
                 options.Scope.Add("user:email");
+                options.SignInScheme = "External";
                 options.SaveTokens = true;
                 options.Events.OnCreatingTicket = ctx =>
                 {

@@ -33,7 +33,7 @@ public class GitHubAuthController : ControllerBase
     [HttpGet("callback")]
     public async Task<IActionResult> GitHubCallback()
     {
-        var result = await HttpContext.AuthenticateAsync("GitHub");
+        var result = await HttpContext.AuthenticateAsync("External");
         if (!result.Succeeded)
             return Unauthorized();
 
