@@ -43,7 +43,7 @@ public class GitHubAuthController : ControllerBase
         var githubLogin = claims.FirstOrDefault(c => c.Type == "GithubLogin")?.Value;
         var avatarUrl = claims.FirstOrDefault(c => c.Type == "AvatarUrl")?.Value;
 
-        // 1. Kullanıcı varsa getir, yoksa oluştur (CQRS veya direkt repository ile)
+        // Kullanıcıyı getir/yoksa oluştur
         var user = await _appUserRepository.GetByGithubIdAsync(githubId);
         if (user == null)
         {
@@ -54,7 +54,7 @@ public class GitHubAuthController : ControllerBase
                 Username = githubLogin ?? email,
                 AvatarUrl = avatarUrl,
                 SubscriptionStatus = "free",
-                AppRoleID = 2,
+                AppRoleID = 2, // veya otomatik admin yapmak istiyorsan 1
                 IsEmailVerified = true
             };
             await _appUserRepository.AddAsync(user);
@@ -73,7 +73,6 @@ public class GitHubAuthController : ControllerBase
             GoogleId = user.GoogleId 
         }; 
         var token = JwtTokenGenerator.GenerateToken(appUserResult); 
-        Console.WriteLine("[DEBUG] Redirect URL:https://primeweb4-9c444.firebaseapp.com/#/auth/github-success?token=" + token.Token);
         return Redirect("https://prime.uweb4.com/auth/github-success?token=" + token.Token);        
     }
 }

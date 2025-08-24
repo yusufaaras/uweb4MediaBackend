@@ -182,28 +182,25 @@ namespace Uweb4Media.API
     
             builder.Services.AddAuthentication(options =>
                 {
-                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddCookie()
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
                     var issuers = builder.Configuration.GetSection("Jwt:ValidIssuer").Get<string[]>();
-                    
+
                     opt.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidAudiences = audiences, // dizi olmalı!
+                        ValidAudiences = audiences,
                         ValidIssuers = issuers,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
                         ValidateAudience = true,
-                        ValidateIssuer = true, 
+                        ValidateIssuer = true,
                         ClockSkew = TimeSpan.Zero,
-                        RoleClaimType = ClaimTypes.Role 
+                        RoleClaimType = ClaimTypes.Role // JWT'de "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" bakar
                     };
                 })
             .AddGoogle(googleOptions =>
