@@ -187,7 +187,7 @@ namespace Uweb4Media.API
                     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 }) 
-                .AddCookie("External")
+                .AddCookie()
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
