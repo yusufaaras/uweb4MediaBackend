@@ -211,7 +211,8 @@ namespace Uweb4Media.API
                 googleOptions.CallbackPath = "/api/auth/google-callback";
                 googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
                 googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.email");
-                googleOptions.SignInScheme = "External";
+                googleOptions.SignInScheme = "External"; 
+                googleOptions.SaveTokens = true;
                 googleOptions.Events.OnCreatingTicket = ctx =>
                 {
                     var nameClaim = ctx.Identity.FindFirst(ClaimTypes.Name);

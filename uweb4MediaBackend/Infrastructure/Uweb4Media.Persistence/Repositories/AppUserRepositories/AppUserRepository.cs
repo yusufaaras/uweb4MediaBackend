@@ -44,6 +44,11 @@ namespace Uweb4Media.Persistence.Repositories.AppUserRepositories
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.GithubId == githubId);
         }
 
+        public async Task<AppUser?> GetByGoogleIdAsync(string googleId)
+        {
+            return await _context.AppUsers.FirstOrDefaultAsync(u => u.GoogleId == googleId);
+        }
+
         public async Task AddAsync(AppUser user)
         {
             await _context.AppUsers.AddAsync(user);

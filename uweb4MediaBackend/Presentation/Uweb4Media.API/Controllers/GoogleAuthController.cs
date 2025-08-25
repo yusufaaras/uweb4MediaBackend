@@ -5,95 +5,80 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using uweb4Media.Application.Features.Mediator.Commands.GoogleCommands;
 using uweb4Media.Application.Features.Mediator.Queries.GoogleQueries;
+using uweb4Media.Application.Features.Mediator.Results.AppUserResults;
+using uweb4Media.Application.Interfaces.AppUserInterfaces;
 using uweb4Media.Application.Tools;
+using Uweb4Media.Domain.Entities;
 
 namespace Uweb4Media.API.Controllers;
 
-[Route("api/auth")]
 [ApiController]
-public class AuthController : ControllerBase
+[Route("api/[controller]")]
+public class GoogleAuthController : ControllerBase
 {
-    private readonly IConfiguration _configuration;
-    private readonly IMediator _mediator;  
+    private readonly IMediator _mediator;
+    private readonly IAppUserRepository _appUserRepository;
 
-    public AuthController(IConfiguration configuration, IMediator mediator)  
+    public GoogleAuthController(IMediator mediator, IAppUserRepository appUserRepository)
     {
-        _configuration = configuration;
         _mediator = mediator;
+        _appUserRepository = appUserRepository;
     }
 
-    [HttpGet("google-login")]
+    [HttpGet("login")]
     public IActionResult GoogleLogin()
     {
-        var redirectUri = $"{Request.Scheme}://{Request.Host}/api/auth/google-callback";
-        var properties = new AuthenticationProperties { RedirectUri = redirectUri };
-        return Challenge(properties, "Google");
+        var redirectUri = $"{Request.Scheme}://{Request.Host}/api/GoogleAuth/callback";
+        var props = new AuthenticationProperties { RedirectUri = redirectUri };
+        return Challenge(props, "Google");
     }
 
-    [HttpGet("google-callback")]
-public async Task<IActionResult> GoogleCallback()
-{
-    try
+    [HttpGet("callback")]
+    public async Task<IActionResult> GoogleCallback()
     {
-        var authenticateResult = await HttpContext.AuthenticateAsync("Google");
+        var result = await HttpContext.AuthenticateAsync("External");
+        if (!result.Succeeded)
+            return Unauthorized();
 
-        if (!authenticateResult.Succeeded)
-        {
-            return Redirect($"{_configuration["Jwt:Audience"]}/login-error?message=Google kimlik doğrulama başarısız.");
-        }
-
-        var claims = authenticateResult.Principal.Claims;
+        var claims = result.Principal.Claims;
         var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-        var name = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-        var surname = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
         var googleId = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-        var profilePic = claims.FirstOrDefault(c => c.Type == "picture")?.Value;
+        var name = claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
+        var surname = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
+        var avatarUrl = claims.FirstOrDefault(c => c.Type == "profile_picture")?.Value;
 
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(googleId))
+        // Kullanıcıyı getir/yoksa oluştur
+        var user = await _appUserRepository.GetByGoogleIdAsync(googleId);
+        if (user == null)
         {
-            return Redirect($"{_configuration["Jwt:Audience"]}/login-error?message=Google'dan gerekli bilgiler alınamadı.");
+            user = new AppUser
+            {
+                Email = email,
+                GoogleId = googleId,
+                Name = name,
+                Surname = surname,
+                Username = email,
+                AvatarUrl = avatarUrl,
+                SubscriptionStatus = "free",
+                AppRoleID = 2,
+                IsEmailVerified = true
+            };
+            await _appUserRepository.AddAsync(user);
         }
 
-        var createGoogleUserCommand = new CreateGoogleAppUserCommand
+        var appUserResult = new GetCheckAppUserQueryResult
         {
-            Email = email,
-            Name = name,
-            Surname = surname,
-            GoogleId = googleId,
-            AvatarUrl = profilePic
+            IsExits = true,
+            AppUserID = user.AppUserID,
+            Username = user.Username,
+            Email = user.Email,
+            Role = user.AppRole?.Name,
+            Name = user.Name,
+            Surname = user.Surname,
+            AvatarUrl = user.AvatarUrl,
+            GoogleId = user.GoogleId
         };
-        await _mediator.Send(createGoogleUserCommand);
-
-        var userCheckQuery = new GetAppUserByGoogleIdQuery { GoogleId = googleId, Email = email };
-        var userResult = await _mediator.Send(userCheckQuery);
-
-        if (!userResult.IsExits)
-        {
-            return Redirect($"{_configuration["Jwt:Audience"]}/login-error?message=Kullanıcı bilgisi veritabanında bulunamadı.");
-        }
-
-        var tokenDto = JwtTokenGenerator.GenerateToken(userResult);
-        var redirectUrl = $"{_configuration["Jwt:Audience"]}/auth/google-success" +
-                          $"?token={tokenDto.Token}" +
-                          $"&email={email}" +
-                          $"&name={name}" +
-                          $"&profilePic={profilePic}" +
-                          $"&expires={tokenDto.ExpireDate.ToString("o")}";
-
-        return Redirect(redirectUrl);
-    }
-    catch (Exception ex)
-    {
-        // Hata detayını browser'da görebilmek için:
-        return Content($"EXCEPTION: {ex.Message} <br/><br/> {ex.StackTrace}");
-    }
-}
-    
-    [HttpGet("protected-data")]
-    public IActionResult GetProtectedData()
-    {
-        var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-        var userName = User.FindFirst(ClaimTypes.Name)?.Value;
-        return Ok($"Merhaba {userName ?? userEmail}, bu korumalı bir veri!");
+        var token = JwtTokenGenerator.GenerateToken(appUserResult);
+        return Redirect("https://prime.uweb4.com/auth/google-success?token=" + token.Token);
     }
 }

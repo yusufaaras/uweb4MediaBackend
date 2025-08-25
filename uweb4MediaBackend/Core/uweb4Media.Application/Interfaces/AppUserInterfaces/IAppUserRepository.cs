@@ -12,6 +12,7 @@ namespace uweb4Media.Application.Interfaces.AppUserInterfaces
         Task<AppUser?> GetByIdAsync(int id);
         Task<AppUser?> GetByEmailAsync(string email);
         Task<AppUser?> GetByGithubIdAsync(string githubId);  
+        Task<AppUser?> GetByGoogleIdAsync(string googleId);   // <-- EKLENDİ
         Task AddAsync(AppUser user);  
         Task UpdateAsync(AppUser user); 
     }
