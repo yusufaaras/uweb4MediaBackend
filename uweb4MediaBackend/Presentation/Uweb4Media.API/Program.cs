@@ -260,8 +260,7 @@ namespace Uweb4Media.API
                     options.SaveTokens = true;
                     options.Scope.Add("User.Read");
                     options.Events.OnCreatingTicket = ctx =>
-                    {
-                        // Microsoft Graph'tan profil bilgilerini almak için
+                    { 
                         var id = ctx.Principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                         ctx.Identity.AddClaim(new Claim("MicrosoftId", id ?? string.Empty));
                         var email = ctx.Principal?.FindFirst(ClaimTypes.Email)?.Value;
@@ -269,8 +268,7 @@ namespace Uweb4Media.API
                             ctx.Identity.AddClaim(new Claim(ClaimTypes.Email, email));
                         var name = ctx.Principal?.FindFirst(ClaimTypes.Name)?.Value;
                         if (!string.IsNullOrEmpty(name))
-                            ctx.Identity.AddClaim(new Claim("MicrosoftName", name));
-                        // Profil fotoğrafını almak için ekstra bir Graph API çağrısı gerekebilir (isteğe bağlı)
+                            ctx.Identity.AddClaim(new Claim("MicrosoftName", name)); 
                         return Task.CompletedTask;
                     };
                 });;
