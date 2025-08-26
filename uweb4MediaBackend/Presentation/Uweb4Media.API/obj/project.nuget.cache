@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZMHSfZfR5ho=",
+  "dgSpecHash": "ncFtlcKeajA=",
   "success": true,
   "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "/Users/aliunnab/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/microsoft.aspnetcore.authentication.google/8.0.2/microsoft.aspnetcore.authentication.google.8.0.2.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.17/microsoft.aspnetcore.authentication.jwtbearer.8.0.17.nupkg.sha512",
+    "/Users/aliunnab/.nuget/packages/microsoft.aspnetcore.authentication.microsoftaccount/8.0.1/microsoft.aspnetcore.authentication.microsoftaccount.8.0.1.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/microsoft.bcl.asyncinterfaces/8.0.0/microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/microsoft.build.framework/17.8.3/microsoft.build.framework.17.8.3.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/microsoft.build.locator/1.7.8/microsoft.build.locator.1.7.8.nupkg.sha512",

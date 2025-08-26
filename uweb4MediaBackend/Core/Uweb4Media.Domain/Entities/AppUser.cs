@@ -52,6 +52,7 @@ namespace Uweb4Media.Domain.Entities
         public string? GoogleId { get; set; }
         [MaxLength(256)]
         public string? GithubId { get; set; }  
+        public string MicrosoftId { get; set; }
         public int AppRoleID { get; set; }  
         [ForeignKey("AppRoleID")] 
         public AppRole AppRole { get; set; }   

@@ -559,3 +559,4 @@ C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Azure.Storage.Common.dll
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/System.IO.Hashing.dll
 /Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/AspNet.Security.OAuth.GitHub.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll

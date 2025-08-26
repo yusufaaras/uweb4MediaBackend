@@ -250,7 +250,30 @@ namespace Uweb4Media.API
                     ctx.Identity.AddClaim(new Claim("AvatarUrl", avatar));
                     return Task.CompletedTask;
                 };
-            });
+            })
+                .AddMicrosoftAccount(options =>
+                {
+                    options.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
+                    options.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
+                    options.CallbackPath = "/api/auth/microsoft-callback";
+                    options.SignInScheme = "External";
+                    options.SaveTokens = true;
+                    options.Scope.Add("User.Read");
+                    options.Events.OnCreatingTicket = ctx =>
+                    {
+                        // Microsoft Graph'tan profil bilgilerini almak için
+                        var id = ctx.Principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                        ctx.Identity.AddClaim(new Claim("MicrosoftId", id ?? string.Empty));
+                        var email = ctx.Principal?.FindFirst(ClaimTypes.Email)?.Value;
+                        if (!string.IsNullOrEmpty(email))
+                            ctx.Identity.AddClaim(new Claim(ClaimTypes.Email, email));
+                        var name = ctx.Principal?.FindFirst(ClaimTypes.Name)?.Value;
+                        if (!string.IsNullOrEmpty(name))
+                            ctx.Identity.AddClaim(new Claim("MicrosoftName", name));
+                        // Profil fotoğrafını almak için ekstra bir Graph API çağrısı gerekebilir (isteğe bağlı)
+                        return Task.CompletedTask;
+                    };
+                });;
 
             builder.Services.AddAuthorization(options =>
             {
