@@ -177,6 +177,7 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<IStripePaymentService, StripePaymentService>();
             builder.Services.AddScoped<IStripeConnectService, StripeConnectService>();
             builder.Services.AddScoped<IEmailService, SmtpEmailService>();
+            builder.Services.AddScoped<IVerificationService, VerificationService>(); 
             builder.Services.AddScoped<UserService>();  
             builder.Services.AddMemoryCache();
     
