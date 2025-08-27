@@ -44,7 +44,12 @@ public class VerificationController : ControllerBase
     [Authorize]
     public async Task<IActionResult> VerifyCode([FromBody] VerificationRequest req)
     {
-        var userEmail = User.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
+        var userEmail = User.Claims.FirstOrDefault(c =>
+            c.Type == "email" ||
+            c.Type == "emailaddress" ||
+            c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+        )?.Value;
+
         if (string.IsNullOrEmpty(userEmail))
             return BadRequest("Email bulunamadı!");
 
