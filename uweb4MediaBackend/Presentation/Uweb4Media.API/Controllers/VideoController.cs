@@ -16,19 +16,22 @@ namespace Uweb4Media.API.Controllers
         private readonly CreateVideoCommandHandler _createVideoCommandHandler;
         private readonly UpdateVideoCommandHandler _updateVideoCommandHandler;
         private readonly RemoveVideoCommandHandler _removeVideoCommandHandler;
+        private readonly SearchVideoQueryHandler _searchVideoQueryHandler;
 
         public VideoController(
             GetVideoQueryHandler getVideoQueryHandler,
             GetVideoByIdQueryHandler getVideoByIdQueryHandler,
             CreateVideoCommandHandler createVideoCommandHandler,
             UpdateVideoCommandHandler updateVideoCommandHandler,
-            RemoveVideoCommandHandler removeVideoCommandHandler)
+            RemoveVideoCommandHandler removeVideoCommandHandler,
+            SearchVideoQueryHandler searchVideoQueryHandler)
         {
             _getVideoQueryHandler = getVideoQueryHandler;
             _getVideoByIdQueryHandler = getVideoByIdQueryHandler;
             _createVideoCommandHandler = createVideoCommandHandler;
             _updateVideoCommandHandler = updateVideoCommandHandler;
             _removeVideoCommandHandler = removeVideoCommandHandler;
+            _searchVideoQueryHandler = searchVideoQueryHandler;
         }
 
         [HttpGet]
@@ -47,9 +50,21 @@ namespace Uweb4Media.API.Controllers
             return Ok(value);
         }
 
+        // Arama endpoint'i eklendi
+        [HttpGet("search")]
+        [AllowAnonymous]
+        public async Task<IActionResult> SearchVideos([FromQuery] string q)
+        {
+            if (string.IsNullOrWhiteSpace(q))
+                return BadRequest("Arama kelimesi zorunludur.");
+
+            var result = await _searchVideoQueryHandler.Handle(new SearchVideoQuery(q));
+            return Ok(result);
+        }
+
         // Eğer sadece admin video ekleyebilsin istiyorsan alttaki [Authorize(Roles = "Admin")]'i aktifleştir.
         // [Authorize(Roles = "Admin")]
-        [HttpPost] 
+        [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> CreateVideo(CreateVideoCommand command)
         {
@@ -58,7 +73,7 @@ namespace Uweb4Media.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]  
+        [Authorize]
         public async Task<IActionResult> RemoveVideo(int id)
         {
             var video = await _getVideoByIdQueryHandler.Handle(new GetVideoByIdQuery(id));
@@ -75,9 +90,8 @@ namespace Uweb4Media.API.Controllers
             var userIdClaim = userClaims.Claims.FirstOrDefault(c => c.Type == "AppUserID" || c.Type == "sub")?.Value;
             int.TryParse(userIdClaim, out var userId);
 
-            
             if (!isAdmin && video.UserId != userId)
-                return Forbid(); 
+                return Forbid();
 
             await _removeVideoCommandHandler.Handle(new RemoveVideoCommand(id));
             return Ok();
