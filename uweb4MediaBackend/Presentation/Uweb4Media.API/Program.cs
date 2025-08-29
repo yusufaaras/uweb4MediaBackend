@@ -35,6 +35,7 @@ using uweb4Media.Application.Features.Mediator.Handlers.GitHub;
 using uweb4Media.Application.Interfaces.Email;
 using uweb4Media.Application.Interfaces.Payment;
 using uweb4Media.Application.Services.Email;
+using uweb4Media.Application.Services.Indexing;
 using uweb4Media.Application.Services.PaymentService;
 using uweb4Media.Application.Services.User;
 using Uweb4Media.Domain.Entities;
@@ -180,6 +181,7 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<IEmailService, SmtpEmailService>();
             builder.Services.AddScoped<IVerificationService, VerificationService>(); 
             builder.Services.AddScoped<SearchVideoQueryHandler>();
+            builder.Services.AddScoped<SearchEnginePingService>();
             builder.Services.AddScoped<UserService>();  
             builder.Services.AddMemoryCache();
     
