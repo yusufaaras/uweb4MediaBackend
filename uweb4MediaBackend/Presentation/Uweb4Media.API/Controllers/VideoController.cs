@@ -17,14 +17,9 @@ namespace Uweb4Media.API.Controllers
         private readonly UpdateVideoCommandHandler _updateVideoCommandHandler;
         private readonly RemoveVideoCommandHandler _removeVideoCommandHandler;
         private readonly SearchVideoQueryHandler _searchVideoQueryHandler;
+        private readonly GetVideoNLWebJsonQueryHandler _getVideoNLWebJsonQueryHandler;
 
-        public VideoController(
-            GetVideoQueryHandler getVideoQueryHandler,
-            GetVideoByIdQueryHandler getVideoByIdQueryHandler,
-            CreateVideoCommandHandler createVideoCommandHandler,
-            UpdateVideoCommandHandler updateVideoCommandHandler,
-            RemoveVideoCommandHandler removeVideoCommandHandler,
-            SearchVideoQueryHandler searchVideoQueryHandler)
+        public VideoController(GetVideoQueryHandler getVideoQueryHandler, GetVideoByIdQueryHandler getVideoByIdQueryHandler, CreateVideoCommandHandler createVideoCommandHandler, UpdateVideoCommandHandler updateVideoCommandHandler, RemoveVideoCommandHandler removeVideoCommandHandler, SearchVideoQueryHandler searchVideoQueryHandler, GetVideoNLWebJsonQueryHandler getVideoNlWebJsonQueryHandler)
         {
             _getVideoQueryHandler = getVideoQueryHandler;
             _getVideoByIdQueryHandler = getVideoByIdQueryHandler;
@@ -32,6 +27,7 @@ namespace Uweb4Media.API.Controllers
             _updateVideoCommandHandler = updateVideoCommandHandler;
             _removeVideoCommandHandler = removeVideoCommandHandler;
             _searchVideoQueryHandler = searchVideoQueryHandler;
+            _getVideoNLWebJsonQueryHandler = getVideoNlWebJsonQueryHandler;
         }
 
         [HttpGet]
@@ -62,8 +58,16 @@ namespace Uweb4Media.API.Controllers
             return Ok(result);
         }
 
-        // Eğer sadece admin video ekleyebilsin istiyorsan alttaki [Authorize(Roles = "Admin")]'i aktifleştir.
-        // [Authorize(Roles = "Admin")]
+        [HttpGet("{id}/nlweb.json")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetVideoNLWebJson(int id)
+        {
+            var nlwebJson = await _getVideoNLWebJsonQueryHandler.Handle(id);
+            if (nlwebJson == null)
+                return NotFound(new { error = "Not found" }); 
+            return new JsonResult(nlwebJson);
+        } 
+        
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> CreateVideo(CreateVideoCommand command)
@@ -71,7 +75,7 @@ namespace Uweb4Media.API.Controllers
             await _createVideoCommandHandler.Handle(command);
             return Ok();
         }
-
+        
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> RemoveVideo(int id)

@@ -174,6 +174,7 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
             builder.Services.AddScoped<GetPaymentsByUserIdQueryHandler>();
+            builder.Services.AddScoped<GetVideoNLWebJsonQueryHandler>();
             builder.Services.AddScoped<IStripePaymentService, StripePaymentService>();
             builder.Services.AddScoped<IStripeConnectService, StripeConnectService>();
             builder.Services.AddScoped<IEmailService, SmtpEmailService>();
