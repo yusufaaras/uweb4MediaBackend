@@ -46,7 +46,6 @@ namespace Uweb4Media.API.Controllers
             return Ok(value);
         }
 
-        // Arama endpoint'i eklendi
         [HttpGet("search")]
         [AllowAnonymous]
         public async Task<IActionResult> SearchVideos([FromQuery] string q)
