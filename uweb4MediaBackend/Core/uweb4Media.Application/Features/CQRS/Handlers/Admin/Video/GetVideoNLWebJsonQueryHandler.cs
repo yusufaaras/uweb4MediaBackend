@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using uweb4Media.Application.Interfaces;
 using Uweb4Media.Domain.Entities.Admin.Video;
@@ -25,7 +26,7 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
                 "podcast" => "PodcastEpisode",
                 "video" => "VideoObject",
                 _ => "Article"
-            }; 
+            };
 
             // Publisher adını belirle
             string publisherName = !string.IsNullOrWhiteSpace(video.Responsible)
@@ -43,36 +44,37 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
             // ISO 8601 tarih formatı
             string? datePublished = video.Date?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
 
-            var nlwebJson = new
+            // Doğru JSON-LD key'leri için Dictionary kullan!
+            var nlwebJson = new Dictionary<string, object?>
             {
-                @context = "https://schema.org",
-                @type = schemaType,
-                headline = video.Title,
-                name = video.Title,
-                publisher = new
+                ["@context"] = "https://schema.org",
+                ["@type"] = schemaType,
+                ["headline"] = video.Title,
+                ["name"] = video.Title,
+                ["publisher"] = new Dictionary<string, object?>
                 {
-                    @type = "Organization",
-                    name = publisherName
+                    ["@type"] = "Organization",
+                    ["name"] = publisherName
                 },
-                datePublished = datePublished, // optional
-                uploadDate = datePublished,    // ZORUNLU! (datePublished ile aynı olabilir)
-                description = video.Description,
-                keywords = tags, 
-                url = $"https://prime.uweb4.com/content/{video.Id}",
-                embedUrl = video.Link,         // ZORUNLU/Youtube ise
-                thumbnailUrl = video.Thumbnail, // ZORUNLU
-                author = new
+                ["datePublished"] = datePublished,
+                ["uploadDate"] = datePublished,
+                ["description"] = video.Description,
+                ["keywords"] = tags,
+                ["url"] = $"https://prime.uweb4.com/content/{video.Id}",
+                ["embedUrl"] = video.Link,
+                ["thumbnailUrl"] = string.IsNullOrWhiteSpace(video.Thumbnail)
+                    ? "https://prime.uweb4.com/default-thumbnail.png"
+                    : video.Thumbnail,
+                ["author"] = new Dictionary<string, object?>
                 {
-                    @type = "Person",
-                    name = authorName
+                    ["@type"] = "Person",
+                    ["name"] = authorName
                 },
-                isPremium = video.IsPremium ?? false,
-                likes = video.LikesCount,
-                comments = video.CommentsCount
+                ["isPremium"] = video.IsPremium ?? false,
+                ["likes"] = video.LikesCount,
+                ["comments"] = video.CommentsCount
             };
-            
-            
-            
+
             return nlwebJson;
         }
     }
