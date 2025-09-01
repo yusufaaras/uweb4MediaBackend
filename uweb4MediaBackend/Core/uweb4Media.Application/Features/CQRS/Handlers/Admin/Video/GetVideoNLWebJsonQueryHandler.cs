@@ -20,35 +20,41 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
             var video = await _repository.GetByIdAsync(id);
             if (video == null) return null;
 
-            // Schema.org type belirle
-            var schemaType = (video.ContentType ?? "").ToLower() switch
-            {
-                "podcast" => "PodcastEpisode",
-                "video" => "VideoObject",
-                _ => "Article"
-            };
-
-            // Publisher adını belirle
+            // VideoObject için temel alanlar
             string publisherName = !string.IsNullOrWhiteSpace(video.Responsible)
                 ? video.Responsible!
-                : (video.Company?.Name ?? "Unknown");
+                : (video.CompanyId != null ? video.Company?.Name ?? "Unknown" : "Unknown");
 
-            // Author adını belirle
             string authorName = !string.IsNullOrWhiteSpace(video.Responsible)
                 ? video.Responsible!
                 : (video.User?.Username ?? "Unknown");
 
-            // Tagler null ise boş array ata
             var tags = video.Tags ?? new List<string>();
 
-            // ISO 8601 tarih formatı
-            string? datePublished = video.Date?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+            // ISO 8601 formatı (Z ile bitmeli!)
+            string? uploadDate = video.Date?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
 
-            // Doğru JSON-LD key'leri için Dictionary kullan!
+            // Youtube embed ID çıkarımı
+            string embedUrl = null;
+            if (!string.IsNullOrWhiteSpace(video.Link))
+            {
+                if (video.Link.Contains("youtube.com/watch?v="))
+                {
+                    var videoId = video.Link.Split("v=").Length > 1
+                        ? video.Link.Split("v=")[1].Split('&')[0]
+                        : "";
+                    embedUrl = $"https://www.youtube.com/embed/{videoId}";
+                }
+                else
+                {
+                    embedUrl = video.Link;
+                }
+            }
+
             var nlwebJson = new Dictionary<string, object?>
             {
                 ["@context"] = "https://schema.org",
-                ["@type"] = schemaType,
+                ["@type"] = "VideoObject",
                 ["headline"] = video.Title,
                 ["name"] = video.Title,
                 ["publisher"] = new Dictionary<string, object?>
@@ -56,12 +62,12 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
                     ["@type"] = "Organization",
                     ["name"] = publisherName
                 },
-                ["datePublished"] = datePublished,
-                ["uploadDate"] = datePublished,
+                ["datePublished"] = uploadDate,
+                ["uploadDate"] = uploadDate,
                 ["description"] = video.Description,
                 ["keywords"] = tags,
-                ["url"] = $"https://prime.uweb4.com/content/{video.Id}",
-                ["embedUrl"] = video.Link,
+                ["url"] = video.Link,
+                ["embedUrl"] = embedUrl,
                 ["thumbnailUrl"] = string.IsNullOrWhiteSpace(video.Thumbnail)
                     ? "https://prime.uweb4.com/default-thumbnail.png"
                     : video.Thumbnail,
