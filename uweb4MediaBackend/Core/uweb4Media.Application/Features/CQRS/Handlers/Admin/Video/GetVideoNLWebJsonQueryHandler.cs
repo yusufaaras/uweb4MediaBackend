@@ -54,22 +54,25 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
                     @type = "Organization",
                     name = publisherName
                 },
-                datePublished = datePublished,
+                datePublished = datePublished, // optional
+                uploadDate = datePublished,    // ZORUNLU! (datePublished ile aynı olabilir)
                 description = video.Description,
                 keywords = tags, 
                 url = $"https://prime.uweb4.com/content/{video.Id}",
-                media_link = video.Link,
+                embedUrl = video.Link,         // ZORUNLU/Youtube ise
+                thumbnailUrl = video.Thumbnail, // ZORUNLU
                 author = new
                 {
                     @type = "Person",
                     name = authorName
                 },
-                thumbnailUrl = video.Thumbnail,
                 isPremium = video.IsPremium ?? false,
                 likes = video.LikesCount,
                 comments = video.CommentsCount
             };
-
+            
+            
+            
             return nlwebJson;
         }
     }
