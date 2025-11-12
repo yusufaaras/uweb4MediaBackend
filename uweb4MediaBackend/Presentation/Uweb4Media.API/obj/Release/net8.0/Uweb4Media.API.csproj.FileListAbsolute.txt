@@ -185,3 +185,8 @@ C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend
 C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\obj\Release\net8.0\Uweb4Media.API.genruntimeconfig.cache
 C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\obj\Release\net8.0\ref\Uweb4Media.API.dll
 C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\bin\Release\net8.0\appsettings.Prime.json
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\bin\Release\net8.0\AspNet.Security.OAuth.GitHub.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\bin\Release\net8.0\Azure.Storage.Blobs.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\bin\Release\net8.0\Azure.Storage.Common.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\bin\Release\net8.0\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
+C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Presentation\Uweb4Media.API\bin\Release\net8.0\System.IO.Hashing.dll

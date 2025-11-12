@@ -15,14 +15,14 @@ using uweb4Media.Application.Features.CQRS.Handlers.Subscription;
 using uweb4Media.Application.Features.CQRS.Handlers.User;
 using uweb4Media.Application.Interfaces.AppRoleInterfaces;
 using uweb4Media.Application.Interfaces.AppUserInterfaces;
-using uweb4Media.Application.Interfaces; 
+using uweb4Media.Application.Interfaces;
 using uweb4Media.Application.Services;
 using uweb4Media.Application.Tools;
 using Uweb4Media.Persistence.Context;
 using Uweb4Media.Persistence.Repositories.AppRoleRepositories;
 using Uweb4Media.Persistence.Repositories.AppUserRepositories;
 using Uweb4Media.Persistence.Repositories;
-using System.Security.Claims; 
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Google;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -48,10 +48,10 @@ namespace Uweb4Media.API
     {
         public static void Main(string[] args)
         {
-            
+
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddHttpClient();
-    
+
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
@@ -75,20 +75,23 @@ namespace Uweb4Media.API
                     }
                 };
             });
-    
+
             // CORS Policy tanımları
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowFirebase", policy =>
                     policy.WithOrigins(
-                            "https://primeweb4-9c444.firebaseapp.com",
-                            "https://adminprimeweb4.web.app",
-                            "https://primeui2.web.app",
-                            "https://prime.uweb4.com",
-                            "http://prime.uweb4.com",
-                            "http://admin.uweb4.com",
-                            "https://admin.uweb4.com"
-                        )
+                "https://primeweb4-9c444.firebaseapp.com",
+                "https://adminprimeweb4.web.app",
+                "https://primeui2.web.app",
+                "https://prime.uweb4.com",
+                "http://prime.uweb4.com",
+                "http://admin.uweb4.com",
+                "https://admin.uweb4.com",
+                "https://digi1expo.web.app",
+                "https://digi1expo.firebaseapp.com",
+                "https://digioneexpo.com"
+            )
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials()
@@ -121,55 +124,66 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<CreateMediaContentCommandHandler>();
             builder.Services.AddScoped<UpdateMediaContentCommandHandler>();
             builder.Services.AddScoped<RemoveMediaContentCommandHandler>();
+
             builder.Services.AddScoped<GetLikeQueryHandler>();
             builder.Services.AddScoped<GetLikeByIdQueryHandler>();
             builder.Services.AddScoped<CreateLikeCommandHandler>();
             builder.Services.AddScoped<RemoveLikeCommandHandler>();
+
             builder.Services.AddScoped<GetCommentQueryHandler>();
             builder.Services.AddScoped<GetCommentByIdQueryHandler>();
             builder.Services.AddScoped<CreateCommentCommandHandler>();
             builder.Services.AddScoped<RemoveCommentCommandHandler>();
             builder.Services.AddScoped<GetCommentsByVideoIdQueryHandler>();
+
             builder.Services.AddScoped<GetNotificationQueryHandler>();
             builder.Services.AddScoped<GetNotificationByIdQueryHandler>();
             builder.Services.AddScoped<CreateNotificationCommandHandler>();
             builder.Services.AddScoped<RemoveNotificationCommandHandler>();
+
             builder.Services.AddScoped<GetPlansQueryHandler>();
             builder.Services.AddScoped<GetPlansByIdQueryHandler>();
             builder.Services.AddScoped<CreatePlansCommandHandler>();
             builder.Services.AddScoped<UpdatePlansCommandHandler>();
             builder.Services.AddScoped<RemovePlansCommandHandler>();
+
             builder.Services.AddScoped<UpdateSubscribeUserCommandHandler>();
             builder.Services.AddScoped<GetSubscribeUserByIdQueryHandler>();
             builder.Services.AddScoped<GetSubscriptionQueryHandler>();
             builder.Services.AddScoped<GetSubscriptionByIdQueryHandler>();
             builder.Services.AddScoped<CreateSubscriptionCommandHandler>();
             builder.Services.AddScoped<RemoveSubscriptionCommandHandler>();
+
             builder.Services.AddScoped<GetCampaignQueryHandler>();
             builder.Services.AddScoped<GetCampaignByIdQueryHandler>();
             builder.Services.AddScoped<CreateCampaignCommandHandler>();
             builder.Services.AddScoped<RemoveCampaignCommandHandler>();
             builder.Services.AddScoped<UpdateCampaignCommandHandler>();
+
             builder.Services.AddScoped<GetChannelQueryHandler>();
             builder.Services.AddScoped<GetChannelByIdQueryHandler>();
             builder.Services.AddScoped<CreateChannelCommandHandler>();
             builder.Services.AddScoped<RemoveChannelCommandHandler>();
             builder.Services.AddScoped<UpdateChannelCommandHandler>();
+
             builder.Services.AddScoped<GetCompanyQueryHandler>();
             builder.Services.AddScoped<GetCompanyByIdQueryHandler>();
             builder.Services.AddScoped<CreateCompanyCommandHandler>();
             builder.Services.AddScoped<RemoveCompanyCommandHandler>();
             builder.Services.AddScoped<UpdateCompanyCommandHandler>();
+
             builder.Services.AddScoped<GetSectorQueryHandler>();
             builder.Services.AddScoped<GetSectorByIdQueryHandler>();
             builder.Services.AddScoped<CreateSectorCommandHandler>();
             builder.Services.AddScoped<RemoveSectorCommandHandler>();
             builder.Services.AddScoped<UpdateSectorCommandHandler>();
+
             builder.Services.AddScoped<GetVideoQueryHandler>();
             builder.Services.AddScoped<GetVideoByIdQueryHandler>();
             builder.Services.AddScoped<CreateVideoCommandHandler>();
             builder.Services.AddScoped<RemoveVideoCommandHandler>();
             builder.Services.AddScoped<UpdateVideoCommandHandler>();
+
             builder.Services.AddScoped<GetInvoicesQueryHandler>();
             builder.Services.AddScoped<CreateGithubAppUserCommandHandler>();
             builder.Services.AddScoped<IPaymentService, IyzicoPaymentService>();
@@ -179,12 +193,12 @@ namespace Uweb4Media.API
             builder.Services.AddScoped<IStripePaymentService, StripePaymentService>();
             builder.Services.AddScoped<IStripeConnectService, StripeConnectService>();
             builder.Services.AddScoped<IEmailService, SmtpEmailService>();
-            builder.Services.AddScoped<IVerificationService, VerificationService>(); 
+            builder.Services.AddScoped<IVerificationService, VerificationService>();
             builder.Services.AddScoped<SearchVideoQueryHandler>();
             builder.Services.AddScoped<SearchEnginePingService>();
-            builder.Services.AddScoped<UserService>();  
+            builder.Services.AddScoped<UserService>();
             builder.Services.AddMemoryCache();
-    
+
             builder.Services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -195,7 +209,7 @@ namespace Uweb4Media.API
                 {
                     var audiences = builder.Configuration.GetSection("Jwt:ValidAudiences").Get<string[]>();
                     var issuers = builder.Configuration.GetSection("Jwt:ValidIssuer").Get<string[]>();
-                    
+
                     opt.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidAudiences = audiences, // dizi olmalı!
@@ -204,9 +218,9 @@ namespace Uweb4Media.API
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
                         ValidateAudience = true,
-                        ValidateIssuer = true, 
+                        ValidateIssuer = true,
                         ClockSkew = TimeSpan.Zero,
-                        RoleClaimType = ClaimTypes.Role 
+                        RoleClaimType = ClaimTypes.Role
                     };
                 })
             .AddGoogle(googleOptions =>
@@ -216,7 +230,7 @@ namespace Uweb4Media.API
                 googleOptions.CallbackPath = "/api/auth/google-callback";
                 googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
                 googleOptions.Scope.Add("https://www.googleapis.com/auth/userinfo.email");
-                googleOptions.SignInScheme = "External"; 
+                googleOptions.SignInScheme = "External";
                 googleOptions.SaveTokens = true;
                 googleOptions.Events.OnCreatingTicket = ctx =>
                 {
@@ -265,7 +279,7 @@ namespace Uweb4Media.API
                     options.SaveTokens = true;
                     options.Scope.Add("User.Read");
                     options.Events.OnCreatingTicket = ctx =>
-                    { 
+                    {
                         var id = ctx.Principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                         ctx.Identity.AddClaim(new Claim("MicrosoftId", id ?? string.Empty));
                         var email = ctx.Principal?.FindFirst(ClaimTypes.Email)?.Value;
@@ -273,10 +287,10 @@ namespace Uweb4Media.API
                             ctx.Identity.AddClaim(new Claim(ClaimTypes.Email, email));
                         var name = ctx.Principal?.FindFirst(ClaimTypes.Name)?.Value;
                         if (!string.IsNullOrEmpty(name))
-                            ctx.Identity.AddClaim(new Claim("MicrosoftName", name)); 
+                            ctx.Identity.AddClaim(new Claim("MicrosoftName", name));
                         return Task.CompletedTask;
                     };
-                });;
+                }); ;
 
             builder.Services.AddAuthorization(options =>
             {
@@ -290,7 +304,7 @@ namespace Uweb4Media.API
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-            
+
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -318,7 +332,7 @@ namespace Uweb4Media.API
                         }
                     });
                 });
-            } 
+            }
             app.UseHttpsRedirection();
             app.UseCookiePolicy();
             app.UseAuthentication();

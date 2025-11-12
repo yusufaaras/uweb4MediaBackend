@@ -40,21 +40,21 @@ namespace Uweb4Media.Persistence.Context
                 .HasOne(mc => mc.User)
                 .WithMany(u => u.MediaContents)
                 .HasForeignKey(mc => mc.UserId)
-                .OnDelete(DeleteBehavior.Cascade); // Kalsın. Kullanıcı silinince içerikleri silinsin.
+                .OnDelete(DeleteBehavior.Cascade);  
 
             // KULLANICI SİLİNDİĞİNDE YORUMLARIN DAVRANIŞI
             modelBuilder.Entity<Comment>()
                 .HasOne(c => c.User)
                 .WithMany(u => u.Comments)
                 .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.NoAction); // NO ACTION olarak kalmaya devam etsin.
+                .OnDelete(DeleteBehavior.NoAction);  
 
             // İÇERİK SİLİNDİĞİNDE YORUMLARIN DAVRANIŞI
             modelBuilder.Entity<Comment>()
                 .HasOne(c => c.Video)
                 .WithMany(mc => mc.Comments)
                 .HasForeignKey(c => c.VideoId)
-                .OnDelete(DeleteBehavior.NoAction); // NO ACTION olarak kalmaya devam etsin.
+                .OnDelete(DeleteBehavior.NoAction);  
             
             modelBuilder.Entity<Like>()
                 .HasOne(l => l.User)
@@ -66,7 +66,7 @@ namespace Uweb4Media.Persistence.Context
                 .HasOne(l => l.Video)
                 .WithMany(mc => mc.Likes)
                 .HasForeignKey(l => l.VideoId)
-                .OnDelete(DeleteBehavior.Cascade); // Bu CASCADE olarak kalmalı, MediaContent silinince beğenileri de silinsin.
+                .OnDelete(DeleteBehavior.Cascade);  
 
             // ABONELİK İLİŞKİLERİ (Restrict olarak doğru ayarlanmışlar)
             modelBuilder.Entity<Subscription>()

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Uweb4Media.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e218f3c73c64a89b1138afaa92d104158739d308")]
 [assembly: System.Reflection.AssemblyProductAttribute("Uweb4Media.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Uweb4Media.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

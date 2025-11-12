@@ -20,7 +20,6 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
             var video = await _repository.GetByIdAsync(id);
             if (video == null) return null;
 
-            // VideoObject için temel alanlar
             string publisherName = !string.IsNullOrWhiteSpace(video.Responsible)
                 ? video.Responsible!
                 : (video.CompanyId != null ? video.Company?.Name ?? "Unknown" : "Unknown");
@@ -30,9 +29,6 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
                 : (video.User?.Username ?? "Unknown");
 
             var tags = video.Tags ?? new List<string>();
-
-            // ISO 8601 formatı (Z ile bitmeli!)
-            string? uploadDate = video.Date?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
 
             // Youtube embed ID çıkarımı
             string embedUrl = null;
@@ -62,8 +58,8 @@ namespace uweb4Media.Application.Features.CQRS.Handlers.Admin.Video
                     ["@type"] = "Organization",
                     ["name"] = publisherName
                 },
-                ["datePublished"] = uploadDate,
-                ["uploadDate"] = uploadDate,
+                ["datePublished"] = video.Date,         
+                ["uploadDate"] = video.Date,           
                 ["description"] = video.Description,
                 ["keywords"] = tags,
                 ["url"] = video.Link,

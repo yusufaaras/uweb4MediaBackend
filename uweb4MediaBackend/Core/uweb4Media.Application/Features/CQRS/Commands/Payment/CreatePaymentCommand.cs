@@ -14,5 +14,5 @@ public class CreatePaymentCommand : IRequest<string>
     public string ExpireYear { get; set; }
     public string Cvc { get; set; }
     public bool IsToken { get; set; }
-    public int PlanId { get; set; } // <-- EKLE
+    public int PlanId { get; set; }  
 }
