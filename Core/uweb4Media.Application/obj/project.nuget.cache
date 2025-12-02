@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z1yfp5fyjm8=",
+  "dgSpecHash": "TTl8lfPEAgA=",
   "success": true,
-  "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj",
+  "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj",
   "expectedPackageFiles": [
     "/Users/aliunnab/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/elasticsearch.net/7.17.5/elasticsearch.net.7.17.5.nupkg.sha512",

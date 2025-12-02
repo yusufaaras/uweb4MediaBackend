@@ -5597,11 +5597,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
+      "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
       "projectName": "Uweb4Media.API",
-      "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
+      "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Presentation/Uweb4Media.API/Uweb4Media.API.csproj",
       "packagesPath": "/Users/aliunnab/.nuget/packages/",
-      "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/",
+      "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Presentation/Uweb4Media.API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/aliunnab/.nuget/NuGet/NuGet.Config"
@@ -5616,11 +5616,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj": {
-              "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj"
+            "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj": {
+              "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Core/uweb4Media.Application/uweb4Media.Application.csproj"
             },
-            "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj": {
-              "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj"
+            "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj": {
+              "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj"
             }
           }
         }

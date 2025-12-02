@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WK0idSf8nfc=",
+  "dgSpecHash": "7jlDMszZ0EU=",
   "success": true,
-  "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
+  "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
   "expectedPackageFiles": [
     "/Users/aliunnab/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
@@ -102,9 +102,9 @@
       "code": "NU1608",
       "level": "Warning",
       "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 12.4.1 was resolved.",
-      "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
+      "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
+      "filePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/Uweb4Media.Persistence.csproj",
       "libraryId": "MediatR",
       "targetGraphs": [
         "net8.0"

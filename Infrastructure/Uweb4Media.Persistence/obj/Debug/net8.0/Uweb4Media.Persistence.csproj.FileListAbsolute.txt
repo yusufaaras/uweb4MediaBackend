@@ -77,23 +77,23 @@ C:/Users/Yusuf ARAS/OneDrive/Belgeler/GitHub/uweb4MediaBackend/uweb4MediaBackend
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.pdb
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.genruntimeconfig.cache
 /Users/yagmuryalcin/Repos/uweb4Media/uweb4MediaBackend/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/ref/Uweb4Media.Persistence.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\Uweb4Media.Persistence.deps.json
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\Uweb4Media.Persistence.runtimeconfig.json
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\Uweb4Media.Persistence.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\Uweb4Media.Persistence.pdb
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\uweb4Media.Application.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\Uweb4Media.Domain.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\uweb4Media.Application.pdb
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\bin\Debug\net8.0\Uweb4Media.Domain.pdb
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.csproj.AssemblyReference.cache
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.AssemblyInfoInputs.cache
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.AssemblyInfo.cs
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.csproj.CoreCompileInputs.cache
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.sourcelink.json
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.csproj.CopyComplete
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\refint\Uweb4Media.Persistence.dll
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.pdb
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\Uweb4Media.Persistence.genruntimeconfig.cache
-C:\Users\Yusuf ARAS\OneDrive\Belgeler\GitHub\uweb4MediaBackend\uweb4MediaBackend\Infrastructure\Uweb4Media.Persistence\obj\Debug\net8.0\ref\Uweb4Media.Persistence.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/Uweb4Media.Persistence.deps.json
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/Uweb4Media.Persistence.runtimeconfig.json
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/Uweb4Media.Persistence.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/Uweb4Media.Persistence.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/uweb4Media.Application.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/Uweb4Media.Domain.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/uweb4Media.Application.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/bin/Debug/net8.0/Uweb4Media.Domain.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.csproj.AssemblyReference.cache
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.AssemblyInfoInputs.cache
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.AssemblyInfo.cs
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.csproj.CoreCompileInputs.cache
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.sourcelink.json
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Med.57CA5E82.Up2Date
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/refint/Uweb4Media.Persistence.dll
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.pdb
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/Uweb4Media.Persistence.genruntimeconfig.cache
+/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Infrastructure/Uweb4Media.Persistence/obj/Debug/net8.0/ref/Uweb4Media.Persistence.dll

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LVa72cCxqdA=",
+  "dgSpecHash": "c/V02Wxsm7w=",
   "success": true,
-  "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
+  "projectFilePath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
   "expectedPackageFiles": [
     "/Users/aliunnab/.nuget/packages/microsoft.entityframeworkcore/9.0.2/microsoft.entityframeworkcore.9.0.2.nupkg.sha512",
     "/Users/aliunnab/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.2/microsoft.entityframeworkcore.abstractions.9.0.2.nupkg.sha512",

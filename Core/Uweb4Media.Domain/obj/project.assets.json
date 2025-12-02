@@ -599,11 +599,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
+      "projectUniqueName": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
       "projectName": "Uweb4Media.Domain",
-      "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
+      "projectPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Core/Uweb4Media.Domain/Uweb4Media.Domain.csproj",
       "packagesPath": "/Users/aliunnab/.nuget/packages/",
-      "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/",
+      "outputPath": "/Users/aliunnab/Documents/GitHub/uweb4MediaBackend/Core/Uweb4Media.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/aliunnab/.nuget/NuGet/NuGet.Config"
